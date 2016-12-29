@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.name             = 'SquareMosaicLayout'
   s.version          = '0.0.1'
   s.summary          = 'Custom UICollectionViewLayout'
-  s.description      = 'Custom UICollectionViewLayout'
+  s.description      = 'Custom UICollectionViewLayout to be used with square UICollectionViewCells'
   s.homepage         = 'https://github.com/iwheelbuy/SquareMosaicLayout'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'iWheelBuy' => 'iwheelbuy@protonmail.com' }
