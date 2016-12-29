@@ -10,7 +10,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'SquareMosaicLayout'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'Custom UICollectionViewLayout'
   s.description      = 'Custom UICollectionViewLayout to be used with square UICollectionViewCells'
   s.homepage         = 'https://github.com/iwheelbuy/SquareMosaicLayout'
