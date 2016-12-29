@@ -1,9 +1,9 @@
 {
   "name": "SquareMosaicLayout",
-  "version": "0.1.0",
-  "summary": "A short description of SquareMosaicLayout.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/SquareMosaicLayout",
+  "version": "0.0.1",
+  "summary": "Custom UICollectionViewLayout",
+  "description": "Custom UICollectionViewLayout to be used with square UICollectionViewCells",
+  "homepage": "https://github.com/iwheelbuy/SquareMosaicLayout",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,11 @@
     "iWheelBuy": "iwheelbuy@protonmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/SquareMosaicLayout.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/iwheelbuy/SquareMosaicLayout.git",
+    "tag": "0.0.1"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "source_files": "SquareMosaicLayout/Classes/**/*"
 }

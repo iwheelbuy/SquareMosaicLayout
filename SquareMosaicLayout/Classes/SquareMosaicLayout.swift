@@ -4,15 +4,15 @@
 
 import UIKit
 
-typealias SquareMosaicTypeFrames = (frames: [CGRect], height: [CGFloat])
+public typealias SquareMosaicTypeFrames = (frames: [CGRect], height: [CGFloat])
 
-protocol SquareMosaicType {
+public protocol SquareMosaicType {
     
     var weight: UInt { get }
     func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames
 }
 
-protocol SquareMosaicPattern {
+public protocol SquareMosaicPattern {
     
     var array: [SquareMosaicType] { get }
 }
@@ -35,13 +35,13 @@ private extension SquareMosaicPattern {
     }
 }
 
-protocol SquareMosaicLayoutDelegate: class {
+public protocol SquareMosaicLayoutDelegate: class {
     
     var padding: CGFloat { get }
     var pattern: SquareMosaicPattern { get }
 }
 
-class SquareMosaicLayout: UICollectionViewLayout {
+public class SquareMosaicLayout: UICollectionViewLayout {
     
     weak var delegate: SquareMosaicLayoutDelegate?
     private var itemAttributes: [[UICollectionViewLayoutAttributes]] = []
@@ -60,11 +60,11 @@ class SquareMosaicLayout: UICollectionViewLayout {
         return collectionView?.bounds.width ?? UIScreen.main.bounds.width
     }
     
-    override var collectionViewContentSize: CGSize {
+    override public var collectionViewContentSize: CGSize {
         return CGSize(width: layoutWidth, height: layoutHeight)
     }
     
-    override func invalidateLayout() {
+    override public func invalidateLayout() {
         super.invalidateLayout()
         patternSizes = nil
         cache.removeAll()
@@ -94,7 +94,7 @@ class SquareMosaicLayout: UICollectionViewLayout {
         return patternSizes![indexPath.row % patternWeight]!
     }
     
-    override func prepare() {
+    override public func prepare() {
         guard let delegate = delegate else { fatalError("SquareMosaicLayout.delegate not set") }
         guard cache.isEmpty else { return }
         for section in 0..<(collectionView?.numberOfSections ?? 0) {
@@ -123,13 +123,13 @@ class SquareMosaicLayout: UICollectionViewLayout {
         }
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard indexPath.section < itemAttributes.count else { return  nil }
         guard indexPath.row < itemAttributes[indexPath.section].count else { return nil }
         return itemAttributes[indexPath.section][indexPath.row]
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         for attributes in cache {
             if attributes.frame.intersects(rect ) {

@@ -4,9 +4,9 @@
 
 import Foundation
 
-struct SnakeSquareMosaicPattern: SquareMosaicPattern {
+public struct SnakeSquareMosaicPattern: SquareMosaicPattern {
     
-    var array: [SquareMosaicType] {
+    public var array: [SquareMosaicType] {
         return [
             OneTwoSquareMosaicType(),
             ThreeRightSquareMosaicType(),
@@ -16,9 +16,9 @@ struct SnakeSquareMosaicPattern: SquareMosaicPattern {
     }
 }
 
-struct TripleSquareMosaicPattern: SquareMosaicPattern {
+public struct TripleSquareMosaicPattern: SquareMosaicPattern {
     
-    var array: [SquareMosaicType] {
+    public var array: [SquareMosaicType] {
         return [
             ThreeLeftSquareMosaicType(),
             ThreeRightSquareMosaicType(),
@@ -26,13 +26,13 @@ struct TripleSquareMosaicPattern: SquareMosaicPattern {
     }
 }
 
-struct OneTwoSquareMosaicType: SquareMosaicType {
+public struct OneTwoSquareMosaicType: SquareMosaicType {
     
-    var weight: UInt {
+    public var weight: UInt {
         return 3
     }
     
-    func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
+    public func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
         let sideMin = (width - padding - padding) / 3.0
         let sideMax = width - padding - sideMin
         var frames: [CGRect] = []
@@ -47,13 +47,13 @@ struct OneTwoSquareMosaicType: SquareMosaicType {
     }
 }
 
-struct TwoOneSquareMosaicType: SquareMosaicType {
+public struct TwoOneSquareMosaicType: SquareMosaicType {
     
-    var weight: UInt {
+    public var weight: UInt {
         return 3
     }
     
-    func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
+    public func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
         let sideMin = (width - padding - padding) / 3.0
         let sideMax = width - padding - sideMin
         var frames: [CGRect] = []
@@ -68,13 +68,13 @@ struct TwoOneSquareMosaicType: SquareMosaicType {
     }
 }
 
-struct ThreeLeftSquareMosaicType: SquareMosaicType {
+public struct ThreeLeftSquareMosaicType: SquareMosaicType {
     
-    var weight: UInt {
+    public var weight: UInt {
         return 3
     }
     
-    func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
+    public func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
         let side = (width - padding - padding) / 3.0
         var frames: [CGRect] = []
         var height: [CGFloat] = []
@@ -88,13 +88,13 @@ struct ThreeLeftSquareMosaicType: SquareMosaicType {
     }
 }
 
-struct ThreeRightSquareMosaicType: SquareMosaicType {
+public struct ThreeRightSquareMosaicType: SquareMosaicType {
     
-    var weight: UInt {
+    public var weight: UInt {
         return 3
     }
     
-    func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
+    public func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames {
         let side = (width - padding - padding) / 3.0
         var frames: [CGRect] = []
         var height: [CGFloat] = []
