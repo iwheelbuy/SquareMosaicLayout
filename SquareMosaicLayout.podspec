@@ -1,4 +1,5 @@
-#
+# git tag 0.0.2
+# git push origin 0.0.2
 # pod lib lint SquareMosaicLayout.podspec
 # pod spec lint SquareMosaicLayout.podspec
 # pod trunk push SquareMosaicLayout.podspec
