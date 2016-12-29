@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3D1EF65664609B58F410E63F04A6FAC38C7F12EF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3D1EF65664609B58F410E63F04A6FAC38C7F12EF" : 9223372036854775807,
+    "CBD9F21D6DAF22696C7F367E1160352ECC28B1DA" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "824F9E02-68C7-43C9-B4EB-760F7DA546D0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3D1EF65664609B58F410E63F04A6FAC38C7F12EF" : "SquareMosaicLayout\/",
+    "CBD9F21D6DAF22696C7F367E1160352ECC28B1DA" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SquareMosaicLayout",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/SquareMosaicLayout.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/iwheelbuy\/SquareMosaicLayout.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D1EF65664609B58F410E63F04A6FAC38C7F12EF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:iwheelbuy\/layout.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CBD9F21D6DAF22696C7F367E1160352ECC28B1DA"
+    }
+  ]
+}
