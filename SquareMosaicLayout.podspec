@@ -1,5 +1,7 @@
 #
 # pod lib lint SquareMosaicLayout.podspec
+# pod spec lint SquareMosaicLayout.podspec
+# pod trunk push SquareMosaicLayout.podspec
 #
 # http://guides.cocoapods.org/syntax/podspec.html
 #
