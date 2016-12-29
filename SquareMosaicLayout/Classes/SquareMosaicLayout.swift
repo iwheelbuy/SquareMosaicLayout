@@ -43,7 +43,7 @@ public protocol SquareMosaicLayoutDelegate: class {
 
 public class SquareMosaicLayout: UICollectionViewLayout {
     
-    weak var delegate: SquareMosaicLayoutDelegate?
+    public weak var delegate: SquareMosaicLayoutDelegate?
     private var itemAttributes: [[UICollectionViewLayoutAttributes]] = []
     private var cache: [UICollectionViewLayoutAttributes] = []
     private var layoutHeight: CGFloat  = 0.0
