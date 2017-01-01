@@ -95,6 +95,7 @@ public class SquareMosaicLayout: UICollectionViewLayout {
     }
     
     override public func prepare() {
+        debugPrint(layoutWidth, collectionView?.contentSize.width)
         guard let delegate = delegate else { fatalError("SquareMosaicLayout.delegate not set") }
         guard cache.isEmpty else { return }
         for section in 0..<(collectionView?.numberOfSections ?? 0) {
