@@ -97,9 +97,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
-        switch indexPath.row > 11 {
-        case true:  cell.backgroundColor = .green
-        case false: cell.backgroundColor = .red
+        switch indexPath.row {
+        case 0...2:     cell.backgroundColor = .orange
+        case 3...5:     cell.backgroundColor = .purple
+        case 6...8:     cell.backgroundColor = .brown
+        case 9...11:    cell.backgroundColor = .purple
+        default:        cell.backgroundColor = .green
         }
         return cell
     }
@@ -110,7 +113,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         count -= 1
         let rowUpdates = CollectionRowUpdates(delete: delete, insert: [], reload: [])
         let updates = CollectionUpdates(rowUpdates: rowUpdates, sectionUpdates: sectionUpdates)
-        collectionView.reloadData(updates)
+//        collectionView.reloadData(updates)
+        collectionView.reloadData()
     }
 }
 
