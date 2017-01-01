@@ -1,5 +1,7 @@
 # SquareMosaicLayout
 
+``SquareMosaicLayout`` is a extandable `UICollectionViewLayout`.
+
 ## Installation
 
 ```ruby
