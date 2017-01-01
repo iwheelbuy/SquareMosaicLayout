@@ -1,6 +1,10 @@
 # SquareMosaicLayout
 
-``SquareMosaicLayout`` is a extandable `UICollectionViewLayout`.
+SquareMosaicLayout is an extandable UICollectionViewLayout.
+
+## Small tutorial
+
+Let'is image that we want the layout that looks like this
 
 ## Installation
 
