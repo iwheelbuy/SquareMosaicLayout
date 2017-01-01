@@ -57,8 +57,7 @@ class ViewController: UIViewController {
         let insert = [IndexPath.init(row: 0, section: 0)]
         let rowUpdates = CollectionRowUpdates(delete: [], insert: insert, reload: [])
         let updates = CollectionUpdates(rowUpdates: rowUpdates, sectionUpdates: sectionUpdates)
-        viewCollection.reloadData()
-//        viewCollection.reloadData(updates)
+        viewCollection.reloadData(updates)
     }
     
     @objc private func remove() {
@@ -97,13 +96,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
-        switch indexPath.row {
-        case 0...2:     cell.backgroundColor = .orange
-        case 3...5:     cell.backgroundColor = .purple
-        case 6...8:     cell.backgroundColor = .brown
-        case 9...11:    cell.backgroundColor = .purple
-        default:        cell.backgroundColor = .green
-        }
+        cell.backgroundColor = .purple
         return cell
     }
     
@@ -113,8 +106,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         count -= 1
         let rowUpdates = CollectionRowUpdates(delete: delete, insert: [], reload: [])
         let updates = CollectionUpdates(rowUpdates: rowUpdates, sectionUpdates: sectionUpdates)
-//        collectionView.reloadData(updates)
-        collectionView.reloadData()
+        collectionView.reloadData(updates)
     }
 }
 
