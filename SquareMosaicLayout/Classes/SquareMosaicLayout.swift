@@ -18,24 +18,21 @@ public protocol SquareMosaicType {
 
 public protocol SquareMosaicPattern {
     
-    var array: [SquareMosaicType] { get }
+    var types: [SquareMosaicType] { get }
 }
 
 private extension SquareMosaicPattern {
     
-    var weight: Int {
-        return array.map{$0.frames()}.reduce(0, +)
-    }
-    
-    func layouts(_ weight: Int) -> [SquareMosaicType] {
-        let weightPattern: Int = self.weight
-        var layouts: [SquareMosaicType] = []
-        var weightLayout: Int = 0
+    func layouts(_ expectedFramesTotalCount: Int) -> [SquareMosaicType] {
+        let patternTypes = types
+        let patternFramesCount = patternTypes.map({$0.frames()}).reduce(0, +)
+        var layoutTypes = [SquareMosaicType]()
+        var count: Int = 0
         repeat {
-            layouts += array
-            weightLayout += weightPattern
-        } while (weightLayout < weight)
-        return layouts
+            layoutTypes.append(contentsOf: patternTypes)
+            count += patternFramesCount
+        } while (count < expectedFramesTotalCount)
+        return layoutTypes
     }
 }
 
@@ -79,14 +76,14 @@ public class SquareMosaicLayout: UICollectionViewLayout {
             let layouts = delegate.pattern.layouts(rows)
             for layout in layouts {
                 guard row < rows else { break }
-                let value = layout.frames(origin: layoutHeight, width: view.layoutWidth)
+                let frames = layout.frames(origin: layoutHeight, width: view.layoutWidth)
                 var height: CGFloat = 0
                 for x in 0..<layout.frames() {
                     guard row < rows else { break }
                     let indexPath = IndexPath(row: row, section: section)
                     let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attribute.frame = value[x].frame
-                    height = value[x].height > height ? value[x].height : height
+                    attribute.frame = frames[x].frame
+                    height = frames[x].height > height ? frames[x].height : height
                     attributes.append(attribute)
                     row += 1
                 }
