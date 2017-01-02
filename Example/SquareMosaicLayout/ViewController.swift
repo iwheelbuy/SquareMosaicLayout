@@ -75,10 +75,6 @@ class ViewController: UIViewController {
 
 extension ViewController: SquareMosaicLayoutDelegate {
     
-    var padding: CGFloat {
-        return 6.0
-    }
-    
     var pattern: SquareMosaicPattern {
         return SnakeSquareMosaicPattern()
     }

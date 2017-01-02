@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		7A43DFAD1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */; };
 		7A478CED1E1560FE00F52C72 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */; };
 		7A478CEF1E15615000F52C72 /* CollectionUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A478CEE1E15615000F52C72 /* CollectionUpdates.swift */; };
 		7A4EB21B1E18D7F90077F819 /* rsz_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A4EB21A1E18D7F90077F819 /* rsz_1.png */; };
@@ -23,6 +24,7 @@
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayoutPatterns.swift; sourceTree = "<group>"; };
 		7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7A478CEE1E15615000F52C72 /* CollectionUpdates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionUpdates.swift; sourceTree = "<group>"; };
 		7A4EB21A1E18D7F90077F819 /* rsz_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_1.png; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				7A478CEE1E15615000F52C72 /* CollectionUpdates.swift */,
+				7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for SquareMosaicLayout";
@@ -249,6 +252,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				7A43DFAD1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift in Sources */,
 				7A478CEF1E15615000F52C72 /* CollectionUpdates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

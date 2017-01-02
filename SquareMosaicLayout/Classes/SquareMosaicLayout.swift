@@ -4,12 +4,16 @@
 
 import UIKit
 
-public typealias SquareMosaicTypeFrames = (frames: [CGRect], height: [CGFloat])
+public protocol SquareMosaicTypeFrame {
+    
+    var frame: CGRect { get }
+    var height: CGFloat { get }
+}
 
 public protocol SquareMosaicType {
     
-    var weight: UInt { get }
-    func frames(origin: CGFloat, padding: CGFloat, width: CGFloat) -> SquareMosaicTypeFrames
+    func frames() -> Int
+    func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicTypeFrame]
 }
 
 public protocol SquareMosaicPattern {
@@ -19,14 +23,14 @@ public protocol SquareMosaicPattern {
 
 private extension SquareMosaicPattern {
     
-    var weight: UInt {
-        return array.map{$0.weight}.reduce(0, +)
+    var weight: Int {
+        return array.map{$0.frames()}.reduce(0, +)
     }
     
-    func layouts(_ weight: UInt) -> [SquareMosaicType] {
-        let weightPattern: UInt = self.weight
+    func layouts(_ weight: Int) -> [SquareMosaicType] {
+        let weightPattern: Int = self.weight
         var layouts: [SquareMosaicType] = []
-        var weightLayout: UInt = 0
+        var weightLayout: Int = 0
         repeat {
             layouts += array
             weightLayout += weightPattern
@@ -37,106 +41,68 @@ private extension SquareMosaicPattern {
 
 public protocol SquareMosaicLayoutDelegate: class {
     
-    var padding: CGFloat { get }
     var pattern: SquareMosaicPattern { get }
+}
+
+private extension UICollectionView {
+    
+    var layoutWidth: CGFloat {
+        return bounds.width - contentInset.left - contentInset.right
+    }
 }
 
 public class SquareMosaicLayout: UICollectionViewLayout {
     
     public weak var delegate: SquareMosaicLayoutDelegate?
-    private var itemAttributes: [[UICollectionViewLayoutAttributes]] = []
-    private var cache: [UICollectionViewLayoutAttributes] = []
+    private var cache: [[UICollectionViewLayoutAttributes]] = []
     private var layoutHeight: CGFloat  = 0.0
-    private var layoutWidth: CGFloat {
-        return collectionWidth - collectionLeft - collectionRight
-    }
-    private var collectionLeft: CGFloat {
-        return collectionView?.contentInset.left ?? 0.0
-    }
-    private var collectionRight: CGFloat {
-        return collectionView?.contentInset.right ?? 0.0
-    }
-    private var collectionWidth: CGFloat {
-        return collectionView?.bounds.width ?? UIScreen.main.bounds.width
-    }
     
     override public var collectionViewContentSize: CGSize {
-        return CGSize(width: layoutWidth, height: layoutHeight)
+        guard let view = collectionView else { return .zero }
+        return CGSize(width: view.layoutWidth, height: layoutHeight)
     }
     
     override public func invalidateLayout() {
         super.invalidateLayout()
-        patternSizes = nil
         cache.removeAll()
-        itemAttributes.removeAll()
         layoutHeight = 0.0
     }
     
-    var patternSizes: [Int:CGSize]?
-    lazy var patternWeight: Int = 0
-    
-    func size(_ indexPath: IndexPath) -> CGSize {
-        if patternSizes == nil {
-            guard let delegate = delegate else { fatalError("SquareMosaicLayout.delegate not set") }
-            let padding = delegate.padding
-            let pattern = delegate.pattern
-            patternWeight = Int(pattern.weight)
-            var index = 0
-            patternSizes = [Int:CGSize]()
-            for layout in pattern.array {
-                let value = layout.frames(origin: 0, padding: padding, width: layoutWidth)
-                for x in 0..<Int(layout.weight) {
-                    patternSizes![index] = value.frames[x].size
-                    index += 1
-                }
-            }
-        }
-        return patternSizes![indexPath.row % patternWeight]!
-    }
-    
     override public func prepare() {
-        debugPrint(layoutWidth, collectionView?.contentSize.width)
-        guard let delegate = delegate else { fatalError("SquareMosaicLayout.delegate not set") }
+        guard let delegate = delegate else { return }
+        guard let view = collectionView else { return }
         guard cache.isEmpty else { return }
-        for section in 0..<(collectionView?.numberOfSections ?? 0) {
-            var rowAttributes = [UICollectionViewLayoutAttributes]()
-            let weight: Int = collectionView?.numberOfItems(inSection: section) ?? 0
+        for section in 0..<view.numberOfSections {
+            var attributes = [UICollectionViewLayoutAttributes]()
+            let rows = view.numberOfItems(inSection: section)
             var row: Int = 0
-            let layouts = delegate.pattern.layouts(UInt(weight))
+            let layouts = delegate.pattern.layouts(rows)
             for layout in layouts {
-                if row >= weight { break }
-                layoutHeight += layoutHeight > 0 ? delegate.padding : 0
-                let value = layout.frames(origin: layoutHeight, padding: delegate.padding, width: layoutWidth)
+                guard row < rows else { break }
+                let value = layout.frames(origin: layoutHeight, width: view.layoutWidth)
                 var height: CGFloat = 0
-                for x in 0..<Int(layout.weight) {
-                    if row >= weight { break }
+                for x in 0..<layout.frames() {
+                    guard row < rows else { break }
                     let indexPath = IndexPath(row: row, section: section)
-                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attributes.frame = value.frames[x]
-                    height = value.height[x]
-                    cache.append(attributes)
-                    rowAttributes.append(attributes)
+                    let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                    attribute.frame = value[x].frame
+                    height = value[x].height > height ? value[x].height : height
+                    attributes.append(attribute)
                     row += 1
                 }
                 layoutHeight += height
             }
-            itemAttributes.append(rowAttributes)
+            cache.append(attributes)
         }
     }
     
     override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        guard indexPath.section < itemAttributes.count else { return  nil }
-        guard indexPath.row < itemAttributes[indexPath.section].count else { return nil }
-        return itemAttributes[indexPath.section][indexPath.row]
+        guard indexPath.section < cache.count else { return  nil }
+        guard indexPath.row < cache[indexPath.section].count else { return nil }
+        return cache[indexPath.section][indexPath.row]
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var layoutAttributes = [UICollectionViewLayoutAttributes]()
-        for attributes in cache {
-            if attributes.frame.intersects(rect ) {
-                layoutAttributes.append(attributes)
-            }
-        }
-        return layoutAttributes
+        return cache.flatMap({$0}).filter({$0.frame.intersects(rect)})
     }
 }
