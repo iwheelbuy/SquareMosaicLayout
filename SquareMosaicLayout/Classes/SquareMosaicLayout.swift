@@ -10,15 +10,73 @@ public protocol SquareMosaicTypeFrame {
     var height: CGFloat { get }
 }
 
+/// SquareMosaicType
 public protocol SquareMosaicType {
     
+    /**
+        This function should return the number of frames in current block as an **Int** value.
+     
+        - Warning: the returned value should match the number of `SquareMosaicTypeFrame` objects returned from the other `frames` function
+        - Returns: number of frames in block as an `Int` value.
+    */
     func frames() -> Int
+    /**
+        This function should return an array of objects that conform to `SquareMosaicTypeFrame` protocol
+     
+        - Warning: the number of returned objects should match the value returned from the other `frames` function
+        - Parameter origin: the Y start of current block
+        - Parameter width: the full width of the layout
+        - Returns: array of objects that conform to `SquareMosaicTypeFrame` protocol
+     */
     func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicTypeFrame]
 }
 
 public protocol SquareMosaicPattern {
     
     var types: [SquareMosaicType] { get }
+}
+
+public protocol SquareMosaicLayoutDataSource: class {
+    
+    func pattern() -> SquareMosaicPattern
+}
+
+public protocol SquareMosaicLayoutDelegate: class {
+    
+    func layoutHeight(_ height: CGFloat) -> Void
+}
+
+public class SquareMosaicLayout: UICollectionViewLayout {
+    
+    public weak var dataSource: SquareMosaicLayoutDataSource?
+    public weak var delegate: SquareMosaicLayoutDelegate? {
+        didSet {
+            delegate?.layoutHeight(object.height)
+        }
+    }
+    private lazy var object = SquareMosaicLayoutObject()
+    
+    override public var collectionViewContentSize: CGSize {
+        guard let view = collectionView else { return .zero }
+        return CGSize(width: view.layoutWidth, height: object.height)
+    }
+    
+    override public func invalidateLayout() {
+        super.invalidateLayout()
+        object.invalidateLayout()
+    }
+    
+    override public func prepare() {
+        object.prepare(collectionView, dataSource: dataSource, delegate: delegate)
+    }
+    
+    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return object.layoutAttributesForItem(at: indexPath)
+    }
+    
+    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return object.layoutAttributesForElements(in: rect)
+    }
 }
 
 private extension SquareMosaicPattern {
@@ -36,46 +94,17 @@ private extension SquareMosaicPattern {
     }
 }
 
-public protocol SquareMosaicLayoutDataSource: class {
+private struct SquareMosaicLayoutObject {
     
-    func pattern() -> SquareMosaicPattern
-}
-
-public protocol SquareMosaicLayoutDelegate: class {
+    var cache: [[UICollectionViewLayoutAttributes]] = []
+    var height: CGFloat  = 0.0
     
-    func layoutHeight(_ height: CGFloat) -> Void
-}
-
-private extension UICollectionView {
-    
-    var layoutWidth: CGFloat {
-        return bounds.width - contentInset.left - contentInset.right
-    }
-}
-
-public class SquareMosaicLayout: UICollectionViewLayout {
-    
-    public weak var dataSource: SquareMosaicLayoutDataSource?
-    public weak var delegate: SquareMosaicLayoutDelegate? {
-        didSet {
-            delegate?.layoutHeight(layoutHeight)
-        }
-    }
-    private var cache: [[UICollectionViewLayoutAttributes]] = []
-    private var layoutHeight: CGFloat  = 0.0
-    
-    override public var collectionViewContentSize: CGSize {
-        guard let view = collectionView else { return .zero }
-        return CGSize(width: view.layoutWidth, height: layoutHeight)
-    }
-    
-    override public func invalidateLayout() {
-        super.invalidateLayout()
+    mutating func invalidateLayout() {
         cache.removeAll()
-        layoutHeight = 0.0
+        height = 0.0
     }
     
-    override public func prepare() {
+    mutating func prepare(_ collectionView: UICollectionView?, dataSource: SquareMosaicLayoutDataSource?, delegate: SquareMosaicLayoutDelegate?) {
         guard let dataSource = dataSource else { return }
         guard let view = collectionView else { return }
         guard cache.isEmpty else { return }
@@ -86,7 +115,7 @@ public class SquareMosaicLayout: UICollectionViewLayout {
             let layouts = dataSource.pattern().layouts(rows)
             for layout in layouts {
                 guard row < rows else { break }
-                let frames = layout.frames(origin: layoutHeight, width: view.layoutWidth)
+                let frames = layout.frames(origin: self.height, width: view.layoutWidth)
                 var height: CGFloat = 0
                 for x in 0..<layout.frames() {
                     guard row < rows else { break }
@@ -97,20 +126,27 @@ public class SquareMosaicLayout: UICollectionViewLayout {
                     attributes.append(attribute)
                     row += 1
                 }
-                layoutHeight += height
+                self.height += height
             }
             cache.append(attributes)
         }
-        delegate?.layoutHeight(layoutHeight)
+        delegate?.layoutHeight(self.height)
     }
     
-    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard indexPath.section < cache.count else { return  nil }
         guard indexPath.row < cache[indexPath.section].count else { return nil }
         return cache[indexPath.section][indexPath.row]
     }
     
-    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return cache.flatMap({$0}).filter({$0.frame.intersects(rect)})
+    }
+}
+
+private extension UICollectionView {
+    
+    var layoutWidth: CGFloat {
+        return bounds.width - contentInset.left - contentInset.right
     }
 }
