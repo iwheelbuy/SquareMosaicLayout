@@ -36,9 +36,14 @@ private extension SquareMosaicPattern {
     }
 }
 
+public protocol SquareMosaicLayoutDataSource: class {
+    
+    func pattern() -> SquareMosaicPattern
+}
+
 public protocol SquareMosaicLayoutDelegate: class {
     
-    var pattern: SquareMosaicPattern { get }
+    func layoutHeight(_ height: CGFloat) -> Void
 }
 
 private extension UICollectionView {
@@ -50,7 +55,12 @@ private extension UICollectionView {
 
 public class SquareMosaicLayout: UICollectionViewLayout {
     
-    public weak var delegate: SquareMosaicLayoutDelegate?
+    public weak var dataSource: SquareMosaicLayoutDataSource?
+    public weak var delegate: SquareMosaicLayoutDelegate? {
+        didSet {
+            delegate?.layoutHeight(layoutHeight)
+        }
+    }
     private var cache: [[UICollectionViewLayoutAttributes]] = []
     private var layoutHeight: CGFloat  = 0.0
     
@@ -66,14 +76,14 @@ public class SquareMosaicLayout: UICollectionViewLayout {
     }
     
     override public func prepare() {
-        guard let delegate = delegate else { return }
+        guard let dataSource = dataSource else { return }
         guard let view = collectionView else { return }
         guard cache.isEmpty else { return }
         for section in 0..<view.numberOfSections {
             var attributes = [UICollectionViewLayoutAttributes]()
             let rows = view.numberOfItems(inSection: section)
             var row: Int = 0
-            let layouts = delegate.pattern.layouts(rows)
+            let layouts = dataSource.pattern().layouts(rows)
             for layout in layouts {
                 guard row < rows else { break }
                 let frames = layout.frames(origin: layoutHeight, width: view.layoutWidth)
@@ -91,6 +101,7 @@ public class SquareMosaicLayout: UICollectionViewLayout {
             }
             cache.append(attributes)
         }
+        delegate?.layoutHeight(layoutHeight)
     }
     
     override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
