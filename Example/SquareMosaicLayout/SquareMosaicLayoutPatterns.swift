@@ -12,7 +12,7 @@ private struct SquareMosaicTypeFrameStruct: SquareMosaicTypeFrame {
 
 struct SnakeSquareMosaicPattern: SquareMosaicPattern {
     
-    var array: [SquareMosaicType] {
+    var types: [SquareMosaicType] {
         return [
             OneTwoSquareMosaicType(),
             ThreeRightSquareMosaicType(),
@@ -24,7 +24,7 @@ struct SnakeSquareMosaicPattern: SquareMosaicPattern {
 
 struct TripleSquareMosaicPattern: SquareMosaicPattern {
     
-    var array: [SquareMosaicType] {
+    var types: [SquareMosaicType] {
         return [
             ThreeLeftSquareMosaicType(),
             ThreeRightSquareMosaicType(),

@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		22FE06B7F52E5D5E35CACF13A1D56B65 /* SquareMosaicLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B5CF1AC234905CF0810D9DD86DCDA2 /* SquareMosaicLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25FCBD82FBA9FD9869C2918F9F6C21D6 /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C79C1EA26EF19832E79826D95BEDD8 /* SquareMosaicLayout-dummy.m */; };
 		3A6D91C71F094AFF6118269504C1DF8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		43BE316F424D9352446079564B11FCBC /* Pods-SquareMosaicLayout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA47274C93AF70E62DAD4D7CB293747 /* Pods-SquareMosaicLayout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D97F72E36C167B37E8EDECBC9327F72 /* Pods-SquareMosaicLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB4DAA0BEE0AC0FC3A80EC44CD8078 /* Pods-SquareMosaicLayout_Example-dummy.m */; };
+		B7AF4FD29343AC3AD5B2B14045B799A0 /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C79C1EA26EF19832E79826D95BEDD8 /* SquareMosaicLayout-dummy.m */; };
+		D929E15C56D54651C1532D62FA225D0F /* SquareMosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346256A11D71D2F054BC269F108CEBC2 /* SquareMosaicLayout.swift */; };
 		EB2158AFDCF7A86675640E39C1728113 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		FD900BD295F63B6351BFEE117EE860E0 /* SquareMosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9893CEFAC4FDC9D001ED74941C0FB13 /* SquareMosaicLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,20 +29,20 @@
 /* Begin PBXFileReference section */
 		0EAB585E1FFE33768CC030C902A02FCF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F93A1FED2AB0DFC5B38A86A0B2EC296 /* Pods-SquareMosaicLayout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-frameworks.sh"; sourceTree = "<group>"; };
+		346256A11D71D2F054BC269F108CEBC2 /* SquareMosaicLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayout.swift; sourceTree = "<group>"; };
 		3922177A4A5E47CB00BF0B65C821B7D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		504B9142377B62D37EBBB12FEFE2863D /* Pods-SquareMosaicLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
 		69B5CF1AC234905CF0810D9DD86DCDA2 /* SquareMosaicLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-umbrella.h"; sourceTree = "<group>"; };
 		7DB5AE88FE7F192FE307F8A94426DCAE /* Pods-SquareMosaicLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SquareMosaicLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		883BCCD0F56C302CBBAE6E58FB853BFD /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
+		883BCCD0F56C302CBBAE6E58FB853BFD /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
 		8BA47274C93AF70E62DAD4D7CB293747 /* Pods-SquareMosaicLayout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SquareMosaicLayout_Example-umbrella.h"; sourceTree = "<group>"; };
-		8C4CCA362DD96256ED6BF633298B410A /* SquareMosaicLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SquareMosaicLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ECA11962345D766344B7BE57B4E5BCC /* Pods-SquareMosaicLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SquareMosaicLayout_Example.modulemap"; sourceTree = "<group>"; };
+		8C4CCA362DD96256ED6BF633298B410A /* SquareMosaicLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SquareMosaicLayout.framework; path = SquareMosaicLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ECA11962345D766344B7BE57B4E5BCC /* Pods-SquareMosaicLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SquareMosaicLayout_Example.modulemap"; sourceTree = "<group>"; };
 		939C009D540DDB8FE97B9B241E20DD0C /* SquareMosaicLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SquareMosaicLayout.xcconfig; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96AAAD9AFAC050F34974B024A6B026A5 /* Pods-SquareMosaicLayout_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-resources.sh"; sourceTree = "<group>"; };
 		A3BB4DAA0BEE0AC0FC3A80EC44CD8078 /* Pods-SquareMosaicLayout_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SquareMosaicLayout_Example-dummy.m"; sourceTree = "<group>"; };
-		A599864268C1C36EB45140009A09FE1A /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9893CEFAC4FDC9D001ED74941C0FB13 /* SquareMosaicLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayout.swift; sourceTree = "<group>"; };
+		A599864268C1C36EB45140009A09FE1A /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SquareMosaicLayout_Example.framework; path = "Pods-SquareMosaicLayout_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C79C1EA26EF19832E79826D95BEDD8 /* SquareMosaicLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SquareMosaicLayout-dummy.m"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DFEC1EA2EB7BBA994475822CF92ABDE9 /* Pods-SquareMosaicLayout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SquareMosaicLayout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -70,14 +70,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04AC300C994B228BC89781D6A512625F /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				B9893CEFAC4FDC9D001ED74941C0FB13 /* SquareMosaicLayout.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		264C01E0862D1300F95476D65D8006A4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +121,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		7F45E191FEAD6D82D973C63202266642 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				346256A11D71D2F054BC269F108CEBC2 /* SquareMosaicLayout.swift */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,20 +147,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CA46BB4C45447BE9396A8D031BA806B2 /* SquareMosaicLayout */ = {
+			isa = PBXGroup;
+			children = (
+				7F45E191FEAD6D82D973C63202266642 /* Classes */,
+			);
+			name = SquareMosaicLayout;
+			path = SquareMosaicLayout;
+			sourceTree = "<group>";
+		};
 		CEC01048F73E477CFAD1CF7BF731D79C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				67FC19A975D53C5445E49AD717A96910 /* Pods-SquareMosaicLayout_Example */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		D53968B2770FF1C719EC5BB76F5800FD /* SquareMosaicLayout */ = {
-			isa = PBXGroup;
-			children = (
-				04AC300C994B228BC89781D6A512625F /* Classes */,
-			);
-			path = SquareMosaicLayout;
 			sourceTree = "<group>";
 		};
 		DA86A0D90E8FCB872F986FFCECE75929 /* Development Pods */ = {
@@ -173,7 +175,7 @@
 		DCF00D4AFDC96A61B7072DAFC6CE314A /* SquareMosaicLayout */ = {
 			isa = PBXGroup;
 			children = (
-				D53968B2770FF1C719EC5BB76F5800FD /* SquareMosaicLayout */,
+				CA46BB4C45447BE9396A8D031BA806B2 /* SquareMosaicLayout */,
 				264C01E0862D1300F95476D65D8006A4 /* Support Files */,
 			);
 			name = SquareMosaicLayout;
@@ -206,7 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77621BCBACEA44DEE493C2FB9D1692A1 /* Build configuration list for PBXNativeTarget "SquareMosaicLayout" */;
 			buildPhases = (
-				C5EE01BF96A2867943833A5122AC5F75 /* Sources */,
+				E87854D0E434CFF912EE6280D75F5D43 /* Sources */,
 				C6CA2EF492C6F695FF4EEF28CBD6C245 /* Frameworks */,
 				C81CD42C6CF8326E1D2D03A0E4837CF5 /* Headers */,
 			);
@@ -273,12 +275,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5EE01BF96A2867943833A5122AC5F75 /* Sources */ = {
+		E87854D0E434CFF912EE6280D75F5D43 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25FCBD82FBA9FD9869C2918F9F6C21D6 /* SquareMosaicLayout-dummy.m in Sources */,
-				FD900BD295F63B6351BFEE117EE860E0 /* SquareMosaicLayout.swift in Sources */,
+				B7AF4FD29343AC3AD5B2B14045B799A0 /* SquareMosaicLayout-dummy.m in Sources */,
+				D929E15C56D54651C1532D62FA225D0F /* SquareMosaicLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
