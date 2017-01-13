@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     }()
     lazy var viewLayout: SquareMosaicLayout = {
         let layout = SquareMosaicLayout()
+        layout.dataSource = self
         layout.delegate = self
         layout.prepare()
         return layout
@@ -73,10 +74,17 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: SquareMosaicLayoutDataSource {
+    
+    func pattern() -> SquareMosaicPattern {
+        return SnakeSquareMosaicPattern()
+    }
+}
+
 extension ViewController: SquareMosaicLayoutDelegate {
     
-    var pattern: SquareMosaicPattern {
-        return SnakeSquareMosaicPattern()
+    func layoutHeight(_ height: CGFloat) {
+        debugPrint("--> \(height)")
     }
 }
 
