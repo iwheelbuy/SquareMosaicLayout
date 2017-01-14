@@ -81,7 +81,7 @@ private extension SquareMosaicPattern {
 
 private struct SquareMosaicLayoutObject {
     
-    var cache: [[UICollectionViewLayoutAttributes]] = []
+    var cache = [[UICollectionViewLayoutAttributes]]()
     var height: CGFloat  = 0.0
     
     mutating func invalidateLayout() {
