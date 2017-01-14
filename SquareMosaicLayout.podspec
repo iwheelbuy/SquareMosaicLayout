@@ -1,6 +1,6 @@
 # git tag 0.1.0
 # git push origin 0.1.0
-# pod lib lint SquareMosaicLayout.podspec
+# pod lib lint SquareMosaicLayout.podspec --no-clean
 # pod spec lint SquareMosaicLayout.podspec
 # pod trunk push SquareMosaicLayout.podspec
 #
