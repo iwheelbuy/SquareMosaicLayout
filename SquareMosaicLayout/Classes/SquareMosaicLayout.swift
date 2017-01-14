@@ -93,7 +93,6 @@ private struct SquareMosaicLayoutObject {
         guard let dataSource = dataSource else { return }
         guard let view = collectionView else { return }
         guard cache.isEmpty else { return }
-        let asdf = 0..<view.numberOfSections
         for section in 0..<view.numberOfSections {
             var attributes = [UICollectionViewLayoutAttributes]()
             let rows = view.numberOfItems(inSection: section)
