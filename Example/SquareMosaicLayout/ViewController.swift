@@ -100,7 +100,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
-        cell.backgroundColor = .purple
+        cell.backgroundColor = .green
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 2.0
         return cell
     }
     

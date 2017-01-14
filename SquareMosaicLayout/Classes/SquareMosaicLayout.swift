@@ -4,36 +4,21 @@
 
 import UIKit
 
-public protocol SquareMosaicTypeFrame {
+public protocol SquareMosaicFrame {
     
     var frame: CGRect { get }
     var height: CGFloat { get }
 }
 
-/// SquareMosaicType
-public protocol SquareMosaicType {
+public protocol SquareMosaicBlock {
     
-    /**
-        This function should return the number of frames in current block as an **Int** value.
-     
-        - Warning: the returned value should match the number of `SquareMosaicTypeFrame` objects returned from the other `frames` function
-        - Returns: number of frames in block as an `Int` value.
-    */
     func frames() -> Int
-    /**
-        This function should return an array of objects that conform to `SquareMosaicTypeFrame` protocol
-     
-        - Warning: the number of returned objects should match the value returned from the other `frames` function
-        - Parameter origin: the Y start of current block
-        - Parameter width: the full width of the layout
-        - Returns: array of objects that conform to `SquareMosaicTypeFrame` protocol
-     */
-    func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicTypeFrame]
+    func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicFrame]
 }
 
 public protocol SquareMosaicPattern {
     
-    var types: [SquareMosaicType] { get }
+    var types: [SquareMosaicBlock] { get }
 }
 
 public protocol SquareMosaicLayoutDataSource: class {
@@ -81,10 +66,10 @@ public class SquareMosaicLayout: UICollectionViewLayout {
 
 private extension SquareMosaicPattern {
     
-    func layouts(_ expectedFramesTotalCount: Int) -> [SquareMosaicType] {
+    func layouts(_ expectedFramesTotalCount: Int) -> [SquareMosaicBlock] {
         let patternTypes = types
         let patternFramesCount = patternTypes.map({$0.frames()}).reduce(0, +)
-        var layoutTypes = [SquareMosaicType]()
+        var layoutTypes = [SquareMosaicBlock]()
         var count: Int = 0
         repeat {
             layoutTypes.append(contentsOf: patternTypes)
@@ -108,6 +93,7 @@ private struct SquareMosaicLayoutObject {
         guard let dataSource = dataSource else { return }
         guard let view = collectionView else { return }
         guard cache.isEmpty else { return }
+        let asdf = 0..<view.numberOfSections
         for section in 0..<view.numberOfSections {
             var attributes = [UICollectionViewLayoutAttributes]()
             let rows = view.numberOfItems(inSection: section)
