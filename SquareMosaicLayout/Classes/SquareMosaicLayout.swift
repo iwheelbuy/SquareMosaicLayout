@@ -4,21 +4,15 @@
 
 import UIKit
 
-public protocol SquareMosaicFrame {
-    
-    var frame: CGRect { get }
-    var height: CGFloat { get }
-}
-
 public protocol SquareMosaicBlock {
     
     func frames() -> Int
-    func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicFrame]
+    func frames(origin: CGFloat, width: CGFloat) -> [CGRect]
 }
 
 public protocol SquareMosaicPattern {
     
-    var types: [SquareMosaicBlock] { get }
+    var blocks: [SquareMosaicBlock] { get }
 }
 
 public protocol SquareMosaicLayoutDataSource: class {
@@ -67,12 +61,12 @@ public class SquareMosaicLayout: UICollectionViewLayout {
 private extension SquareMosaicPattern {
     
     func layouts(_ expectedFramesTotalCount: Int) -> [SquareMosaicBlock] {
-        let patternTypes = types
-        let patternFramesCount = patternTypes.map({$0.frames()}).reduce(0, +)
+        let patternBlocks = blocks
+        let patternFramesCount = patternBlocks.map({$0.frames()}).reduce(0, +)
         var layoutTypes = [SquareMosaicBlock]()
         var count: Int = 0
         repeat {
-            layoutTypes.append(contentsOf: patternTypes)
+            layoutTypes.append(contentsOf: patternBlocks)
             count += patternFramesCount
         } while (count < expectedFramesTotalCount)
         return layoutTypes
@@ -106,8 +100,9 @@ private struct SquareMosaicLayoutObject {
                     guard row < rows else { break }
                     let indexPath = IndexPath(row: row, section: section)
                     let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attribute.frame = frames[x].frame
-                    height = frames[x].height > height ? frames[x].height : height
+                    attribute.frame = frames[x]
+                    let dy = attribute.frame.origin.y + attribute.frame.height - self.height
+                    height = dy > height ? dy : height
                     attributes.append(attribute)
                     row += 1
                 }
