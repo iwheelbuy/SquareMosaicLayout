@@ -4,15 +4,9 @@
 
 import SquareMosaicLayout
 
-private struct SquareMosaicFrameStruct: SquareMosaicFrame {
-    
-    let frame: CGRect
-    let height: CGFloat
-}
-
 struct SnakeSquareMosaicPattern: SquareMosaicPattern {
     
-    var types: [SquareMosaicBlock] {
+    var blocks: [SquareMosaicBlock] {
         return [
             OneTwoSquareMosaicBlock(),
             ThreeRightSquareMosaicBlock(),
@@ -24,7 +18,7 @@ struct SnakeSquareMosaicPattern: SquareMosaicPattern {
 
 struct TripleSquareMosaicPattern: SquareMosaicPattern {
     
-    var types: [SquareMosaicBlock] {
+    var blocks: [SquareMosaicBlock] {
         return [
             ThreeLeftSquareMosaicBlock(),
             ThreeRightSquareMosaicBlock(),
@@ -38,28 +32,13 @@ public struct OneTwoSquareMosaicBlock: SquareMosaicBlock {
         return 3
     }
     
-    public func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicFrame] {
+    public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
         let sideMin = width / 3.0
         let sideMax = width - sideMin
-        var frames = [SquareMosaicFrame]()
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: 0, y: origin, width: sideMax, height: sideMax),
-                height: sideMax
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: sideMax, y: origin, width: sideMin, height: sideMin),
-                height: sideMax
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: sideMax, y: origin + sideMax - sideMin, width: sideMin, height: sideMin),
-                height: sideMax
-            )
-        )
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: sideMax, height: sideMax))
+        frames.append(CGRect(x: sideMax, y: origin, width: sideMin, height: sideMin))
+        frames.append(CGRect(x: sideMax, y: origin + sideMax - sideMin, width: sideMin, height: sideMin))
         return frames
     }
 }
@@ -70,28 +49,13 @@ public struct TwoOneSquareMosaicBlock: SquareMosaicBlock {
         return 3
     }
     
-    public func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicFrame] {
+    public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
         let sideMin = width / 3.0
         let sideMax = width - sideMin
-        var frames = [SquareMosaicFrame]()
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: 0, y: origin, width: sideMin, height: sideMin),
-                height: sideMin
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: 0, y: origin + sideMax - sideMin, width: sideMin, height: sideMin),
-                height: sideMax
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: sideMin, y: origin, width: sideMax, height: sideMax),
-                height: sideMax
-            )
-        )
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: sideMin, height: sideMin))
+        frames.append(CGRect(x: 0, y: origin + sideMax - sideMin, width: sideMin, height: sideMin))
+        frames.append(CGRect(x: sideMin, y: origin, width: sideMax, height: sideMax))
         return frames
     }
 }
@@ -102,27 +66,12 @@ public struct ThreeLeftSquareMosaicBlock: SquareMosaicBlock {
         return 3
     }
     
-    public func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicFrame] {
+    public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
         let side = width / 3.0
-        var frames = [SquareMosaicFrame]()
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: 0, y: origin, width: side, height: side),
-                height: side
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: side, y: origin, width: side, height: side),
-                height: side
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: side + side, y: origin, width: side, height: side),
-                height: side
-            )
-        )
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: side, height: side))
+        frames.append(CGRect(x: side, y: origin, width: side, height: side))
+        frames.append(CGRect(x: side + side, y: origin, width: side, height: side))
         return frames
     }
 }
@@ -133,27 +82,12 @@ public struct ThreeRightSquareMosaicBlock: SquareMosaicBlock {
         return 3
     }
     
-    public func frames(origin: CGFloat, width: CGFloat) -> [SquareMosaicFrame] {
+    public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
         let side = width / 3.0
-        var frames = [SquareMosaicFrame]()
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: side + side, y: origin, width: side, height: side),
-                height: side
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: side, y: origin, width: side, height: side),
-                height: side
-            )
-        )
-        frames.append(
-            SquareMosaicFrameStruct(
-                frame: CGRect(x: 0, y: origin, width: side, height: side),
-                height: side
-            )
-        )
+        var frames = [CGRect]()
+        frames.append(CGRect(x: side + side, y: origin, width: side, height: side))
+        frames.append(CGRect(x: side, y: origin, width: side, height: side))
+        frames.append(CGRect(x: 0, y: origin, width: side, height: side))
         return frames
     }
 }
