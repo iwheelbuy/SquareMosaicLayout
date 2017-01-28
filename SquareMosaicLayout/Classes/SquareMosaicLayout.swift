@@ -33,7 +33,7 @@ public class SquareMosaicLayout: UICollectionViewLayout {
             delegate?.layoutHeight(object.height)
         }
     }
-    private lazy var object = SquareMosaicLayoutObject()
+    private lazy var object: SquareMosaicLayoutObject = SquareMosaicLayoutObject()
     
     override public var collectionViewContentSize: CGSize {
         guard let view = collectionView else { return .zero }
@@ -42,11 +42,14 @@ public class SquareMosaicLayout: UICollectionViewLayout {
     
     override public func invalidateLayout() {
         super.invalidateLayout()
-        object.invalidateLayout()
+        object = SquareMosaicLayoutObject()
     }
     
     override public func prepare() {
-        object.prepare(collectionView, dataSource: dataSource, delegate: delegate)
+        let capacity = collectionView?.capacity ?? [Int]()
+        let pattern = dataSource?.pattern()
+        let width = collectionView?.layoutWidth ?? 0.0
+        object = SquareMosaicLayoutObject(capacity: capacity, pattern: pattern, width: width)
     }
     
     override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -61,8 +64,8 @@ public class SquareMosaicLayout: UICollectionViewLayout {
 private extension SquareMosaicPattern {
     
     func layouts(_ expectedFramesTotalCount: Int) -> [SquareMosaicBlock] {
-        let patternBlocks = blocks
-        let patternFramesCount = patternBlocks.map({$0.frames()}).reduce(0, +)
+        let patternBlocks: [SquareMosaicBlock] = blocks
+        let patternFramesCount: Int = patternBlocks.map({$0.frames()}).reduce(0, +)
         var layoutTypes = [SquareMosaicBlock]()
         var count: Int = 0
         repeat {
@@ -73,28 +76,21 @@ private extension SquareMosaicPattern {
     }
 }
 
-private struct SquareMosaicLayoutObject {
+class SquareMosaicLayoutObject {
     
-    var cache = [[UICollectionViewLayoutAttributes]]()
-    var height: CGFloat  = 0.0
+    lazy var cache = [[UICollectionViewLayoutAttributes]]()
+    lazy var height: CGFloat  = 0.0
     
-    mutating func invalidateLayout() {
-        cache.removeAll()
-        height = 0.0
-    }
-    
-    mutating func prepare(_ collectionView: UICollectionView?, dataSource: SquareMosaicLayoutDataSource?, delegate: SquareMosaicLayoutDelegate?) {
-        guard let dataSource = dataSource else { return }
-        guard let view = collectionView else { return }
-        guard cache.isEmpty else { return }
-        for section in 0..<view.numberOfSections {
+    required init(capacity: [Int] = [Int](), pattern: SquareMosaicPattern? = nil, width: CGFloat = 0.0) {
+        guard let pattern = pattern else { return }
+        for section in 0..<capacity.count {
             var attributes = [UICollectionViewLayoutAttributes]()
-            let rows = view.numberOfItems(inSection: section)
+            let rows = capacity[section]
             var row: Int = 0
-            let layouts = dataSource.pattern().layouts(rows)
+            let layouts = pattern.layouts(rows)
             for layout in layouts {
                 guard row < rows else { break }
-                let frames = layout.frames(origin: self.height, width: view.layoutWidth)
+                let frames = layout.frames(origin: self.height, width: width)
                 var height: CGFloat = 0
                 for x in 0..<layout.frames() {
                     guard row < rows else { break }
@@ -110,7 +106,6 @@ private struct SquareMosaicLayoutObject {
             }
             cache.append(attributes)
         }
-        delegate?.layoutHeight(self.height)
     }
     
     func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -125,6 +120,14 @@ private struct SquareMosaicLayoutObject {
 }
 
 private extension UICollectionView {
+    
+    var capacity: [Int] {
+        var array = [Int]()
+        for section in 0..<numberOfSections {
+            array.append(numberOfItems(inSection: section))
+        }
+        return array
+    }
     
     var layoutWidth: CGFloat {
         return bounds.width - contentInset.left - contentInset.right
