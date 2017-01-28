@@ -1,7 +1,11 @@
 PODS:
-  - SquareMosaicLayout (0.1.1)
+  - Nimble (6.0.0)
+  - Quick (1.0.0)
+  - SquareMosaicLayout (0.2.1)
 
 DEPENDENCIES:
+  - Nimble
+  - Quick
   - SquareMosaicLayout (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SquareMosaicLayout: a61589662acc5967ade32a3c42a5126ac8b58d3e
+  Nimble: 8fb9b4b34c535b2f32f52c6b9852d6f02d48610b
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  SquareMosaicLayout: 2fb87c8fb705da13f13cd2784ffd1572652ac7e6
 
-PODFILE CHECKSUM: 3b33e799be07ed4de4111f83f5efbab094a02ea6
+PODFILE CHECKSUM: 06b452b94135b3b0282e6ca13162b05ef1313a20
 
 COCOAPODS: 1.1.1

@@ -26,48 +26,80 @@ struct TripleSquareMosaicPattern: SquareMosaicPattern {
     }
 }
 
-public struct OneTwoSquareMosaicBlock: SquareMosaicBlock {
+public class OneTwoSquareMosaicBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
         return 3
     }
     
+    private var width: CGFloat?
+    private var max: CGFloat = 0.0
+    private var min: CGFloat = 0.0
+    
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let sideMin = width / 3.0
-        let sideMax = width - sideMin
+        if self.width == nil || self.width! != width {
+            self.width = width
+            min = width / 3.0
+            max = width - min
+        }
+        return frames(origin: origin, max: max, min: min)
+    }
+    
+    private func frames(origin: CGFloat, max: CGFloat, min: CGFloat) -> [CGRect] {
         var frames = [CGRect]()
-        frames.append(CGRect(x: 0, y: origin, width: sideMax, height: sideMax))
-        frames.append(CGRect(x: sideMax, y: origin, width: sideMin, height: sideMin))
-        frames.append(CGRect(x: sideMax, y: origin + sideMax - sideMin, width: sideMin, height: sideMin))
+        frames.append(CGRect(x: 0, y: origin, width: max, height: max))
+        frames.append(CGRect(x: max, y: origin, width: min, height: min))
+        frames.append(CGRect(x: max, y: origin + max - min, width: min, height: min))
         return frames
     }
 }
 
-public struct TwoOneSquareMosaicBlock: SquareMosaicBlock {
+public class TwoOneSquareMosaicBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
         return 3
     }
+
+    private var width: CGFloat?
+    private var max: CGFloat = 0.0
+    private var min: CGFloat = 0.0
     
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let sideMin = width / 3.0
-        let sideMax = width - sideMin
+        if self.width == nil || self.width! != width {
+            self.width = width
+            min = width / 3.0
+            max = width - min
+        }
+        return frames(origin: origin, max: max, min: min)
+    }
+    
+    private func frames(origin: CGFloat, max: CGFloat, min: CGFloat) -> [CGRect] {
         var frames = [CGRect]()
-        frames.append(CGRect(x: 0, y: origin, width: sideMin, height: sideMin))
-        frames.append(CGRect(x: 0, y: origin + sideMax - sideMin, width: sideMin, height: sideMin))
-        frames.append(CGRect(x: sideMin, y: origin, width: sideMax, height: sideMax))
+        frames.append(CGRect(x: 0, y: origin, width: min, height: min))
+        frames.append(CGRect(x: 0, y: origin + max - min, width: min, height: min))
+        frames.append(CGRect(x: min, y: origin, width: max, height: max))
         return frames
     }
 }
 
-public struct ThreeLeftSquareMosaicBlock: SquareMosaicBlock {
+public class ThreeLeftSquareMosaicBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
         return 3
     }
     
+    private var width: CGFloat?
+    private var side: CGFloat = 0.0
+    
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let side = width / 3.0
+        if self.width == nil || self.width! != width {
+            self.width = width
+            side = width / 3.0
+        }
+        return frames(origin: origin, side: side)
+    }
+    
+    private func frames(origin: CGFloat, side: CGFloat) -> [CGRect] {
         var frames = [CGRect]()
         frames.append(CGRect(x: 0, y: origin, width: side, height: side))
         frames.append(CGRect(x: side, y: origin, width: side, height: side))
@@ -76,14 +108,24 @@ public struct ThreeLeftSquareMosaicBlock: SquareMosaicBlock {
     }
 }
 
-public struct ThreeRightSquareMosaicBlock: SquareMosaicBlock {
+public class ThreeRightSquareMosaicBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
         return 3
     }
     
+    private var width: CGFloat?
+    private var side: CGFloat = 0.0
+    
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let side = width / 3.0
+        if self.width == nil || self.width! != width {
+            self.width = width
+            side = width / 3.0
+        }
+        return frames(origin: origin, side: side)
+    }
+    
+    private func frames(origin: CGFloat, side: CGFloat) -> [CGRect] {
         var frames = [CGRect]()
         frames.append(CGRect(x: side + side, y: origin, width: side, height: side))
         frames.append(CGRect(x: side, y: origin, width: side, height: side))

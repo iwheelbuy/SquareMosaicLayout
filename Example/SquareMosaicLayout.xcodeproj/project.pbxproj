@@ -16,7 +16,18 @@
 		7A4EB21D1E18DACE0077F819 /* rsz_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A4EB21C1E18DACE0077F819 /* rsz_12.png */; };
 		7A4EB21F1E18DC8C0077F819 /* rsz_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A4EB21E1E18DC8C0077F819 /* rsz_3.png */; };
 		8F0B5A5BCB5E2DB53E891271 /* Pods_SquareMosaicLayout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F382318EEA77CD3B2193CA /* Pods_SquareMosaicLayout_Example.framework */; };
+		A70EC85AD2732E147731ADC0 /* Pods_SquareMosaicLayout_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21E9ED64D9F3C18E1DDEF88 /* Pods_SquareMosaicLayout_Tests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A3A59DA1E38F1750023561E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = SquareMosaicLayout_Example;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		20857A2B0D10568A283C514B /* Pods-SquareMosaicLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquareMosaicLayout_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -24,6 +35,8 @@
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A3A59D51E38F1750023561E /* SquareMosaicLayout_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquareMosaicLayout_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3A59D91E38F1750023561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayoutPatterns.swift; sourceTree = "<group>"; };
 		7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7A478CEE1E15615000F52C72 /* CollectionUpdates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionUpdates.swift; sourceTree = "<group>"; };
@@ -49,6 +62,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A3A59D21E38F1750023561E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70EC85AD2732E147731ADC0 /* Pods_SquareMosaicLayout_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,6 +79,7 @@
 				7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SquareMosaicLayout */,
+				7A3A59D61E38F1750023561E /* SquareMosaicLayout_Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				88C2FB221F4A309FF8075F04 /* Pods */,
 				6D6766C0AB7F259F732EDD97 /* Frameworks */,
@@ -68,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* SquareMosaicLayout_Example.app */,
+				7A3A59D51E38F1750023561E /* SquareMosaicLayout_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +138,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7A3A59D61E38F1750023561E /* SquareMosaicLayout_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7A3A59D91E38F1750023561E /* Info.plist */,
+			);
+			path = SquareMosaicLayout_Tests;
+			sourceTree = "<group>";
+		};
 		88C2FB221F4A309FF8075F04 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,13 +180,34 @@
 			productReference = 607FACD01AFB9204008FA782 /* SquareMosaicLayout_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7A3A59D41E38F1750023561E /* SquareMosaicLayout_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A3A59DE1E38F1750023561E /* Build configuration list for PBXNativeTarget "SquareMosaicLayout_Tests" */;
+			buildPhases = (
+				A79FC28BA877996A7E17C5BC /* [CP] Check Pods Manifest.lock */,
+				7A3A59D11E38F1750023561E /* Sources */,
+				7A3A59D21E38F1750023561E /* Frameworks */,
+				7A3A59D31E38F1750023561E /* Resources */,
+				CAA4E32BFFE0E80F281C2C0A /* [CP] Embed Pods Frameworks */,
+				37AB80EA0566F9319062C672 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A3A59DB1E38F1750023561E /* PBXTargetDependency */,
+			);
+			name = SquareMosaicLayout_Tests;
+			productName = SquareMosaicLayout_Tests;
+			productReference = 7A3A59D51E38F1750023561E /* SquareMosaicLayout_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -163,6 +215,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = W8XWU92YY3;
 						LastSwiftMigration = 0820;
+					};
+					7A3A59D41E38F1750023561E = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -179,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* SquareMosaicLayout_Example */,
+				7A3A59D41E38F1750023561E /* SquareMosaicLayout_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -195,9 +253,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A3A59D31E38F1750023561E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		37AB80EA0566F9319062C672 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6793290946A73B01C474622F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,6 +306,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Example/Pods-SquareMosaicLayout_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A79FC28BA877996A7E17C5BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CAA4E32BFFE0E80F281C2C0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA304A5E2A85C8F84A6D7B80 /* [CP] Embed Pods Frameworks */ = {
@@ -257,7 +367,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A3A59D11E38F1750023561E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A3A59DB1E38F1750023561E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* SquareMosaicLayout_Example */;
+			targetProxy = 7A3A59DA1E38F1750023561E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		607FACED1AFB9204008FA782 /* Debug */ = {
@@ -379,6 +504,42 @@
 			};
 			name = Release;
 		};
+		7A3A59DC1E38F1750023561E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99F3D99CC301AC4AD090088D /* Pods-SquareMosaicLayout_Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = SquareMosaicLayout_Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "test.test.SquareMosaicLayout-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquareMosaicLayout_Example.app/SquareMosaicLayout_Example";
+			};
+			name = Debug;
+		};
+		7A3A59DD1E38F1750023561E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20857A2B0D10568A283C514B /* Pods-SquareMosaicLayout_Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = SquareMosaicLayout_Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "test.test.SquareMosaicLayout-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquareMosaicLayout_Example.app/SquareMosaicLayout_Example";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -396,6 +557,15 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A3A59DE1E38F1750023561E /* Build configuration list for PBXNativeTarget "SquareMosaicLayout_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A3A59DC1E38F1750023561E /* Debug */,
+				7A3A59DD1E38F1750023561E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
