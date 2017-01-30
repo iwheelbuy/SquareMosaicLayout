@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.contentInset = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
         view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        view.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICollectionReusableView")
         view.dataSource = self
         view.delegate = self
         return view
@@ -74,9 +75,29 @@ class ViewController: UIViewController {
     }
 }
 
+class nice: UICollectionReusableView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 extension ViewController: SquareMosaicLayoutDataSource {
     
-    var pattern: SquareMosaicPattern {
+    func footer(section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
+    
+    func header(section: Int) -> SquareMosaicSupplementary? {
+        return SnakeSquareMosaicSupplementary()
+    }
+    
+    func pattern(section: Int) -> SquareMosaicPattern {
         return SnakeSquareMosaicPattern()
     }
 }
@@ -104,6 +125,15 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 2.0
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICollectionReusableView", for: indexPath)
+        view.backgroundColor = .red
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 2.0
+        debugPrint(view.frame)
+        return view
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

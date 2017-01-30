@@ -4,6 +4,13 @@
 
 import SquareMosaicLayout
 
+struct SnakeSquareMosaicSupplementary: SquareMosaicSupplementary {
+    
+    func frame(origin: CGFloat, width: CGFloat) -> CGRect {
+        return CGRect(x: 0, y: origin, width: width, height: width / 4.0)
+    }
+}
+
 struct SnakeSquareMosaicPattern: SquareMosaicPattern {
     
     var blocks: [SquareMosaicBlock] {
