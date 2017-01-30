@@ -3,10 +3,5 @@ use_frameworks!
 target 'SquareMosaicLayout_Example' do
    
    pod 'SquareMosaicLayout', :path => '../'
-   target 'SquareMosaicLayout_Tests' do
-       inherit! :search_paths
-       pod 'Quick'
-       pod 'Nimble'
-   end
-   
+
 end

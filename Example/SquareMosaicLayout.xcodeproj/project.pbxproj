@@ -16,7 +16,6 @@
 		7A4EB21D1E18DACE0077F819 /* rsz_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A4EB21C1E18DACE0077F819 /* rsz_12.png */; };
 		7A4EB21F1E18DC8C0077F819 /* rsz_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A4EB21E1E18DC8C0077F819 /* rsz_3.png */; };
 		8F0B5A5BCB5E2DB53E891271 /* Pods_SquareMosaicLayout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F382318EEA77CD3B2193CA /* Pods_SquareMosaicLayout_Example.framework */; };
-		A70EC85AD2732E147731ADC0 /* Pods_SquareMosaicLayout_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21E9ED64D9F3C18E1DDEF88 /* Pods_SquareMosaicLayout_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +29,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20857A2B0D10568A283C514B /* Pods-SquareMosaicLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquareMosaicLayout_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SquareMosaicLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareMosaicLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +42,6 @@
 		7A4EB21C1E18DACE0077F819 /* rsz_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_12.png; sourceTree = "<group>"; };
 		7A4EB21E1E18DC8C0077F819 /* rsz_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_3.png; sourceTree = "<group>"; };
 		85C8CBE1A7D6C9894878C8EF /* SquareMosaicLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SquareMosaicLayout.podspec; path = ../SquareMosaicLayout.podspec; sourceTree = "<group>"; };
-		99F3D99CC301AC4AD090088D /* Pods-SquareMosaicLayout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquareMosaicLayout_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BD6C3045D8325B8D869529A /* Pods-SquareMosaicLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquareMosaicLayout_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SquareMosaicLayout_Example/Pods-SquareMosaicLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A1F382318EEA77CD3B2193CA /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21E9ED64D9F3C18E1DDEF88 /* Pods_SquareMosaicLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A70EC85AD2732E147731ADC0 /* Pods_SquareMosaicLayout_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +147,6 @@
 			children = (
 				DE1CDE085D9E5FAFACDC86D6 /* Pods-SquareMosaicLayout_Example.debug.xcconfig */,
 				9BD6C3045D8325B8D869529A /* Pods-SquareMosaicLayout_Example.release.xcconfig */,
-				99F3D99CC301AC4AD090088D /* Pods-SquareMosaicLayout_Tests.debug.xcconfig */,
-				20857A2B0D10568A283C514B /* Pods-SquareMosaicLayout_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -184,12 +178,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A3A59DE1E38F1750023561E /* Build configuration list for PBXNativeTarget "SquareMosaicLayout_Tests" */;
 			buildPhases = (
-				A79FC28BA877996A7E17C5BC /* [CP] Check Pods Manifest.lock */,
 				7A3A59D11E38F1750023561E /* Sources */,
 				7A3A59D21E38F1750023561E /* Frameworks */,
 				7A3A59D31E38F1750023561E /* Resources */,
-				CAA4E32BFFE0E80F281C2C0A /* [CP] Embed Pods Frameworks */,
-				37AB80EA0566F9319062C672 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,21 +254,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37AB80EA0566F9319062C672 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6793290946A73B01C474622F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -306,36 +282,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Example/Pods-SquareMosaicLayout_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A79FC28BA877996A7E17C5BC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CAA4E32BFFE0E80F281C2C0A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Tests/Pods-SquareMosaicLayout_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA304A5E2A85C8F84A6D7B80 /* [CP] Embed Pods Frameworks */ = {
@@ -506,7 +452,6 @@
 		};
 		7A3A59DC1E38F1750023561E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99F3D99CC301AC4AD090088D /* Pods-SquareMosaicLayout_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -525,7 +470,6 @@
 		};
 		7A3A59DD1E38F1750023561E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20857A2B0D10568A283C514B /* Pods-SquareMosaicLayout_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

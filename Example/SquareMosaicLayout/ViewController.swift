@@ -76,7 +76,7 @@ class ViewController: UIViewController {
 
 extension ViewController: SquareMosaicLayoutDataSource {
     
-    func pattern() -> SquareMosaicPattern {
+    var pattern: SquareMosaicPattern {
         return SnakeSquareMosaicPattern()
     }
 }
