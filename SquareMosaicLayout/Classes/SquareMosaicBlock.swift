@@ -1,9 +1,11 @@
 //
 //  SquareMosaicBlock.swift
-//  Pods
-//
-//  Created by Mikhail Vasilev on 31.01.17.
-//
 //
 
 import Foundation
+
+public protocol SquareMosaicBlock {
+    
+    func frames() -> Int
+    func frames(origin: CGFloat, width: CGFloat) -> [CGRect]
+}

@@ -1,9 +1,10 @@
 //
-//  File.swift
-//  Pods
-//
-//  Created by Mikhail Vasilev on 31.01.17.
-//
+//  SquareMosaicLayoutDelegate.swift
 //
 
 import Foundation
+
+public protocol SquareMosaicLayoutDelegate: class {
+    
+    func layoutHeight(_ height: CGFloat) -> Void
+}
