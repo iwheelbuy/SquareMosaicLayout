@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.contentInset = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
         view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
-        view.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICollectionReusableView")
+        view.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: UICollectionElementKindSectionFooter)
+        view.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: UICollectionElementKindSectionHeader)
         view.dataSource = self
         view.delegate = self
         return view
@@ -90,7 +91,7 @@ class nice: UICollectionReusableView {
 extension ViewController: SquareMosaicLayoutDataSource {
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
-        return nil
+        return SnakeSquareMosaicSupplementary()
     }
     
     func header(section: Int) -> SquareMosaicSupplementary? {
@@ -128,11 +129,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICollectionReusableView", for: indexPath)
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind, for: indexPath)
         view.backgroundColor = .red
         view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 2.0
-        debugPrint(view.frame)
         return view
     }
     
