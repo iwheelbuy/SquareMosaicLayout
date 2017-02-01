@@ -73,7 +73,8 @@ class SquareMosaicLayoutObject {
         let frame = supplementary.frame(origin: height, width: width)
         let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attribute.frame = frame
-        height += frame.height
+        let dy = attribute.frame.origin.y + attribute.frame.height - self.height
+        height += dy
         return attribute
     }
 }
