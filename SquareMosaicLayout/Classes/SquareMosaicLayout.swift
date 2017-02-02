@@ -30,6 +30,10 @@ public class SquareMosaicLayout: UICollectionViewLayout {
         object = SquareMosaicLayoutObject(capacity: capacity, dataSource: dataSource, width: width)
     }
     
+    override public func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        return collectionView?.contentOffset ?? CGPoint.zero
+    }
+    
     override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return object.layoutAttributesForItem(at: indexPath)
     }

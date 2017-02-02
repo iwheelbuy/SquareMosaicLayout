@@ -6,7 +6,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SquareMosaicLayout:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   SquareMosaicLayout: f76bdaad6f486d149976893fc8f9e037db6568a5
