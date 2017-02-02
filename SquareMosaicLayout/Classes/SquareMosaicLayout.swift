@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class SquareMosaicLayout: UICollectionViewLayout {
+open class SquareMosaicLayout: UICollectionViewLayout {
     
     public weak var dataSource: SquareMosaicLayoutDataSource?
     public weak var delegate: SquareMosaicLayoutDelegate? {
@@ -14,35 +14,35 @@ public class SquareMosaicLayout: UICollectionViewLayout {
     }
     private lazy var object: SquareMosaicLayoutObject = SquareMosaicLayoutObject()
     
-    override public var collectionViewContentSize: CGSize {
+    override open var collectionViewContentSize: CGSize {
         guard let view = collectionView else { return .zero }
         return CGSize(width: view.layoutWidth, height: object.height)
     }
     
-    override public func invalidateLayout() {
+    override open func invalidateLayout() {
         super.invalidateLayout()
         object = SquareMosaicLayoutObject()
     }
     
-    override public func prepare() {
+    override open func prepare() {
         let capacity = collectionView?.capacity ?? [Int]()
         let width = collectionView?.layoutWidth ?? 0.0
         object = SquareMosaicLayoutObject(capacity: capacity, dataSource: dataSource, width: width)
     }
     
-    override public func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+    override open func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
         return collectionView?.contentOffset ?? CGPoint.zero
     }
     
-    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return object.layoutAttributesForItem(at: indexPath)
     }
     
-    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return object.layoutAttributesForElements(in: rect)
     }
     
-    override public func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return object.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
     }
 }
