@@ -13,20 +13,26 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         }
     }
     private lazy var object: SquareMosaicLayoutObject = SquareMosaicLayoutObject()
+    private var size: CGSize? = nil
     
     override open var collectionViewContentSize: CGSize {
         guard let view = collectionView else { return .zero }
         return CGSize(width: view.layoutWidth, height: object.height)
     }
     
-    override open func invalidateLayout() {
-        super.invalidateLayout()
-        object = SquareMosaicLayoutObject()
+    public init(size: CGSize? = nil) {
+        self.size = size
+        super.init()
+    }
+    
+    public convenience required init?(coder aDecoder: NSCoder) {
+        self.init()
     }
     
     override open func prepare() {
         let capacity = collectionView?.capacity ?? [Int]()
-        let width = collectionView?.layoutWidth ?? 0.0
+        var width = collectionView?.layoutWidth ?? 0.0
+        width = size?.width ?? width
         object = SquareMosaicLayoutObject(capacity: capacity, dataSource: dataSource, width: width)
     }
     
