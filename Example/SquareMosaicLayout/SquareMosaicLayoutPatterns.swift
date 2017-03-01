@@ -13,7 +13,7 @@ class SnakeSquareMosaicSupplementary: SquareMosaicSupplementary {
 
 class SnakeSquareMosaicPattern: SquareMosaicPattern {
     
-    var blocks: [SquareMosaicBlock] {
+    func blocks() -> [SquareMosaicBlock] {
         return [
             OneTwoSquareMosaicBlock(),
             ThreeRightSquareMosaicBlock(),
@@ -21,11 +21,15 @@ class SnakeSquareMosaicPattern: SquareMosaicPattern {
             ThreeRightSquareMosaicBlock()
         ]
     }
+    
+    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
+        return 10.0
+    }
 }
 
 class TripleSquareMosaicPattern: SquareMosaicPattern {
     
-    var blocks: [SquareMosaicBlock] {
+    func blocks() -> [SquareMosaicBlock] {
         return [
             ThreeLeftSquareMosaicBlock(),
             ThreeRightSquareMosaicBlock(),
