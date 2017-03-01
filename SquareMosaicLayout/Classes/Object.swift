@@ -2,8 +2,8 @@ import Foundation
 
 private extension SquareMosaicPattern {
     
-    func layouts(_ expectedFramesTotalCount: Int) -> [SquareMosaicBlock] {
-        let patternBlocks: [SquareMosaicBlock] = blocks
+    func blocks(_ expectedFramesTotalCount: Int) -> [SquareMosaicBlock] {
+        let patternBlocks: [SquareMosaicBlock] = blocks()
         let patternFramesCount: Int = patternBlocks.map({$0.frames()}).reduce(0, +)
         var layoutTypes = [SquareMosaicBlock]()
         var count: Int = 0
@@ -15,7 +15,7 @@ private extension SquareMosaicPattern {
     }
 }
 
-class SquareMosaicLayoutObject {
+class SquareMosaicObject {
     
     private enum SupplementaryKind {
         case footer, header
@@ -34,7 +34,7 @@ class SquareMosaicLayoutObject {
     required init(capacity: [Int] = [Int](), dataSource: SquareMosaicDataSource? = nil, width: CGFloat = 0.0) {
         guard let dataSource = dataSource else { return }
         for section in 0..<capacity.count {
-            if let header = dataSource.header(section: section) {
+            if let header = dataSource.header?(section: section) {
                 let indexPath = IndexPath(item: 0, section: section)
                 let attributes = supplementary(header, height: &self.height, width: width, kind: .header, indexPath: indexPath)
                 supplementary.append(attributes)
@@ -43,12 +43,20 @@ class SquareMosaicLayoutObject {
             var attributes = [UICollectionViewLayoutAttributes]()
             let rows = capacity[section]
             var row: Int = 0
-            let layouts = pattern.layouts(rows)
-            for layout in layouts {
+            let blocks = pattern.blocks(rows)
+            // add top separator
+            if blocks.count > 0, let separator = pattern.separator?(.top) {
+                self.height += separator
+            }
+            for (index, block) in blocks.enumerated() {
+                // add middle separator
+                if index > 0 && index < blocks.count, let separator = pattern.separator?(.middle) {
+                    self.height += separator
+                }
                 guard row < rows else { break }
-                let frames = layout.frames(origin: self.height, width: width)
+                let frames = block.frames(origin: self.height, width: width)
                 var height: CGFloat = 0
-                for x in 0..<layout.frames() {
+                for x in 0..<block.frames() {
                     guard row < rows else { break }
                     let indexPath = IndexPath(row: row, section: section)
                     let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
@@ -60,8 +68,12 @@ class SquareMosaicLayoutObject {
                 }
                 self.height += height
             }
+            // add bottom separator
+            if blocks.count > 0, let separator = pattern.separator?(.bottom) {
+                self.height += separator
+            }
             cache.append(attributes)
-            if let footer = dataSource.footer(section: section) {
+            if let footer = dataSource.footer?(section: section) {
                 let indexPath = IndexPath(item: 0, section: section)
                 let attributes = supplementary(footer, height: &self.height, width: width, kind: .footer, indexPath: indexPath)
                 supplementary.append(attributes)
@@ -69,7 +81,7 @@ class SquareMosaicLayoutObject {
         }
     }
     
-    private func supplementary(_ supplementary: SquareMosaicSupplementary, height: inout CGFloat, width: CGFloat, kind: SquareMosaicLayoutObject.SupplementaryKind, indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
+    private func supplementary(_ supplementary: SquareMosaicSupplementary, height: inout CGFloat, width: CGFloat, kind: SquareMosaicObject.SupplementaryKind, indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
         let frame = supplementary.frame(origin: height, width: width)
         let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attribute.frame = frame
@@ -79,7 +91,7 @@ class SquareMosaicLayoutObject {
     }
 }
 
-extension SquareMosaicLayoutObject {
+extension SquareMosaicObject {
     
     func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard indexPath.section < cache.count else { return  nil }

@@ -8,7 +8,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
             delegate?.layoutHeight(object.height)
         }
     }
-    private lazy var object: SquareMosaicLayoutObject = SquareMosaicLayoutObject()
+    private lazy var object: SquareMosaicObject = SquareMosaicObject()
     private var size: CGSize? = nil
     
     override open var collectionViewContentSize: CGSize {
@@ -29,7 +29,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         let capacity = collectionView?.capacity ?? [Int]()
         var width = collectionView?.layoutWidth ?? 0.0
         width = size?.width ?? width
-        object = SquareMosaicLayoutObject(capacity: capacity, dataSource: dataSource, width: width)
+        object = SquareMosaicObject(capacity: capacity, dataSource: dataSource, width: width)
     }
     
     override open func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {

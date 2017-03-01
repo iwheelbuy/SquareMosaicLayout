@@ -1,29 +1,34 @@
 import Foundation
 
-public protocol SquareMosaicBlock {
+@objc public enum SquareMosaicSeparatorType: Int {
+    case top, bottom, middle
+}
+
+@objc public protocol SquareMosaicBlock {
     
     func frames() -> Int
     func frames(origin: CGFloat, width: CGFloat) -> [CGRect]
 }
 
-public protocol SquareMosaicSupplementary {
+@objc public protocol SquareMosaicPattern {
+    
+    func blocks() -> [SquareMosaicBlock]
+    @objc optional func separator(_ type: SquareMosaicSeparatorType) -> CGFloat
+}
+
+@objc public protocol SquareMosaicSupplementary {
     
     func frame(origin: CGFloat, width: CGFloat) -> CGRect
 }
 
-public protocol SquareMosaicPattern {
+@objc public protocol SquareMosaicDataSource: class {
     
-    var blocks: [SquareMosaicBlock] { get }
+    @objc optional func footer(section: Int) -> SquareMosaicSupplementary?
+    @objc optional func header(section: Int) -> SquareMosaicSupplementary?
+    @objc func pattern(section: Int) -> SquareMosaicPattern
 }
 
 public protocol SquareMosaicDelegate: class {
     
     func layoutHeight(_ height: CGFloat) -> Void
-}
-
-public protocol SquareMosaicDataSource: class {
-    
-    func footer(section: Int) -> SquareMosaicSupplementary?
-    func header(section: Int) -> SquareMosaicSupplementary?
-    func pattern(section: Int) -> SquareMosaicPattern
 }
