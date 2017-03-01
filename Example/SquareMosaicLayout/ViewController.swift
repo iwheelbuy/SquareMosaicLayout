@@ -92,7 +92,7 @@ class nice: UICollectionReusableView {
 extension ViewController: SquareMosaicDataSource {
     
     func backgroundColor(section: Int) -> UIColor? {
-        return UIColor.blue
+        return UIColor.white
     }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
