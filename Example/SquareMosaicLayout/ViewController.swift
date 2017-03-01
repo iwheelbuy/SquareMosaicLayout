@@ -106,7 +106,7 @@ extension ViewController: SquareMosaicDataSource {
 extension ViewController: SquareMosaicDelegate {
     
     func layoutHeight(_ height: CGFloat) {
-        debugPrint("--> \(height)")
+        //
     }
 }
 

@@ -21,6 +21,10 @@ class SnakeSquareMosaicPattern: SquareMosaicPattern {
             ThreeRightSquareMosaicBlock()
         ]
     }
+    
+    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
+        return 10.0
+    }
 }
 
 class TripleSquareMosaicPattern: SquareMosaicPattern {
