@@ -31,7 +31,7 @@ class SquareMosaicLayoutObject {
     fileprivate(set) lazy var height: CGFloat  = 0.0
     fileprivate(set) lazy var supplementary = [UICollectionViewLayoutAttributes]()
     
-    required init(capacity: [Int] = [Int](), dataSource: SquareMosaicLayoutDataSource? = nil, width: CGFloat = 0.0) {
+    required init(capacity: [Int] = [Int](), dataSource: SquareMosaicDataSource? = nil, width: CGFloat = 0.0) {
         guard let dataSource = dataSource else { return }
         for section in 0..<capacity.count {
             if let header = dataSource.header(section: section) {

@@ -7,19 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05F25D945FC7449EFBBFB039C32FAB97 /* SquareMosaicBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E151B90509AA4B05C04EFC5677A26 /* SquareMosaicBlock.swift */; };
-		0E31859C8F58CB5F7B36F62D30759CFE /* SquareMosaicLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D65E839DC8EBEE40F7D6BB7E401AD3D /* SquareMosaicLayoutDelegate.swift */; };
-		1B0B8BC185EB1749EF4496FDECCE3021 /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C79C1EA26EF19832E79826D95BEDD8 /* SquareMosaicLayout-dummy.m */; };
+		0C25897C936BB52D7F32F8CF14291DE2 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622FECB7939591A973CD60AD7E8B17D /* Layout.swift */; };
+		0C8CBE72CEC7B8169B87DDEC383B73F6 /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C79C1EA26EF19832E79826D95BEDD8 /* SquareMosaicLayout-dummy.m */; };
 		22FE06B7F52E5D5E35CACF13A1D56B65 /* SquareMosaicLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B5CF1AC234905CF0810D9DD86DCDA2 /* SquareMosaicLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A6D91C71F094AFF6118269504C1DF8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		43BE316F424D9352446079564B11FCBC /* Pods-SquareMosaicLayout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA47274C93AF70E62DAD4D7CB293747 /* Pods-SquareMosaicLayout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FFF4C7D327F112485FEFABEC5A26310 /* SquareMosaicLayoutObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDF9FDD66738DFCFAE07D062B46D1CE /* SquareMosaicLayoutObject.swift */; };
-		797823B8570F2F1CB0218549DA4F4D44 /* SquareMosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E552E2273E10BE450EF65FE25BC6C41 /* SquareMosaicLayout.swift */; };
+		47CB4199FF73EDCABFD92C24AA133EBA /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C1C68F0D4166674645D77452EBD85 /* Protocols.swift */; };
 		7D97F72E36C167B37E8EDECBC9327F72 /* Pods-SquareMosaicLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB4DAA0BEE0AC0FC3A80EC44CD8078 /* Pods-SquareMosaicLayout_Example-dummy.m */; };
-		B67FD5B42690E16AF88BC707B520E67A /* SquareMosaicSupplementary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210F6AFDCF7DA1F8402B8AAE9C5DD36 /* SquareMosaicSupplementary.swift */; };
+		949370B59C044C37548BD8A28A7BA8FA /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1006C1F73C95B8C2BDA1C240284542 /* Object.swift */; };
 		EB2158AFDCF7A86675640E39C1728113 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		ED5DA259F65AD674EE89DC17B14F2B09 /* SquareMosaicPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F196E61C8DBD465317DFF9F8BBD7A48 /* SquareMosaicPattern.swift */; };
-		EF52DA6A9480FB7F68B5CE115E842119 /* SquareMosaicLayoutDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556EF7E83AA7245730D753ABD90DE643 /* SquareMosaicLayoutDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,20 +30,18 @@
 
 /* Begin PBXFileReference section */
 		0EAB585E1FFE33768CC030C902A02FCF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F196E61C8DBD465317DFF9F8BBD7A48 /* SquareMosaicPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicPattern.swift; sourceTree = "<group>"; };
 		2F93A1FED2AB0DFC5B38A86A0B2EC296 /* Pods-SquareMosaicLayout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-frameworks.sh"; sourceTree = "<group>"; };
 		3922177A4A5E47CB00BF0B65C821B7D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E552E2273E10BE450EF65FE25BC6C41 /* SquareMosaicLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayout.swift; sourceTree = "<group>"; };
 		504B9142377B62D37EBBB12FEFE2863D /* Pods-SquareMosaicLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
-		556EF7E83AA7245730D753ABD90DE643 /* SquareMosaicLayoutDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayoutDataSource.swift; sourceTree = "<group>"; };
+		5622FECB7939591A973CD60AD7E8B17D /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		69B5CF1AC234905CF0810D9DD86DCDA2 /* SquareMosaicLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-umbrella.h"; sourceTree = "<group>"; };
-		6D65E839DC8EBEE40F7D6BB7E401AD3D /* SquareMosaicLayoutDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayoutDelegate.swift; sourceTree = "<group>"; };
-		7C1E151B90509AA4B05C04EFC5677A26 /* SquareMosaicBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicBlock.swift; sourceTree = "<group>"; };
+		6F3C1C68F0D4166674645D77452EBD85 /* Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		7DB5AE88FE7F192FE307F8A94426DCAE /* Pods-SquareMosaicLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SquareMosaicLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		883BCCD0F56C302CBBAE6E58FB853BFD /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
 		8BA47274C93AF70E62DAD4D7CB293747 /* Pods-SquareMosaicLayout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SquareMosaicLayout_Example-umbrella.h"; sourceTree = "<group>"; };
 		8C4CCA362DD96256ED6BF633298B410A /* SquareMosaicLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SquareMosaicLayout.framework; path = SquareMosaicLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ECA11962345D766344B7BE57B4E5BCC /* Pods-SquareMosaicLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SquareMosaicLayout_Example.modulemap"; sourceTree = "<group>"; };
+		8F1006C1F73C95B8C2BDA1C240284542 /* Object.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		939C009D540DDB8FE97B9B241E20DD0C /* SquareMosaicLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SquareMosaicLayout.xcconfig; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96AAAD9AFAC050F34974B024A6B026A5 /* Pods-SquareMosaicLayout_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-resources.sh"; sourceTree = "<group>"; };
@@ -55,8 +49,6 @@
 		A599864268C1C36EB45140009A09FE1A /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SquareMosaicLayout_Example.framework; path = "Pods-SquareMosaicLayout_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C79C1EA26EF19832E79826D95BEDD8 /* SquareMosaicLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SquareMosaicLayout-dummy.m"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CCDF9FDD66738DFCFAE07D062B46D1CE /* SquareMosaicLayoutObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayoutObject.swift; sourceTree = "<group>"; };
-		D210F6AFDCF7DA1F8402B8AAE9C5DD36 /* SquareMosaicSupplementary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SquareMosaicSupplementary.swift; sourceTree = "<group>"; };
 		DFEC1EA2EB7BBA994475822CF92ABDE9 /* Pods-SquareMosaicLayout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SquareMosaicLayout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E1CC1F822DC5172EDC67E733E2132561 /* Pods-SquareMosaicLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FA20983FE0D41457A7D8518A6DE06931 /* SquareMosaicLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-prefix.pch"; sourceTree = "<group>"; };
@@ -82,21 +74,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D840B9EAFF27309934F8F2D2460FC0F /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				7C1E151B90509AA4B05C04EFC5677A26 /* SquareMosaicBlock.swift */,
-				3E552E2273E10BE450EF65FE25BC6C41 /* SquareMosaicLayout.swift */,
-				556EF7E83AA7245730D753ABD90DE643 /* SquareMosaicLayoutDataSource.swift */,
-				6D65E839DC8EBEE40F7D6BB7E401AD3D /* SquareMosaicLayoutDelegate.swift */,
-				CCDF9FDD66738DFCFAE07D062B46D1CE /* SquareMosaicLayoutObject.swift */,
-				1F196E61C8DBD465317DFF9F8BBD7A48 /* SquareMosaicPattern.swift */,
-				D210F6AFDCF7DA1F8402B8AAE9C5DD36 /* SquareMosaicSupplementary.swift */,
-			);
-			name = Classes;
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		264C01E0862D1300F95476D65D8006A4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +86,17 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SquareMosaicLayout";
+			sourceTree = "<group>";
+		};
+		3626B9E22D3A828AAE9831C0103452D3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5622FECB7939591A973CD60AD7E8B17D /* Layout.swift */,
+				8F1006C1F73C95B8C2BDA1C240284542 /* Object.swift */,
+				6F3C1C68F0D4166674645D77452EBD85 /* Protocols.swift */,
+			);
+			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		67FC19A975D53C5445E49AD717A96910 /* Pods-SquareMosaicLayout_Example */ = {
@@ -137,15 +125,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7709950774D45847DAC5211099E1FD9D /* SquareMosaicLayout */ = {
-			isa = PBXGroup;
-			children = (
-				0D840B9EAFF27309934F8F2D2460FC0F /* Classes */,
-			);
-			name = SquareMosaicLayout;
-			path = SquareMosaicLayout;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +134,15 @@
 				BF4D16D96EB239833E0014257FB5E51C /* Products */,
 				CEC01048F73E477CFAD1CF7BF731D79C /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		AEF5F13F5B3B9BCE8CDD73981F894523 /* SquareMosaicLayout */ = {
+			isa = PBXGroup;
+			children = (
+				3626B9E22D3A828AAE9831C0103452D3 /* Classes */,
+			);
+			name = SquareMosaicLayout;
+			path = SquareMosaicLayout;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -193,7 +181,7 @@
 		DCF00D4AFDC96A61B7072DAFC6CE314A /* SquareMosaicLayout */ = {
 			isa = PBXGroup;
 			children = (
-				7709950774D45847DAC5211099E1FD9D /* SquareMosaicLayout */,
+				AEF5F13F5B3B9BCE8CDD73981F894523 /* SquareMosaicLayout */,
 				264C01E0862D1300F95476D65D8006A4 /* Support Files */,
 			);
 			name = SquareMosaicLayout;
@@ -226,7 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77621BCBACEA44DEE493C2FB9D1692A1 /* Build configuration list for PBXNativeTarget "SquareMosaicLayout" */;
 			buildPhases = (
-				DCC3DC35E742178F468131C8A9656D84 /* Sources */,
+				AEF445DD2CC572FA41AF5E31B53BFA07 /* Sources */,
 				C6CA2EF492C6F695FF4EEF28CBD6C245 /* Frameworks */,
 				C81CD42C6CF8326E1D2D03A0E4837CF5 /* Headers */,
 			);
@@ -293,18 +281,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DCC3DC35E742178F468131C8A9656D84 /* Sources */ = {
+		AEF445DD2CC572FA41AF5E31B53BFA07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F25D945FC7449EFBBFB039C32FAB97 /* SquareMosaicBlock.swift in Sources */,
-				1B0B8BC185EB1749EF4496FDECCE3021 /* SquareMosaicLayout-dummy.m in Sources */,
-				797823B8570F2F1CB0218549DA4F4D44 /* SquareMosaicLayout.swift in Sources */,
-				EF52DA6A9480FB7F68B5CE115E842119 /* SquareMosaicLayoutDataSource.swift in Sources */,
-				0E31859C8F58CB5F7B36F62D30759CFE /* SquareMosaicLayoutDelegate.swift in Sources */,
-				6FFF4C7D327F112485FEFABEC5A26310 /* SquareMosaicLayoutObject.swift in Sources */,
-				ED5DA259F65AD674EE89DC17B14F2B09 /* SquareMosaicPattern.swift in Sources */,
-				B67FD5B42690E16AF88BC707B520E67A /* SquareMosaicSupplementary.swift in Sources */,
+				0C25897C936BB52D7F32F8CF14291DE2 /* Layout.swift in Sources */,
+				949370B59C044C37548BD8A28A7BA8FA /* Object.swift in Sources */,
+				47CB4199FF73EDCABFD92C24AA133EBA /* Protocols.swift in Sources */,
+				0C8CBE72CEC7B8169B87DDEC383B73F6 /* SquareMosaicLayout-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

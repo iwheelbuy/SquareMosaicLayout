@@ -88,7 +88,7 @@ class nice: UICollectionReusableView {
     }
 }
 
-extension ViewController: SquareMosaicLayoutDataSource {
+extension ViewController: SquareMosaicDataSource {
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
         return SnakeSquareMosaicSupplementary()
@@ -103,7 +103,7 @@ extension ViewController: SquareMosaicLayoutDataSource {
     }
 }
 
-extension ViewController: SquareMosaicLayoutDelegate {
+extension ViewController: SquareMosaicDelegate {
     
     func layoutHeight(_ height: CGFloat) {
         debugPrint("--> \(height)")

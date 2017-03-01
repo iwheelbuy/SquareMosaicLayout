@@ -1,13 +1,9 @@
-//
-//  SquareMosaicLayout.swift
-//
-
 import UIKit
 
 open class SquareMosaicLayout: UICollectionViewLayout {
     
-    public weak var dataSource: SquareMosaicLayoutDataSource?
-    public weak var delegate: SquareMosaicLayoutDelegate? {
+    public weak var dataSource: SquareMosaicDataSource?
+    public weak var delegate: SquareMosaicDelegate? {
         didSet {
             delegate?.layoutHeight(object.height)
         }
