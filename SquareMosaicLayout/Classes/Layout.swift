@@ -33,8 +33,8 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         object = SquareMosaicObject(capacity: capacity, dataSource: dataSource, width: width)
     }
     
-    override open func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
-        return collectionView?.contentOffset ?? CGPoint.zero
+    override open func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return object.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
     }
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -49,8 +49,8 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         return object.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
     }
     
-    override open func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return object.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
+    override open func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        return collectionView?.contentOffset ?? CGPoint.zero
     }
 }
 
