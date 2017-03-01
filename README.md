@@ -1,4 +1,5 @@
 # SquareMosaicLayout
+![travis-ci.image](https://travis-ci.org/iwheelbuy/SquareMosaicLayout.svg?branch=master)
 
 SquareMosaicLayout is an extandable UICollectionViewLayout.
 

@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BlueprintIdentifier = "7A3A59D41E38F1750023561E"
                BuildableName = "SquareMosaicLayout_Tests.xctest"
                BlueprintName = "SquareMosaicLayout_Tests"
                ReferencedContainer = "container:SquareMosaicLayout.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BlueprintIdentifier = "7A3A59D41E38F1750023561E"
                BuildableName = "SquareMosaicLayout_Tests.xctest"
                BlueprintName = "SquareMosaicLayout_Tests"
                ReferencedContainer = "container:SquareMosaicLayout.xcodeproj">
