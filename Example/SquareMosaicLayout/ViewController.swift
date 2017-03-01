@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = viewButtonAdd
         self.navigationItem.leftBarButtonItem = viewButtonRemove
         self.view.addSubview(viewCollection)
+        self.viewCollection.alwaysBounceVertical = true
     }
     
     @objc private func add() {
@@ -89,6 +90,10 @@ class nice: UICollectionReusableView {
 }
 
 extension ViewController: SquareMosaicDataSource {
+    
+    func backgroundColor(section: Int) -> UIColor? {
+        return UIColor.blue
+    }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
         return SnakeSquareMosaicSupplementary()
@@ -135,7 +140,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         view.layer.borderWidth = 2.0
         return view
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sectionUpdates = CollectionSectionUpdates(delete: IndexSet(), insert: IndexSet())
         let delete = [IndexPath.init(row: indexPath.row, section: 0)]
