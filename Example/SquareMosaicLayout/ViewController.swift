@@ -135,7 +135,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         view.layer.borderWidth = 2.0
         return view
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sectionUpdates = CollectionSectionUpdates(delete: IndexSet(), insert: IndexSet())
         let delete = [IndexPath.init(row: indexPath.row, section: 0)]
