@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = viewButtonAdd
         self.navigationItem.leftBarButtonItem = viewButtonRemove
         self.view.addSubview(viewCollection)
+        self.viewCollection.alwaysBounceVertical = true
     }
     
     @objc private func add() {
@@ -89,6 +90,10 @@ class nice: UICollectionReusableView {
 }
 
 extension ViewController: SquareMosaicDataSource {
+    
+    func backgroundColor(section: Int) -> UIColor? {
+        return UIColor.blue
+    }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
         return SnakeSquareMosaicSupplementary()
