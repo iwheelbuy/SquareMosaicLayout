@@ -1,5 +1,6 @@
 language: swift
 osx_image: xcode8.2
+podfile: Example/Podfile
 script:
   - xcodebuild -scheme SquareMosaicLayout-Example -workspace Example/SquareMosaicLayout.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
 after_success:
