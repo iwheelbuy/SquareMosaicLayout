@@ -91,8 +91,16 @@ class nice: UICollectionReusableView {
 
 extension ViewController: SquareMosaicDataSource {
     
-    func backgroundColor(section: Int) -> UIColor? {
-        return UIColor.white
+    func background(section: Int) -> UIView? {
+        let view = UIView()
+        switch section % 5 {
+        case 0:     view.backgroundColor = .orange
+        case 1:     view.backgroundColor = .yellow
+        case 2:     view.backgroundColor = .white
+        case 3:     view.backgroundColor = .cyan
+        default:    view.backgroundColor = UIColor.groupTableViewBackground
+        }
+        return view
     }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
@@ -118,26 +126,31 @@ extension ViewController: SquareMosaicDelegate {
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 17
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return count
+        switch section {
+        case 0:     return count
+        default:    return 9
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
-        cell.backgroundColor = .green
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 2.0
+        cell.backgroundColor = UIColor.green.withAlphaComponent(0.6)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind, for: indexPath)
-        view.backgroundColor = .red
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 2.0
+        switch indexPath.section % 5 {
+        case 0:     view.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        case 1:     view.backgroundColor = UIColor.cyan.withAlphaComponent(0.6)
+        case 2:     view.backgroundColor = UIColor.purple.withAlphaComponent(0.6)
+        case 3:     view.backgroundColor = UIColor.blue.withAlphaComponent(0.6)
+        default:    view.backgroundColor = UIColor.yellow.withAlphaComponent(0.6)
+        }
         return view
     }
         
