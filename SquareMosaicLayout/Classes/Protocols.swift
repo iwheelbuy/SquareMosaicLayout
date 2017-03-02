@@ -27,6 +27,7 @@ import Foundation
     @objc optional func footer(section: Int) -> SquareMosaicSupplementary?
     @objc optional func header(section: Int) -> SquareMosaicSupplementary?
     @objc func pattern(section: Int) -> SquareMosaicPattern
+    @objc optional func separator(_ type: SquareMosaicSeparatorType) -> CGFloat
 }
 
 public protocol SquareMosaicDelegate: class {

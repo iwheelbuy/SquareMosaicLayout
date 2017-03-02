@@ -45,7 +45,15 @@ class SquareMosaicObject {
     
     required init(capacity: [Int] = [Int](), dataSource: SquareMosaicDataSource? = nil, width: CGFloat = 0.0) {
         guard let dataSource = dataSource else { return }
+        // add section top separator
+        if capacity.count > 0, let separator = dataSource.separator?(.top) {
+            self.height += separator
+        }
         for section in 0..<capacity.count {
+            // add section middle separator
+            if section > 0 && section < capacity.count, let separator = dataSource.separator?(.middle) {
+                self.height += separator
+            }
             // start of decoration
             let decorationOffset: CGFloat = self.height
             // header
@@ -60,13 +68,13 @@ class SquareMosaicObject {
             let rows = capacity[section]
             var row: Int = 0
             let blocks = pattern.blocks(rows)
-            // add top separator
+            // add block top separator
             if rows > 0, let separator = pattern.separator?(.top) {
                 self.height += separator
             }
             for (index, block) in blocks.enumerated() {
                 guard row < rows else { break }
-                // add middle separator
+                // add block middle separator
                 if index > 0 && index < blocks.count, let separator = pattern.separator?(.middle) {
                     self.height += separator
                 }
@@ -85,7 +93,7 @@ class SquareMosaicObject {
                 }
                 self.height += height
             }
-            // add bottom separator
+            // add block bottom separator
             if rows > 0, let separator = pattern.separator?(.bottom) {
                 self.height += separator
             }
@@ -104,6 +112,10 @@ class SquareMosaicObject {
             attribute.frame = CGRect(x: 0, y: decorationOffset, width: width, height: decorationHeight)
             attribute.zIndex = -1
             decoration.append(attribute)
+        }
+        // add section bottom separator
+        if capacity.count > 0, let separator = dataSource.separator?(.bottom) {
+            self.height += separator
         }
     }
     

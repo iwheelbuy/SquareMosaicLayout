@@ -20,7 +20,7 @@ final internal class DecorationView: UICollectionReusableView {
         guard let collectionView = superview as? UICollectionView else { return }
         guard let layout = collectionView.collectionViewLayout as? SquareMosaicLayout else { return }
         guard let section = layout.object.decoration
-            .filter({ $0.frame.rounded == frame.rounded })
+            .filter({ $0.frame.offset.close(to: frame.offset) })
             .map({ $0.indexPath.section }).first else { return }
         guard let view = layout.dataSource?.background?(section: section) else { return }
         self.view = view
@@ -55,10 +55,24 @@ extension UIView {
     }
 }
 
+extension CGFloat {
+    
+    func close(to value: CGFloat) -> Bool {
+        guard self != value else { return true }
+        if self < value && self + 0.001 > value {
+            return true
+        }
+        if self > value && self - 0.001 < value {
+            return true
+        }
+        return false
+    }
+}
+
 extension CGRect {
     
-    var rounded: CGRect {
-        return CGRect(x: floor(origin.x), y: floor(origin.y), width: floor(width), height: floor(height))
+    var offset: CGFloat {
+        return origin.y
     }
 }
 
@@ -67,10 +81,5 @@ extension Collection where Iterator.Element == NSLayoutConstraint {
     func activate() {
         guard let constraints = self as? [NSLayoutConstraint] else { return }
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    func deactivate() {
-        guard let constraints = self as? [NSLayoutConstraint] else { return }
-        NSLayoutConstraint.deactivate(constraints)
     }
 }
