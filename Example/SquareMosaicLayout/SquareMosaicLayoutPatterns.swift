@@ -1,15 +1,11 @@
-//
-//  SquareMosaicLayoutPatterns.swift
-//
-
 import SquareMosaicLayout
 
-fileprivate let offsetDefault: CGFloat = 10.0
+let offset: CGFloat = 10.0
 
 class SnakeSquareMosaicSupplementary: SquareMosaicSupplementary {
     
     func frame(origin: CGFloat, width: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: origin, width: width, height: width / 4.0)
+        return CGRect(x: 0, y: origin, width: width, height: (width - offset * 4) / 3.0)
     }
 }
 
@@ -18,14 +14,12 @@ class SnakeSquareMosaicPattern: SquareMosaicPattern {
     func blocks() -> [SquareMosaicBlock] {
         return [
             OneTwoSquareMosaicBlock(),
-            ThreeRightSquareMosaicBlock(),
             TwoOneSquareMosaicBlock(),
-            ThreeRightSquareMosaicBlock()
         ]
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return 10.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -33,8 +27,20 @@ class TripleSquareMosaicPattern: SquareMosaicPattern {
     
     func blocks() -> [SquareMosaicBlock] {
         return [
-            ThreeLeftSquareMosaicBlock(),
-            ThreeRightSquareMosaicBlock(),
+            ThreeLeftSquareMosaicBlock()
+        ]
+    }
+    
+    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
+        return type == .middle ? offset : 0.0
+    }
+}
+
+class SingleSquareMosaicPattern: SquareMosaicPattern {
+    
+    func blocks() -> [SquareMosaicBlock] {
+        return [
+            SingleSquareMosaicBlock()
         ]
     }
 }
@@ -46,12 +52,12 @@ public class OneTwoSquareMosaicBlock: SquareMosaicBlock {
     }
     
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let min = (width - offsetDefault - offsetDefault) / 3.0
-        let max = width - min - offsetDefault
+        let min = (width - offset * 4) / 3.0
+        let max = width - min - offset * 3
         var frames = [CGRect]()
-        frames.append(CGRect(x: 0, y: origin, width: max, height: max))
-        frames.append(CGRect(x: max + offsetDefault, y: origin, width: min, height: min))
-        frames.append(CGRect(x: max + offsetDefault, y: origin + min + offsetDefault, width: min, height: min))
+        frames.append(CGRect(x: offset, y: origin, width: max, height: max))
+        frames.append(CGRect(x: max + offset * 2, y: origin, width: min, height: min))
+        frames.append(CGRect(x: max + offset * 2, y: origin + min + offset, width: min, height: min))
         return frames
     }
 }
@@ -63,12 +69,12 @@ public class TwoOneSquareMosaicBlock: SquareMosaicBlock {
     }
     
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let min = (width - offsetDefault - offsetDefault) / 3.0
-        let max = width - min - offsetDefault
+        let min = (width - offset * 4) / 3.0
+        let max = width - min - offset * 3
         var frames = [CGRect]()
-        frames.append(CGRect(x: 0, y: origin, width: min, height: min))
-        frames.append(CGRect(x: 0, y: origin + offsetDefault + min, width: min, height: min))
-        frames.append(CGRect(x: min + offsetDefault, y: origin, width: max, height: max))
+        frames.append(CGRect(x: offset, y: origin, width: min, height: min))
+        frames.append(CGRect(x: offset, y: origin + offset + min, width: min, height: min))
+        frames.append(CGRect(x: min + offset * 2, y: origin, width: max, height: max))
         return frames
     }
 }
@@ -80,27 +86,24 @@ public class ThreeLeftSquareMosaicBlock: SquareMosaicBlock {
     }
     
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let min = (width - offsetDefault - offsetDefault) / 3.0
+        let min = (width - offset * 4) / 3.0
         var frames = [CGRect]()
-        frames.append(CGRect(x: 0, y: origin, width: min, height: min))
-        frames.append(CGRect(x: min + offsetDefault, y: origin, width: min, height: min))
-        frames.append(CGRect(x: min + offsetDefault + min + offsetDefault, y: origin, width: min, height: min))
+        frames.append(CGRect(x: offset, y: origin, width: min, height: min))
+        frames.append(CGRect(x: min + offset * 2, y: origin, width: min, height: min))
+        frames.append(CGRect(x: min * 2 + offset * 3, y: origin, width: min, height: min))
         return frames
     }
 }
 
-public class ThreeRightSquareMosaicBlock: SquareMosaicBlock {
+public class SingleSquareMosaicBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
-        return 3
+        return 1
     }
     
     public func frames(origin: CGFloat, width: CGFloat) -> [CGRect] {
-        let min = (width - offsetDefault - offsetDefault) / 3.0
         var frames = [CGRect]()
-        frames.append(CGRect(x: min + offsetDefault + min + offsetDefault, y: origin, width: min, height: min))
-        frames.append(CGRect(x: min + offsetDefault, y: origin, width: min, height: min))
-        frames.append(CGRect(x: 0, y: origin, width: min, height: min))
+        frames.append(CGRect(x: offset, y: origin, width: width - offset - offset, height: width - offset - offset))
         return frames
     }
 }
