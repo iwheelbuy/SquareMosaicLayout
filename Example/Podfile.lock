@@ -1,5 +1,5 @@
 PODS:
-  - SquareMosaicLayout (0.4.1)
+  - SquareMosaicLayout (0.4.2)
 
 DEPENDENCIES:
   - SquareMosaicLayout (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SquareMosaicLayout: ca5c47fb813146304b74a76f6e08b31d171cdcc3
+  SquareMosaicLayout: e23e098cdfffd5b7834a261595ba831d50c59d65
 
 PODFILE CHECKSUM: fb47f6f095c4ae8bfd6b40599d0ca1aa331274c9
 
