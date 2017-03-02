@@ -61,15 +61,15 @@ class SquareMosaicObject {
             var row: Int = 0
             let blocks = pattern.blocks(rows)
             // add top separator
-            if blocks.count > 0, let separator = pattern.separator?(.top) {
+            if rows > 0, let separator = pattern.separator?(.top) {
                 self.height += separator
             }
             for (index, block) in blocks.enumerated() {
+                guard row < rows else { break }
                 // add middle separator
                 if index > 0 && index < blocks.count, let separator = pattern.separator?(.middle) {
                     self.height += separator
                 }
-                guard row < rows else { break }
                 let frames = block.frames(origin: self.height, width: width)
                 var height: CGFloat = 0
                 for x in 0..<block.frames() {
@@ -86,7 +86,7 @@ class SquareMosaicObject {
                 self.height += height
             }
             // add bottom separator
-            if blocks.count > 0, let separator = pattern.separator?(.bottom) {
+            if rows > 0, let separator = pattern.separator?(.bottom) {
                 self.height += separator
             }
             cache.append(attributes)

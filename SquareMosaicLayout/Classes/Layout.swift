@@ -8,7 +8,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
             delegate?.layoutHeight(object.height)
         }
     }
-    fileprivate lazy var object: SquareMosaicObject = SquareMosaicObject()
+    internal lazy var object: SquareMosaicObject = SquareMosaicObject()
     fileprivate var size: CGSize? = nil
     
     override open var collectionViewContentSize: CGSize {
@@ -51,21 +51,6 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     
     override open func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
         return collectionView?.contentOffset ?? CGPoint.zero
-    }
-}
-
-final private class DecorationView: UICollectionReusableView {
-    
-    private var backgroundPainted: Bool = false
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        guard backgroundPainted == false else { return }
-        guard let view = superview as? UICollectionView else { return }
-        guard let layout = view.collectionViewLayout as? SquareMosaicLayout else { return }
-        backgroundPainted = true
-        guard let section = layout.object.decoration.filter({ $0.frame == frame }).map({ $0.indexPath.section }).first else { return }
-        self.backgroundColor = layout.dataSource?.backgroundColor?(section: section)
     }
 }
 
