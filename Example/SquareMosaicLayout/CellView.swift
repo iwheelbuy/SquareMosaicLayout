@@ -2,36 +2,22 @@ import UIKit
 
 final class CellView: UICollectionViewCell {
     
-    private(set) lazy var view = UIImageView()
+    let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        var constraints = Array<NSLayoutConstraint>()
-        constraints.append(
-            contentsOf: NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|[V]|",
-                options: [],
-                metrics: nil,
-                views: ["V": view]
-            )
-        )
-        constraints.append(
-            contentsOf: NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|[V]|",
-                options: [],
-                metrics: nil,
-                views: ["V": view]
-            )
-        )
-        constraints.activate()
+        contentView.addSubview(imageView)
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        view.contentMode = .scaleAspectFill
-        contentView.clipsToBounds = true
-        clipsToBounds = true
-        view.clipsToBounds = true
+        self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.imageView.frame = bounds
+        self.imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.imageView.contentMode = .scaleAspectFill
+        self.contentView.clipsToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {

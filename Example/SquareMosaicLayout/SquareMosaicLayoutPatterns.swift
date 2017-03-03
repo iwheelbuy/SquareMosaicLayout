@@ -43,6 +43,10 @@ class SingleSquareMosaicPattern: SquareMosaicPattern {
             SingleSquareMosaicBlock()
         ]
     }
+    
+    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
+        return type == .middle ? offset : 0.0
+    }
 }
 
 public class OneTwoSquareMosaicBlock: SquareMosaicBlock {

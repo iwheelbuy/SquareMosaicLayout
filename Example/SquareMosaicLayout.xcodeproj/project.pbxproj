@@ -20,15 +20,12 @@
 		7A6D9F4A1E6880BE009C368D /* scirocco_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D9F421E6880BE009C368D /* scirocco_3.jpeg */; };
 		7A6D9F4B1E6880BE009C368D /* scirocco_4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D9F431E6880BE009C368D /* scirocco_4.jpeg */; };
 		7A6D9F4C1E6880BE009C368D /* scirocco_5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D9F441E6880BE009C368D /* scirocco_5.jpeg */; };
-		7A6D9F4D1E6880BE009C368D /* scirocco_6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D9F451E6880BE009C368D /* scirocco_6.jpeg */; };
-		7A6D9F4E1E6880BE009C368D /* scirocco_7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D9F461E6880BE009C368D /* scirocco_7.jpeg */; };
 		7AEC36CD1E686EF800B11356 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36CC1E686EF800B11356 /* UICollectionView+Extensions.swift */; };
-		7AEC36CF1E68713200B11356 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36CE1E68713200B11356 /* NSLayoutConstraint+Extensions.swift */; };
 		7AEC36D11E68716A00B11356 /* DecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36D01E68716A00B11356 /* DecorationView.swift */; };
 		7AEC36D31E68765400B11356 /* SupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36D21E68765400B11356 /* SupplementaryView.swift */; };
 		7AEC36DD1E6879B400B11356 /* golf_0.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36D51E6879B400B11356 /* golf_0.jpeg */; };
-		7AEC36DE1E6879B400B11356 /* golf_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36D61E6879B400B11356 /* golf_1.jpeg */; };
-		7AEC36DF1E6879B400B11356 /* golf_2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36D71E6879B400B11356 /* golf_2.jpeg */; };
+		7AEC36DE1E6879B400B11356 /* golf_2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36D61E6879B400B11356 /* golf_2.jpeg */; };
+		7AEC36DF1E6879B400B11356 /* golf_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36D71E6879B400B11356 /* golf_1.jpeg */; };
 		7AEC36E01E6879B400B11356 /* golf_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36D81E6879B400B11356 /* golf_3.jpeg */; };
 		7AEC36E21E6879B400B11356 /* golf_5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36DA1E6879B400B11356 /* golf_5.jpeg */; };
 		7AEC36E71E687A4F00B11356 /* golf_4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC36E61E687A4F00B11356 /* golf_4.jpeg */; };
@@ -64,15 +61,12 @@
 		7A6D9F421E6880BE009C368D /* scirocco_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scirocco_3.jpeg; sourceTree = "<group>"; };
 		7A6D9F431E6880BE009C368D /* scirocco_4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scirocco_4.jpeg; sourceTree = "<group>"; };
 		7A6D9F441E6880BE009C368D /* scirocco_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scirocco_5.jpeg; sourceTree = "<group>"; };
-		7A6D9F451E6880BE009C368D /* scirocco_6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scirocco_6.jpeg; sourceTree = "<group>"; };
-		7A6D9F461E6880BE009C368D /* scirocco_7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scirocco_7.jpeg; sourceTree = "<group>"; };
 		7AEC36CC1E686EF800B11356 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
-		7AEC36CE1E68713200B11356 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		7AEC36D01E68716A00B11356 /* DecorationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecorationView.swift; sourceTree = "<group>"; };
 		7AEC36D21E68765400B11356 /* SupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplementaryView.swift; sourceTree = "<group>"; };
 		7AEC36D51E6879B400B11356 /* golf_0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_0.jpeg; sourceTree = "<group>"; };
-		7AEC36D61E6879B400B11356 /* golf_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_1.jpeg; sourceTree = "<group>"; };
-		7AEC36D71E6879B400B11356 /* golf_2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_2.jpeg; sourceTree = "<group>"; };
+		7AEC36D61E6879B400B11356 /* golf_2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_2.jpeg; sourceTree = "<group>"; };
+		7AEC36D71E6879B400B11356 /* golf_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_1.jpeg; sourceTree = "<group>"; };
 		7AEC36D81E6879B400B11356 /* golf_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_3.jpeg; sourceTree = "<group>"; };
 		7AEC36DA1E6879B400B11356 /* golf_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_5.jpeg; sourceTree = "<group>"; };
 		7AEC36E61E687A4F00B11356 /* golf_4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_4.jpeg; sourceTree = "<group>"; };
@@ -131,10 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				7AEC36CE1E68713200B11356 /* NSLayoutConstraint+Extensions.swift */,
-				7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */,
-				7AEC36CC1E686EF800B11356 /* UICollectionView+Extensions.swift */,
 				7AEC36D41E6879A300B11356 /* Controller */,
+				7A47BD4C1E69682C0054AF61 /* Extensions */,
+				7A47BD4D1E6968330054AF61 /* Patterns */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for SquareMosaicLayout";
@@ -144,10 +137,10 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				607FACD41AFB9204008FA782 /* Info.plist */,
+				7A4EB21A1E18D7F90077F819 /* rsz_1.png */,
 				7A4EB21E1E18DC8C0077F819 /* rsz_3.png */,
 				7A4EB21C1E18DACE0077F819 /* rsz_12.png */,
-				7A4EB21A1E18D7F90077F819 /* rsz_1.png */,
-				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -179,6 +172,22 @@
 			path = SquareMosaicLayout_Tests;
 			sourceTree = "<group>";
 		};
+		7A47BD4C1E69682C0054AF61 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7AEC36CC1E686EF800B11356 /* UICollectionView+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		7A47BD4D1E6968330054AF61 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */,
+			);
+			name = Patterns;
+			sourceTree = "<group>";
+		};
 		7A6D9F391E687B25009C368D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,8 +215,8 @@
 		7A6D9F3C1E687B74009C368D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7A6D9F3E1E6880B5009C368D /* Scirocco */,
 				7AEC36E51E6879BA00B11356 /* Golf */,
+				7A6D9F3E1E6880B5009C368D /* Scirocco */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -231,8 +240,6 @@
 				7A6D9F421E6880BE009C368D /* scirocco_3.jpeg */,
 				7A6D9F431E6880BE009C368D /* scirocco_4.jpeg */,
 				7A6D9F441E6880BE009C368D /* scirocco_5.jpeg */,
-				7A6D9F451E6880BE009C368D /* scirocco_6.jpeg */,
-				7A6D9F461E6880BE009C368D /* scirocco_7.jpeg */,
 			);
 			name = Scirocco;
 			sourceTree = "<group>";
@@ -251,8 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				7AEC36D51E6879B400B11356 /* golf_0.jpeg */,
-				7AEC36D61E6879B400B11356 /* golf_1.jpeg */,
-				7AEC36D71E6879B400B11356 /* golf_2.jpeg */,
+				7AEC36D71E6879B400B11356 /* golf_1.jpeg */,
+				7AEC36D61E6879B400B11356 /* golf_2.jpeg */,
 				7AEC36D81E6879B400B11356 /* golf_3.jpeg */,
 				7AEC36E61E687A4F00B11356 /* golf_4.jpeg */,
 				7AEC36DA1E6879B400B11356 /* golf_5.jpeg */,
@@ -358,17 +365,15 @@
 				7A4EB21B1E18D7F90077F819 /* rsz_1.png in Resources */,
 				7A6D9F4B1E6880BE009C368D /* scirocco_4.jpeg in Resources */,
 				7AEC36E01E6879B400B11356 /* golf_3.jpeg in Resources */,
-				7AEC36DE1E6879B400B11356 /* golf_1.jpeg in Resources */,
+				7AEC36DE1E6879B400B11356 /* golf_2.jpeg in Resources */,
 				7A4EB21F1E18DC8C0077F819 /* rsz_3.png in Resources */,
 				7A6D9F491E6880BE009C368D /* scirocco_2.jpeg in Resources */,
-				7AEC36DF1E6879B400B11356 /* golf_2.jpeg in Resources */,
+				7AEC36DF1E6879B400B11356 /* golf_1.jpeg in Resources */,
 				7A4EB21D1E18DACE0077F819 /* rsz_12.png in Resources */,
 				7A6D9F4A1E6880BE009C368D /* scirocco_3.jpeg in Resources */,
 				7A6D9F4C1E6880BE009C368D /* scirocco_5.jpeg in Resources */,
 				7A478CED1E1560FE00F52C72 /* Default-568h@2x.png in Resources */,
-				7A6D9F4E1E6880BE009C368D /* scirocco_7.jpeg in Resources */,
 				7A6D9F471E6880BE009C368D /* scirocco_0.jpeg in Resources */,
-				7A6D9F4D1E6880BE009C368D /* scirocco_6.jpeg in Resources */,
 				7AEC36DD1E6879B400B11356 /* golf_0.jpeg in Resources */,
 				7AEC36E21E6879B400B11356 /* golf_5.jpeg in Resources */,
 				7A6D9F481E6880BE009C368D /* scirocco_1.jpeg in Resources */,
@@ -443,7 +448,6 @@
 				7AEC36D31E68765400B11356 /* SupplementaryView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				7AEC36E91E687A5F00B11356 /* CellView.swift in Sources */,
-				7AEC36CF1E68713200B11356 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				7AEC36D11E68716A00B11356 /* DecorationView.swift in Sources */,
 				7A43DFAD1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift in Sources */,
 			);
