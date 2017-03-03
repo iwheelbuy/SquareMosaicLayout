@@ -15,31 +15,24 @@ private extension SquareMosaicPattern {
     }
 }
 
-let UICollectionElementKindSectionBackground: String = "SquareMosaicObject.UICollectionElementKindSectionBackground"
+public let SquareMosaicLayoutSectionBackground  = "SquareMosaicLayout.SquareMosaicLayoutSectionBackground"
+public let SquareMosaicLayoutSectionFooter      = "SquareMosaicLayout.SquareMosaicLayoutSectionFooter"
+public let SquareMosaicLayoutSectionHeader      = "SquareMosaicLayout.SquareMosaicLayoutSectionHeader"
 
 class SquareMosaicObject {
     
-    private enum DecorationKind {
-        case sectionBackground
-        var value: String {
-            switch self {
-            case .sectionBackground:    return UICollectionElementKindSectionBackground
-            }
-        }
-    }
-    
     private enum SupplementaryKind {
-        case footer, header
+        case background, footer, header
         var value: String {
             switch self {
-            case .footer:   return UICollectionElementKindSectionFooter
-            case .header:   return UICollectionElementKindSectionHeader
+            case .background:   return SquareMosaicLayoutSectionBackground
+            case .footer:       return SquareMosaicLayoutSectionFooter
+            case .header:       return SquareMosaicLayoutSectionHeader
             }
         }
     }
     
     fileprivate(set) lazy var cache = [[UICollectionViewLayoutAttributes]]()
-    fileprivate(set) lazy var decoration = [UICollectionViewLayoutAttributes]()
     fileprivate(set) lazy var height: CGFloat  = 0.0
     fileprivate(set) lazy var supplementary = [UICollectionViewLayoutAttributes]()
     
@@ -85,7 +78,7 @@ class SquareMosaicObject {
                     let indexPath = IndexPath(row: row, section: section)
                     let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     attribute.frame = frames[x]
-                    attribute.zIndex = 1
+                    attribute.zIndex = 0
                     let dy = attribute.frame.origin.y + attribute.frame.height - self.height
                     height = dy > height ? dy : height
                     attributes.append(attribute)
@@ -106,12 +99,12 @@ class SquareMosaicObject {
             }
             // end of decoration
             let decorationHeight = self.height - decorationOffset
-            let kind = DecorationKind.sectionBackground.value
+            let kind = SupplementaryKind.background.value
             let indexPath = IndexPath(item: 0, section: section)
-            let attribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: kind, with: indexPath)
+            let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind, with: indexPath)
             attribute.frame = CGRect(x: 0, y: decorationOffset, width: width, height: decorationHeight)
             attribute.zIndex = -1
-            decoration.append(attribute)
+            supplementary.append(attribute)
         }
         // add section bottom separator
         if capacity.count > 0, let separator = dataSource.separator?(.bottom) {
@@ -123,7 +116,7 @@ class SquareMosaicObject {
         let frame = supplementary.frame(origin: height, width: width)
         let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attribute.frame = frame
-        attribute.zIndex = 0
+        attribute.zIndex = 1
         let dy = attribute.frame.origin.y + attribute.frame.height - self.height
         height += dy
         return attribute
@@ -141,19 +134,11 @@ extension SquareMosaicObject {
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let cache = self.cache.flatMap({$0}).filter({$0.frame.intersects(rect)})
         let supplementary = self.supplementary.filter({$0.frame.intersects(rect)})
-        let decoration = self.decoration.filter({$0.frame.intersects(rect)})
-        return cache + supplementary + decoration
+        return cache + supplementary
     }
     
     func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return supplementary
-            .filter({ $0.indexPath == indexPath })
-            .filter({ $0.representedElementKind == elementKind })
-            .first
-    }
-    
-    func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return decoration
             .filter({ $0.indexPath == indexPath })
             .filter({ $0.representedElementKind == elementKind })
             .first

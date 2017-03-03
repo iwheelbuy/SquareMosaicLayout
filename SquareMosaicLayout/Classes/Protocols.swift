@@ -23,7 +23,6 @@ import Foundation
 
 @objc public protocol SquareMosaicDataSource: class {
     
-    @objc optional func background(section: Int) -> UIView?
     @objc optional func footer(section: Int) -> SquareMosaicSupplementary?
     @objc optional func header(section: Int) -> SquareMosaicSupplementary?
     @objc func pattern(section: Int) -> SquareMosaicPattern

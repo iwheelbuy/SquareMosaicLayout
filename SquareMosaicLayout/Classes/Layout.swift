@@ -19,7 +19,6 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     public init(size: CGSize? = nil) {
         self.size = size
         super.init()
-        self.register(DecorationView.self, forDecorationViewOfKind: UICollectionElementKindSectionBackground)
     }
     
     public convenience required init?(coder aDecoder: NSCoder) {
@@ -32,11 +31,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         width = size?.width ?? width
         object = SquareMosaicObject(capacity: capacity, dataSource: dataSource, width: width)
     }
-    
-    override open func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return object.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
-    }
-    
+
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return object.layoutAttributesForItem(at: indexPath)
     }
