@@ -3,24 +3,13 @@
 
 SquareMosaicLayout is an extandable UICollectionViewLayout.
 
-## Small tutorial
-
-Let's imagine that we want the layout that looks like this
-
-![image1](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_1.png)
-
-The red block of cells repeats while scrolling. So we should do only the red block logic and then repeat it.
-
-![image2](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_12.png)
-
-The red block cell sizes and positions can be calculated for the whole red block or we can split it into smaller blocks that can be reused for another layout purposes.
-
-![image2](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_3.png)
-
-Full example can be found in ```/Example``` folder
+| Example | Layout | Pattern | Blocks |
+|:-:|:-:|:-:|:-:|
+| ![image1](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/ezgif.com-optimize.gif) | ![image2](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_1.png) | ![image3](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_12.png) | ![image4](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_3.png) |
+| Build and run an example project to see how it really works | Let's imagine that we want a UICollectionView with some mosaic layout that looks like this | The red part of cells repeats while scrolling. So we should do only the red __pattern__ and then repeat it | The __pattern__ is split it into smaller __blocks__ that can be reused for some other layout or __pattern__ |
 
 ## Installation
 
 ```ruby
-pod "SquareMosaicLayout"
+pod 'SquareMosaicLayout', '0.4.4'
 ```
