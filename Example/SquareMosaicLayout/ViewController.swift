@@ -29,7 +29,7 @@ fileprivate extension ViewController {
         view.register(CellView.self)
         view.register(SupplementaryView.self, identifier: SquareMosaicLayoutSectionFooter, kind: SquareMosaicLayoutSectionFooter)
         view.register(SupplementaryView.self, identifier: SquareMosaicLayoutSectionHeader, kind: SquareMosaicLayoutSectionHeader)
-        view.register(DecorationView.self, identifier: SquareMosaicLayoutSectionBackground, kind: SquareMosaicLayoutSectionBackground)
+        view.register(DecorationView.self, identifier: SquareMosaicLayoutSectionBacker, kind: SquareMosaicLayoutSectionBacker)
         view.dataSource = self
         view.delegate = self
         return view
@@ -65,8 +65,8 @@ final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func background(section: Int) -> UIView? {
-        return DecorationView()
+    func background(section: Int) -> Bool {
+        return true
     }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
@@ -114,14 +114,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case SquareMosaicLayoutSectionHeader:
-            let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
-            view.label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
-            switch indexPath.section {
-            case 0:     view.label.text = "Golf VI"
-            case 1:     view.label.text = "Scirocco"
-            default:    view.label.text = "Your car?"
-            }
+        case SquareMosaicLayoutSectionBacker:
+            let view: DecorationView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
             return view
         case SquareMosaicLayoutSectionFooter:
             let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
@@ -131,8 +125,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             default:    view.label.text = "View more..."
             }
             return view
-        case SquareMosaicLayoutSectionBackground:
-            let view: DecorationView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
+        case SquareMosaicLayoutSectionHeader:
+            let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
+            view.label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+            switch indexPath.section {
+            case 0:     view.label.text = "Golf VI"
+            case 1:     view.label.text = "Scirocco"
+            default:    view.label.text = "Your car?"
+            }
             return view
         default:
             fatalError()

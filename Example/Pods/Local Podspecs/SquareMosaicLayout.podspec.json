@@ -1,6 +1,6 @@
 {
   "name": "SquareMosaicLayout",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "summary": "Custom UICollectionViewLayout",
   "description": "Custom UICollectionViewLayout to be used with square UICollectionViewCells",
   "homepage": "https://github.com/iwheelbuy/SquareMosaicLayout",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/iwheelbuy/SquareMosaicLayout.git",
-    "tag": "0.4.4"
+    "tag": "0.4.5"
   },
   "platforms": {
     "ios": "9.0"
