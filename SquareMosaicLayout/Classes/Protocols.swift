@@ -1,9 +1,5 @@
 import Foundation
 
-@objc public enum SquareMosaicSeparatorType: Int {
-    case top, bottom, middle
-}
-
 @objc public protocol SquareMosaicBlock {
     
     func frames() -> Int
@@ -14,6 +10,10 @@ import Foundation
     
     func blocks() -> [SquareMosaicBlock]
     @objc optional func separator(_ type: SquareMosaicSeparatorType) -> CGFloat
+}
+
+@objc public enum SquareMosaicSeparatorType: Int {
+    case top, bottom, middle
 }
 
 @objc public protocol SquareMosaicSupplementary {
