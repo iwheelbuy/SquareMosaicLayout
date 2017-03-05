@@ -85,8 +85,8 @@ final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
         }
     }
     
-    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return type == .middle ? offset : 0.0
+    func separator() -> CGFloat {
+        return offset
     }
 }
 
@@ -98,16 +98,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
+        case 0:     return 6
+        case 1:     return 6
         case 2:     return 1
-        default:    return 6
+        default:    return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CellView = collectionView.dequeueCell(indexPath: indexPath)
         switch indexPath.section {
-        case 0:     cell.imageView.image = UIImage(named: "golf_\(indexPath.row).jpeg")
-        case 1:     cell.imageView.image = UIImage(named: "scirocco_\(indexPath.row).jpeg")
+        case 0:     cell.imageView.image = UIImage(named: "golf_\(indexPath.row % 6).jpeg")
+        case 1:     cell.imageView.image = UIImage(named: "scirocco_\(indexPath.row % 6).jpeg")
         default:    cell.imageView.image = nil
         }
         return cell
