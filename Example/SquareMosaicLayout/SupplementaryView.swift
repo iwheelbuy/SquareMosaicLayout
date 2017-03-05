@@ -6,6 +6,7 @@ final class SupplementaryView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor.orange.withAlphaComponent(0.5)
         addSubview(label)
         label.frame = bounds
         label.textAlignment = .center

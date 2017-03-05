@@ -12,7 +12,6 @@ class ViewController: UIViewController {
         self.navigationItem.titleView = viewControl
         self.view.backgroundColor = UIColor.groupTableViewBackground
         self.view.addSubview(viewCollection)
-        self.viewCollection.alwaysBounceVertical = true
     }
     
     @objc fileprivate func changeLayout() {
@@ -25,7 +24,7 @@ fileprivate extension ViewController {
     func getViewCollection() -> UICollectionView {
         let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.viewLayout)
         view.backgroundColor = UIColor.groupTableViewBackground
-        view.contentInset = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 0.0, right: 50.0)
+        view.contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         view.register(CellView.self)
         view.register(SupplementaryView.self, identifier: SquareMosaicLayoutSectionFooter, kind: SquareMosaicLayoutSectionFooter)
         view.register(SupplementaryView.self, identifier: SquareMosaicLayoutSectionHeader, kind: SquareMosaicLayoutSectionHeader)
@@ -44,20 +43,22 @@ fileprivate extension ViewController {
     
     func getViewLayout() -> SquareMosaicLayout {
         switch viewControl.selectedSegmentIndex {
-        case 0:     return Layout(SnakeSquareMosaicPattern())
-        case 1:     return Layout(TripleSquareMosaicPattern())
-        default:    return Layout(SingleSquareMosaicPattern())
+        case 0:     return Layout(.vertical,    pattern: VerticalMosaicPattern())
+        case 1:     return Layout(.horizontal,  pattern: HorizontalTriplePattern())
+        default:    return Layout(.vertical,    pattern: VerticalSinglePattern())
         }
     }
 }
 
 final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
     
+    let direction: SquareMosaicDirection
     let pattern: SquareMosaicPattern
     
-    required init(_ pattern: SquareMosaicPattern) {
+    required init(_ direction: SquareMosaicDirection, pattern: SquareMosaicPattern) {
+        self.direction = direction
         self.pattern = pattern
-        super.init()
+        super.init(direction: direction)
         self.dataSource = self
     }
     
@@ -70,22 +71,22 @@ final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
     }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
-        return SnakeSquareMosaicSupplementary()
+        return direction == .vertical ? VerticalSupplementary() : HorizontalSupplementary()
     }
     
     func header(section: Int) -> SquareMosaicSupplementary? {
-        return SnakeSquareMosaicSupplementary()
+        return direction == .vertical ? VerticalSupplementary() : HorizontalSupplementary()
     }
     
     func pattern(section: Int) -> SquareMosaicPattern {
         switch section {
-        case 2:     return SingleSquareMosaicPattern()
+        case 2:     return direction == .vertical ? VerticalSinglePattern() : HorizontalSinglePattern()
         default:    return pattern
         }
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset
+        return offset//type == .middle ? offset : 0.0
     }
 }
 
