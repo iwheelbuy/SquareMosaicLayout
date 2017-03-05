@@ -5,14 +5,14 @@ let offset: CGFloat = 10.0
 class HorizontalSupplementary: SquareMosaicSupplementary {
     
     func frame(origin: CGFloat, side: CGFloat) -> CGRect {
-        return CGRect(x: origin, y: 0, width: offset * 3, height: side)
+        return CGRect(x: origin, y: 0, width: offset * 4, height: side)
     }
 }
 
 class VerticalSupplementary: SquareMosaicSupplementary {
     
     func frame(origin: CGFloat, side: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: origin, width: side, height: offset * 3)
+        return CGRect(x: 0, y: origin, width: side, height: offset * 4)
     }
 }
 
@@ -26,7 +26,7 @@ class HorizontalMosaicPattern: SquareMosaicPattern {
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -40,7 +40,7 @@ class VerticalMosaicPattern: SquareMosaicPattern {
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -48,12 +48,12 @@ class HorizontalTriplePattern: SquareMosaicPattern {
     
     func blocks() -> [SquareMosaicBlock] {
         return [
-            HorizontalThreeBlock()
+            HorizontalTripleBlock()
         ]
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -61,12 +61,12 @@ class VerticalTriplePattern: SquareMosaicPattern {
     
     func blocks() -> [SquareMosaicBlock] {
         return [
-            VerticalThreeBlock()
+            VerticalTripleBlock()
         ]
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -79,7 +79,7 @@ class HorizontalSinglePattern: SquareMosaicPattern {
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -92,7 +92,7 @@ class VerticalSinglePattern: SquareMosaicPattern {
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 
@@ -164,7 +164,7 @@ public class VerticalTwoOneBlock: SquareMosaicBlock {
     }
 }
 
-public class HorizontalThreeBlock: SquareMosaicBlock {
+public class HorizontalTripleBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
         return 3
@@ -180,7 +180,7 @@ public class HorizontalThreeBlock: SquareMosaicBlock {
     }
 }
 
-public class VerticalThreeBlock: SquareMosaicBlock {
+public class VerticalTripleBlock: SquareMosaicBlock {
     
     public func frames() -> Int {
         return 3

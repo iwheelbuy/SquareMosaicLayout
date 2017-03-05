@@ -24,7 +24,7 @@ fileprivate extension ViewController {
     func getViewCollection() -> UICollectionView {
         let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.viewLayout)
         view.backgroundColor = UIColor.groupTableViewBackground
-        view.contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        view.contentInset = UIEdgeInsets(top: 10.0, left: 50.0, bottom: 10.0, right: 50.0)
         view.register(CellView.self)
         view.register(SupplementaryView.self, identifier: SquareMosaicLayoutSectionFooter, kind: SquareMosaicLayoutSectionFooter)
         view.register(SupplementaryView.self, identifier: SquareMosaicLayoutSectionHeader, kind: SquareMosaicLayoutSectionHeader)
@@ -44,7 +44,7 @@ fileprivate extension ViewController {
     func getViewLayout() -> SquareMosaicLayout {
         switch viewControl.selectedSegmentIndex {
         case 0:     return Layout(.vertical,    pattern: VerticalMosaicPattern())
-        case 1:     return Layout(.horizontal,  pattern: HorizontalTriplePattern())
+        case 1:     return Layout(.vertical,    pattern: VerticalTriplePattern())
         default:    return Layout(.vertical,    pattern: VerticalSinglePattern())
         }
     }
@@ -71,22 +71,22 @@ final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
     }
     
     func footer(section: Int) -> SquareMosaicSupplementary? {
-        return direction == .vertical ? VerticalSupplementary() : HorizontalSupplementary()
+        return VerticalSupplementary()
     }
     
     func header(section: Int) -> SquareMosaicSupplementary? {
-        return direction == .vertical ? VerticalSupplementary() : HorizontalSupplementary()
+        return VerticalSupplementary()
     }
     
     func pattern(section: Int) -> SquareMosaicPattern {
         switch section {
-        case 2:     return direction == .vertical ? VerticalSinglePattern() : HorizontalSinglePattern()
+        case 2:     return VerticalSinglePattern()
         default:    return pattern
         }
     }
     
     func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return offset//type == .middle ? offset : 0.0
+        return type == .middle ? offset : 0.0
     }
 }
 

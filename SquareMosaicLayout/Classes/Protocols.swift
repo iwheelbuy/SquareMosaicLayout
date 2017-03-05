@@ -3,7 +3,11 @@ import Foundation
 @objc public protocol SquareMosaicBlock {
     
     func frames() -> Int
-    func frames(origin: CGFloat, width: CGFloat) -> [CGRect]
+    func frames(origin: CGFloat, side: CGFloat) -> [CGRect]
+}
+
+@objc public enum SquareMosaicDirection: Int {
+    case horizontal, vertical
 }
 
 @objc public protocol SquareMosaicPattern {
@@ -18,7 +22,7 @@ import Foundation
 
 @objc public protocol SquareMosaicSupplementary {
     
-    func frame(origin: CGFloat, width: CGFloat) -> CGRect
+    func frame(origin: CGFloat, side: CGFloat) -> CGRect
 }
 
 @objc public protocol SquareMosaicDataSource: class {
@@ -30,7 +34,7 @@ import Foundation
     @objc optional func separator(_ type: SquareMosaicSeparatorType) -> CGFloat
 }
 
-public protocol SquareMosaicDelegate: class {
+@objc public protocol SquareMosaicDelegate: class {
     
-    func layoutHeight(_ height: CGFloat) -> Void
+    @objc optional func layoutSize(_ size: CGSize) -> Void
 }
