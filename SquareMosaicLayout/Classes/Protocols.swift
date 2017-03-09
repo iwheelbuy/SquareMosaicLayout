@@ -28,14 +28,14 @@ public protocol SquareMosaicSupplementary {
 
 public protocol SquareMosaicDataSource: class {
     
-    func background(section: Int) -> Bool
-    func footer(section: Int) -> SquareMosaicSupplementary?
-    func header(section: Int) -> SquareMosaicSupplementary?
-    func pattern(section: Int) -> SquareMosaicPattern
-    func separator() -> CGFloat
+    func layoutPattern(for section: Int) -> SquareMosaicPattern
+    func layoutSeparatorBetweenSections() -> CGFloat
+    func layoutSupplementaryBackerRequired(for section: Int) -> Bool
+    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary?
+    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
 }
 
 public protocol SquareMosaicDelegate: class {
     
-    func layoutSize(_ size: CGSize) -> Void
+    func layoutContentSizeChanged(_ size: CGSize) -> Void
 }

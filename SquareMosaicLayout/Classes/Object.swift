@@ -38,7 +38,7 @@ class SquareMosaicObject {
             addSeparatorSection(dataSource, section: section, sections: sections)
             let sectionOffset: CGFloat = self.total
             addSupplementary(.header, dataSource: dataSource, rows: rows, section: section)
-            let pattern: SquareMosaicPattern = dataSource.pattern(section: section)
+            let pattern: SquareMosaicPattern = dataSource.layoutPattern(for: section)
             addSeparatorBlock(.top, pattern: pattern, rows: rows)
             addAttributes(pattern, rows: rows, section: section)
             addSeparatorBlock(.bottom, pattern: pattern, rows: rows)
@@ -141,7 +141,7 @@ fileprivate extension SquareMosaicObject {
             sectionFirstAdded = section
         }
         guard sections > 0 else { return }
-        let separator = dataSource.separator()
+        let separator = dataSource.layoutSeparatorBetweenSections()
         guard section > sectionFirstAdded! && section < sections else { return }
         self.total += separator
     }
@@ -166,7 +166,7 @@ fileprivate extension SquareMosaicObject {
     }
     
     func addSupplementaryBackground(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, offset: CGFloat, section: Int) {
-        guard dataSource.background(section: section) == true else { return }
+        guard dataSource.layoutSupplementaryBackerRequired(for: section) == true else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = -1
@@ -185,17 +185,17 @@ fileprivate extension SquareMosaicObject {
     
     func getSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, section: Int) -> SquareMosaicSupplementary? {
         switch kind {
-        case .footer:   return dataSource.footer(section: section)
-        case .header:   return dataSource.header(section: section)
+        case .footer:   return dataSource.layoutSupplementaryFooter(for: section)
+        case .header:   return dataSource.layoutSupplementaryHeader(for: section)
         default:        return nil
         }
     }
     
     func isEmptySection(dataSource: SquareMosaicDataSource, rows: Int, section: Int) -> Bool {
         guard rows <= 0 else { return false }
-        let dynamicHeader = dataSource.header(section: section)?.dynamic() ?? false
+        let dynamicHeader = dataSource.layoutSupplementaryHeader(for: section)?.dynamic() ?? false
         guard dynamicHeader == true else { return false }
-        let dynamicFooter = dataSource.footer(section: section)?.dynamic() ?? false
+        let dynamicFooter = dataSource.layoutSupplementaryFooter(for: section)?.dynamic() ?? false
         guard dynamicFooter == true else { return false }
         return true
     }
