@@ -2,11 +2,11 @@ import SquareMosaicLayout
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     lazy var viewCollection: UICollectionView = self.getViewCollection()
     lazy var viewControl: UISegmentedControl = self.getViewControl()
     lazy var viewLayout: SquareMosaicLayout = self.getViewLayout()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.titleView = viewControl
@@ -66,27 +66,27 @@ final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func background(section: Int) -> Bool {
-        return true
-    }
-    
-    func footer(section: Int) -> SquareMosaicSupplementary? {
-        return VerticalSupplementary()
-    }
-    
-    func header(section: Int) -> SquareMosaicSupplementary? {
-        return VerticalSupplementary()
-    }
-    
-    func pattern(section: Int) -> SquareMosaicPattern {
+    func layoutPattern(for section: Int) -> SquareMosaicPattern {
         switch section {
         case 2:     return VerticalSinglePattern()
         default:    return pattern
         }
     }
     
-    func separator() -> CGFloat {
+    func layoutSeparatorBetweenSections() -> CGFloat {
         return offset
+    }
+    
+    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+        return true
+    }
+    
+    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
+        return VerticalSupplementary()
+    }
+    
+    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+        return VerticalSupplementary()
     }
 }
 
