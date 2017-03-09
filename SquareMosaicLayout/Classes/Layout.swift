@@ -9,7 +9,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     public weak var dataSource: SquareMosaicDataSource?
     public weak var delegate: SquareMosaicDelegate? {
         didSet {
-            delegate?.layoutSize?(layoutSize)
+            delegate?.layoutSize(layoutSize)
         }
     }
     

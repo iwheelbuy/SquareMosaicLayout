@@ -128,11 +128,10 @@ fileprivate extension SquareMosaicObject {
     }
     
     func addSeparatorBlock(_ type: SquareMosaicSeparatorType, block: Int = 0, blocks: Int = 0, pattern: SquareMosaicPattern, rows: Int = 0) {
-        guard let separator = pattern.separator?(type) else { return }
         switch (type, rows > 0, block > 0 && block < blocks) {
-        case (.top, true, _):       self.total += separator
-        case (.middle, _, true):    self.total += separator
-        case (.bottom, true, _):    self.total += separator
+        case (.top, true, _):       self.total += pattern.separator(type)
+        case (.middle, _, true):    self.total += pattern.separator(type)
+        case (.bottom, true, _):    self.total += pattern.separator(type)
         default:                    break
         }
     }
@@ -141,15 +140,15 @@ fileprivate extension SquareMosaicObject {
         if sectionFirstAdded == nil {
             sectionFirstAdded = section
         }
-        guard sections > 0, let separator = dataSource.separator?() else { return }
+        guard sections > 0 else { return }
+        let separator = dataSource.separator()
         guard section > sectionFirstAdded! && section < sections else { return }
         self.total += separator
     }
     
     func addSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, rows: Int, section: Int) {
         guard let supplementary = getSupplementary(kind, dataSource: dataSource, section: section) else { return }
-        let dynamic = supplementary.dynamic?() ?? false
-        guard rows > 0 || dynamic == false else { return }
+        guard rows > 0 || supplementary.dynamic() == false else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = 1
@@ -167,7 +166,7 @@ fileprivate extension SquareMosaicObject {
     }
     
     func addSupplementaryBackground(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, offset: CGFloat, section: Int) {
-        guard let background = dataSource.background?(section: section), background == true else { return }
+        guard dataSource.background(section: section) == true else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = -1
@@ -186,17 +185,17 @@ fileprivate extension SquareMosaicObject {
     
     func getSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, section: Int) -> SquareMosaicSupplementary? {
         switch kind {
-        case .footer:   return dataSource.footer?(section: section)
-        case .header:   return dataSource.header?(section: section)
+        case .footer:   return dataSource.footer(section: section)
+        case .header:   return dataSource.header(section: section)
         default:        return nil
         }
     }
     
     func isEmptySection(dataSource: SquareMosaicDataSource, rows: Int, section: Int) -> Bool {
         guard rows <= 0 else { return false }
-        let dynamicHeader = dataSource.header?(section: section)?.dynamic?() ?? false
+        let dynamicHeader = dataSource.header(section: section)?.dynamic() ?? false
         guard dynamicHeader == true else { return false }
-        let dynamicFooter = dataSource.footer?(section: section)?.dynamic?() ?? false
+        let dynamicFooter = dataSource.footer(section: section)?.dynamic() ?? false
         guard dynamicFooter == true else { return false }
         return true
     }
