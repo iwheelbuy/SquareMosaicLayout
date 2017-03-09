@@ -4,6 +4,10 @@ let offset: CGFloat = 10.0
 
 class HorizontalSupplementary: SquareMosaicSupplementary {
     
+    public func dynamic() -> Bool {
+        return false
+    }
+    
     func frame(origin: CGFloat, side: CGFloat) -> CGRect {
         return CGRect(x: origin, y: 0, width: offset * 4, height: side)
     }
