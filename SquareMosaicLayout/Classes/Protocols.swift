@@ -2,28 +2,13 @@ import Foundation
 
 public protocol SquareMosaicBlock {
     
-    func frames() -> Int
-    func frames(origin: CGFloat, side: CGFloat) -> [CGRect]
+    func blockFrames() -> Int
+    func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect]
 }
 
-public enum SquareMosaicDirection: Int {
-    case horizontal, vertical
-}
-
-public protocol SquareMosaicPattern {
+public enum SquareMosaicBlockSeparatorPosition: Int {
     
-    func blocks() -> [SquareMosaicBlock]
-    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat
-}
-
-public enum SquareMosaicSeparatorType: Int {
-    case top, bottom, middle
-}
-
-public protocol SquareMosaicSupplementary {
-    
-    func dynamic() -> Bool
-    func frame(origin: CGFloat, side: CGFloat) -> CGRect
+    case beforeBlocks, afterBlocks, betweenBlocks
 }
 
 public protocol SquareMosaicDataSource: class {
@@ -37,5 +22,22 @@ public protocol SquareMosaicDataSource: class {
 
 public protocol SquareMosaicDelegate: class {
     
-    func layoutContentSizeChanged(_ size: CGSize) -> Void
+    func layoutContentSizeChanged(to size: CGSize) -> Void
+}
+
+public enum SquareMosaicDirection: Int {
+    
+    case horizontal, vertical
+}
+
+public protocol SquareMosaicPattern {
+    
+    func patternBlocks() -> [SquareMosaicBlock]
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat
+}
+
+public protocol SquareMosaicSupplementary {
+    
+    func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect
+    func supplementaryHiddenForEmptySection() -> Bool
 }
