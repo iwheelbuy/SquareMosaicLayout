@@ -4,62 +4,62 @@ let offset: CGFloat = 10.0
 
 class VerticalSupplementary: SquareMosaicSupplementary {
     
-    func dynamic() -> Bool {
-        return true
-    }
-    
-    func frame(origin: CGFloat, side: CGFloat) -> CGRect {
+    func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect {
         return CGRect(x: 0, y: origin, width: side, height: offset * 4)
+    }
+
+    func supplementaryHiddenForEmptySection() -> Bool {
+        return true
     }
 }
 
 class VerticalMosaicPattern: SquareMosaicPattern {
     
-    func blocks() -> [SquareMosaicBlock] {
+    func patternBlocks() -> [SquareMosaicBlock] {
         return [
             VerticalOneTwoBlock(),
             VerticalTwoOneBlock(),
         ]
     }
     
-    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return type == .middle ? offset : 0.0
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+        return position == .betweenBlocks ? offset : 0.0
     }
 }
 
 class VerticalTriplePattern: SquareMosaicPattern {
     
-    func blocks() -> [SquareMosaicBlock] {
+    func patternBlocks() -> [SquareMosaicBlock] {
         return [
             VerticalTripleBlock()
         ]
     }
     
-    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return type == .middle ? offset : 0.0
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+        return position == .betweenBlocks ? offset : 0.0
     }
 }
 
 class VerticalSinglePattern: SquareMosaicPattern {
     
-    func blocks() -> [SquareMosaicBlock] {
+    func patternBlocks() -> [SquareMosaicBlock] {
         return [
             VerticalSingleBlock()
         ]
     }
     
-    func separator(_ type: SquareMosaicSeparatorType) -> CGFloat {
-        return type == .middle ? offset : 0.0
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+        return position == .betweenBlocks ? offset : 0.0
     }
 }
 
 public class VerticalOneTwoBlock: SquareMosaicBlock {
     
-    public func frames() -> Int {
+    public func blockFrames() -> Int {
         return 3
     }
     
-    public func frames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
         let min = (side - offset * 4) / 3.0
         let max = side - min - offset * 3
         var frames = [CGRect]()
@@ -72,11 +72,11 @@ public class VerticalOneTwoBlock: SquareMosaicBlock {
 
 public class VerticalTwoOneBlock: SquareMosaicBlock {
     
-    public func frames() -> Int {
+    public func blockFrames() -> Int {
         return 3
     }
     
-    public func frames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
         let min = (side - offset * 4) / 3.0
         let max = side - min - offset * 3
         var frames = [CGRect]()
@@ -89,11 +89,11 @@ public class VerticalTwoOneBlock: SquareMosaicBlock {
 
 public class VerticalTripleBlock: SquareMosaicBlock {
     
-    public func frames() -> Int {
+    public func blockFrames() -> Int {
         return 3
     }
     
-    public func frames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
         let min = (side - offset * 4) / 3.0
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: min, height: min))
@@ -105,11 +105,11 @@ public class VerticalTripleBlock: SquareMosaicBlock {
 
 public class VerticalSingleBlock: SquareMosaicBlock {
     
-    public func frames() -> Int {
+    public func blockFrames() -> Int {
         return 1
     }
     
-    public func frames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: side - offset - offset, height: side - offset - offset))
         return frames
