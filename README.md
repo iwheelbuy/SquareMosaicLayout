@@ -12,5 +12,5 @@ SquareMosaicLayout is an extandable UICollectionViewLayout.
 ## Installation
 
 ```ruby
-pod 'SquareMosaicLayout', '0.6.0'
+pod 'SquareMosaicLayout', '0.6.1'
 ```
