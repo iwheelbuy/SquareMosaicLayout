@@ -5,7 +5,7 @@
 ![Platform](https://img.shields.io/cocoapods/p/SquareMosaicLayout.svg?style=flat)
 
 
-SquareMosaicLayout is an extandable UICollectionViewLayout.
+An extandable mosaic UICollectionViewLayout with a focus on extremely flexible customizations.
 
 | Example | Layout | Pattern | Blocks |
 |:-:|:-:|:-:|:-:|
