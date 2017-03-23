@@ -1,5 +1,8 @@
 # SquareMosaicLayout
-![travis-ci.image](https://travis-ci.org/iwheelbuy/SquareMosaicLayout.svg?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/iwheelbuy/SquareMosaicLayout/master/LICENSE)
+![travis-ci.image](https://travis-ci.org/iwheelbuy/SquareMosaicLayout.svg?branch=master)
+![Version](https://img.shields.io/cocoapods/v/SquareMosaicLayout.svg?style=flat)
+[![License](https://img.shields.io/cocoapods/l/SquareMosaicLayout.svg?style=flat)](https://raw.githubusercontent.com/iwheelbuy/SquareMosaicLayout/master/LICENSE)
+![Platform](https://img.shields.io/cocoapods/p/SquareMosaicLayout.svg?style=flat)
 
 
 SquareMosaicLayout is an extandable UICollectionViewLayout.
