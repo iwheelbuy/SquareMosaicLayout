@@ -30,6 +30,194 @@ pod 'SquareMosaicLayout', '0.6.2'
 - [x] Layout can be vertical or horizontal.
 - [x] Each section can have its own __pattern__ of frames.
 
+## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
+
+```swift
+final class TRMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
+    
+    convenience init() {
+        self.init(direction: SquareMosaicDirection.vertical)
+        self.dataSource = self
+    }
+
+    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+        return TRMosaicLayoutPattern()
+    }
+    
+    func layoutSeparatorBetweenSections() -> CGFloat {
+        return 0
+    }
+    
+    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+        return false
+    }
+    
+    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
+    
+    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
+}
+
+class TRMosaicLayoutPattern: SquareMosaicPattern {
+    
+    func patternBlocks() -> [SquareMosaicBlock] {
+        return [
+            TRMosaicLayoutBlock1(),
+            TRMosaicLayoutBlock2()
+        ]
+    }
+    
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+        return 0.0
+    }
+}
+
+public class TRMosaicLayoutBlock1: SquareMosaicBlock {
+    
+    public func blockFrames() -> Int {
+        return 3
+    }
+    
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+        let minWidth = side / 3.0
+        let maxWidth = side - minWidth
+        let minHeight = minWidth * 1.5
+        let maxHeight = minHeight + minHeight
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: maxWidth, height: maxHeight))
+        frames.append(CGRect(x: maxWidth, y: origin, width: minWidth, height: minHeight))
+        frames.append(CGRect(x: maxWidth, y: origin + minHeight, width: minWidth, height: minHeight))
+        return frames
+    }
+}
+
+public class TRMosaicLayoutBlock2: SquareMosaicBlock {
+    
+    public func blockFrames() -> Int {
+        return 3
+    }
+    
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+        let minWidth = side / 3.0
+        let maxWidth = side - minWidth
+        let minHeight = minWidth * 1.5
+        let maxHeight = minHeight + minHeight
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: minWidth, height: minHeight))
+        frames.append(CGRect(x: 0, y: origin + minHeight, width: minWidth, height: minHeight))
+        frames.append(CGRect(x: minWidth, y: origin, width: maxWidth, height: maxHeight))
+        return frames
+    }
+}
+```
+
+## Example - copying [FMMosaicLayout](https://github.com/fmitech/FMMosaicLayout)
+
+```swift
+final class FMMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
+    
+    convenience init() {
+        self.init(direction: SquareMosaicDirection.vertical)
+        self.dataSource = self
+    }
+    
+    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+        return FMMosaicLayoutPattern()
+    }
+    
+    func layoutSeparatorBetweenSections() -> CGFloat {
+        return 0
+    }
+    
+    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+        return false
+    }
+    
+    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
+    
+    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
+}
+
+class FMMosaicLayoutPattern: SquareMosaicPattern {
+    
+    func patternBlocks() -> [SquareMosaicBlock] {
+        return [
+            FMMosaicLayoutBlock1(),
+            FMMosaicLayoutBlock2(),
+            FMMosaicLayoutBlock3(),
+            FMMosaicLayoutBlock2(),
+            FMMosaicLayoutBlock2()
+        ]
+    }
+    
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+        return 0.0
+    }
+}
+
+public class FMMosaicLayoutBlock1: SquareMosaicBlock {
+    
+    public func blockFrames() -> Int {
+        return 5
+    }
+    
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+        let min = side / 4.0
+        let max = side - min - min
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: max, height: max))
+        frames.append(CGRect(x: max, y: origin, width: min, height: min))
+        frames.append(CGRect(x: max, y: origin + min, width: min, height: min))
+        frames.append(CGRect(x: max + min, y: origin, width: min, height: min))
+        frames.append(CGRect(x: max + min, y: origin + min, width: min, height: min))
+        return frames
+    }
+}
+
+public class FMMosaicLayoutBlock2: SquareMosaicBlock {
+    
+    public func blockFrames() -> Int {
+        return 4
+    }
+    
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+        let min = side / 4.0
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: min, height: min))
+        frames.append(CGRect(x: min, y: origin, width: min, height: min))
+        frames.append(CGRect(x: min * 2, y: origin, width: min, height: min))
+        frames.append(CGRect(x: min * 3, y: origin, width: min, height: min))
+        return frames
+    }
+}
+
+public class FMMosaicLayoutBlock3: SquareMosaicBlock {
+    
+    public func blockFrames() -> Int {
+        return 5
+    }
+    
+    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+        let min = side / 4.0
+        let max = side - min - min
+        var frames = [CGRect]()
+        frames.append(CGRect(x: 0, y: origin, width: min, height: min))
+        frames.append(CGRect(x: 0, y: origin + min, width: min, height: min))
+        frames.append(CGRect(x: min, y: origin, width: min, height: min))
+        frames.append(CGRect(x: min, y: origin + min, width: min, height: min))
+        frames.append(CGRect(x: max, y: origin, width: max, height: max))
+        return frames
+    }
+}
+```
+
 ## Author
 
 iwheelbuy, iwheelbuy@gmail.com
