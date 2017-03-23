@@ -11,11 +11,11 @@ extension AppDelegate {
         let controllerTab = UITabBarController()
         let controllerExample = UINavigationController(rootViewController: ViewController())
         controllerExample.title = "Example"
-        let controllerTRMosaicLayout = UINavigationController(rootViewController: TRMosaicLayoutController())
-        controllerTRMosaicLayout.title = "TRMosaicLayout"
-        let controllerFMMosaicLayout = UINavigationController(rootViewController: FMMosaicLayoutController())
-        controllerFMMosaicLayout.title = "FMMosaicLayout"
-        controllerTab.setViewControllers([controllerExample, controllerTRMosaicLayout, controllerFMMosaicLayout], animated: false)
+        let controllerTRMosaicLayoutCopy = UINavigationController(rootViewController: TRMosaicLayoutCopyController())
+        controllerTRMosaicLayoutCopy.title = "TRMosaicLayoutCopy"
+        let controllerFMMosaicLayoutCopy = UINavigationController(rootViewController: FMMosaicLayoutCopyController())
+        controllerFMMosaicLayoutCopy.title = "FMMosaicLayoutCopy"
+        controllerTab.setViewControllers([controllerExample, controllerTRMosaicLayoutCopy, controllerFMMosaicLayoutCopy], animated: false)
         window?.rootViewController = controllerTab
         window?.makeKeyAndVisible()
         return true

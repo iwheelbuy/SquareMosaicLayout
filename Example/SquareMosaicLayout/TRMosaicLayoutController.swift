@@ -1,14 +1,14 @@
 import UIKit
 import SquareMosaicLayout
 
-final class TRMosaicLayoutController: UIViewController, UICollectionViewDataSource {
+final class TRMosaicLayoutCopyController: UIViewController, UICollectionViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: TRMosaicLayout())
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: TRMosaicLayoutCopy())
         collection.register(UICollectionViewCell.self)
         collection.dataSource = self
-        self.title = "TRMosaicLayout"
+        self.title = "TRMosaicLayoutCopy"
         self.view = collection
     }
     
@@ -23,7 +23,7 @@ final class TRMosaicLayoutController: UIViewController, UICollectionViewDataSour
     }
 }
 
-final class TRMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
+final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
     
     convenience init() {
         self.init(direction: SquareMosaicDirection.vertical)
@@ -31,7 +31,7 @@ final class TRMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
     }
 
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
-        return TRMosaicLayoutPattern()
+        return TRMosaicLayoutCopyPattern()
     }
     
     func layoutSeparatorBetweenSections() -> CGFloat {
@@ -51,12 +51,12 @@ final class TRMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
     }
 }
 
-class TRMosaicLayoutPattern: SquareMosaicPattern {
+class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
     
     func patternBlocks() -> [SquareMosaicBlock] {
         return [
-            TRMosaicLayoutBlock1(),
-            TRMosaicLayoutBlock2()
+            TRMosaicLayoutCopyBlock1(),
+            TRMosaicLayoutCopyBlock2()
         ]
     }
     
@@ -65,7 +65,7 @@ class TRMosaicLayoutPattern: SquareMosaicPattern {
     }
 }
 
-public class TRMosaicLayoutBlock1: SquareMosaicBlock {
+public class TRMosaicLayoutCopyBlock1: SquareMosaicBlock {
     
     public func blockFrames() -> Int {
         return 3
@@ -84,7 +84,7 @@ public class TRMosaicLayoutBlock1: SquareMosaicBlock {
     }
 }
 
-public class TRMosaicLayoutBlock2: SquareMosaicBlock {
+public class TRMosaicLayoutCopyBlock2: SquareMosaicBlock {
     
     public func blockFrames() -> Int {
         return 3

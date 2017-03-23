@@ -1,14 +1,14 @@
 import UIKit
 import SquareMosaicLayout
 
-final class FMMosaicLayoutController: UIViewController, UICollectionViewDataSource {
+final class FMMosaicLayoutCopyController: UIViewController, UICollectionViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: FMMosaicLayout())
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: FMMosaicLayoutCopy())
         collection.register(UICollectionViewCell.self)
         collection.dataSource = self
-        self.title = "FMMosaicLayout"
+        self.title = "FMMosaicLayoutCopy"
         self.view = collection
     }
     
@@ -23,7 +23,7 @@ final class FMMosaicLayoutController: UIViewController, UICollectionViewDataSour
     }
 }
 
-final class FMMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
+final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
     
     convenience init() {
         self.init(direction: SquareMosaicDirection.vertical)
@@ -31,7 +31,7 @@ final class FMMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
     }
     
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
-        return FMMosaicLayoutPattern()
+        return FMMosaicLayoutCopyPattern()
     }
     
     func layoutSeparatorBetweenSections() -> CGFloat {
@@ -51,15 +51,15 @@ final class FMMosaicLayout: SquareMosaicLayout, SquareMosaicDataSource {
     }
 }
 
-class FMMosaicLayoutPattern: SquareMosaicPattern {
+class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
     
     func patternBlocks() -> [SquareMosaicBlock] {
         return [
-            FMMosaicLayoutBlock1(),
-            FMMosaicLayoutBlock2(),
-            FMMosaicLayoutBlock3(),
-            FMMosaicLayoutBlock2(),
-            FMMosaicLayoutBlock2()
+            FMMosaicLayoutCopyBlock1(),
+            FMMosaicLayoutCopyBlock2(),
+            FMMosaicLayoutCopyBlock3(),
+            FMMosaicLayoutCopyBlock2(),
+            FMMosaicLayoutCopyBlock2()
         ]
     }
     
@@ -68,7 +68,7 @@ class FMMosaicLayoutPattern: SquareMosaicPattern {
     }
 }
 
-public class FMMosaicLayoutBlock1: SquareMosaicBlock {
+public class FMMosaicLayoutCopyBlock1: SquareMosaicBlock {
     
     public func blockFrames() -> Int {
         return 5
@@ -87,7 +87,7 @@ public class FMMosaicLayoutBlock1: SquareMosaicBlock {
     }
 }
 
-public class FMMosaicLayoutBlock2: SquareMosaicBlock {
+public class FMMosaicLayoutCopyBlock2: SquareMosaicBlock {
     
     public func blockFrames() -> Int {
         return 4
@@ -104,7 +104,7 @@ public class FMMosaicLayoutBlock2: SquareMosaicBlock {
     }
 }
 
-public class FMMosaicLayoutBlock3: SquareMosaicBlock {
+public class FMMosaicLayoutCopyBlock3: SquareMosaicBlock {
     
     public func blockFrames() -> Int {
         return 5
