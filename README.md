@@ -30,6 +30,18 @@ pod 'SquareMosaicLayout', '0.6.2'
 - [x] Layout can be vertical or horizontal.
 - [x] Each section can have its own __pattern__ of frames.
 
+## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
+
+```ruby
+pod 'SquareMosaicLayout', '0.6.2'
+```
+
+## Example - copying [FMMosaicLayout](https://github.com/fmitech/FMMosaicLayout)
+
+```ruby
+pod 'SquareMosaicLayout', '0.6.2'
+```
+
 ## Author
 
 iwheelbuy, iwheelbuy@gmail.com
