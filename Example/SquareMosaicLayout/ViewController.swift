@@ -122,7 +122,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             return view
         case SquareMosaicLayoutSectionFooter:
             let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
-            view.label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+            if #available(iOS 8.2, *) {
+                view.label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+            } else {
+                view.label.font = UIFont.systemFont(ofSize: 12)
+            }
             switch indexPath.section {
             case 2:     view.label.text = "Tap to add!"
             default:    view.label.text = "View more..."
@@ -130,7 +134,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             return view
         case SquareMosaicLayoutSectionHeader:
             let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
-            view.label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+            if #available(iOS 8.2, *) {
+                view.label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+            } else {
+                view.label.font = UIFont.systemFont(ofSize: 16)
+            }
             switch indexPath.section {
             case 0:     view.label.text = "Golf VI"
             case 1:     view.label.text = "Scirocco"
