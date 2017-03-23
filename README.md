@@ -14,6 +14,17 @@ SquareMosaicLayout is an extandable UICollectionViewLayout.
 
 ## Installation
 
+SquareMosaicLayout is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
 ```ruby
 pod 'SquareMosaicLayout', '0.6.2'
 ```
+
+## Author
+
+iwheelbuy, iwheelbuy@gmail.com
+
+## License
+
+SquareMosaicLayout is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/iwheelbuy/SquareMosaicLayout/master/LICENSE) file for more info.
