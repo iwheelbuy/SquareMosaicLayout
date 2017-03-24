@@ -24,7 +24,7 @@ pod 'SquareMosaicLayout', '0.6.2'
 ## Capabilities
 
 - [x] Each section can have its own header frame (optional).
-- [x] Each section can have its own fotter frame (optional).
+- [x] Each section can have its own footer frame (optional).
 - [x] Each section can have its own background (optional).
 - [x] Space between sections can be changed.
 - [x] Layout can be vertical or horizontal.
