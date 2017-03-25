@@ -7,6 +7,11 @@
 
 An extandable mosaic UICollectionViewLayout with a focus on extremely flexible customizations.
 
+## Note
+
+This layout is not of [waterfall](https://www.raywenderlich.com/107439/uicollectionview-custom-layout-tutorial-pinterest) type. It was designed for layouts where we can predict the size of rectangular box which contains the number of cells. Check out how to copy [TRMosaicLayout](https://github.com/iwheelbuy/SquareMosaicLayout#example---copying-trmosaiclayout) or [FMMosaicLayout](https://github.com/iwheelbuy/SquareMosaicLayout#example---copying-fmmosaiclayout) using __SquareMosaicLayout__
+
+
 | Example | Layout | Pattern | Blocks |
 |:-:|:-:|:-:|:-:|
 | ![image1](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/ezgif.com-optimize.gif) | ![image2](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_1.png) | ![image3](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_12.png) | ![image4](https://github.com/iwheelbuy/SquareMosaicLayout/blob/master/Example/SquareMosaicLayout/rsz_3.png) |
