@@ -9,8 +9,9 @@ An extandable mosaic UICollectionViewLayout with a focus on extremely flexible c
 
 ## Note
 
-This layout is not of [waterfall](https://www.raywenderlich.com/107439/uicollectionview-custom-layout-tutorial-pinterest) type. It was designed for layouts where we can predict the size of rectangular box which contains the number of cells. Check out how to copy [TRMosaicLayout](https://github.com/iwheelbuy/SquareMosaicLayout#example---copying-trmosaiclayout) or [FMMosaicLayout](https://github.com/iwheelbuy/SquareMosaicLayout#example---copying-fmmosaiclayout) using __SquareMosaicLayout__
+This layout is not of [waterfall](https://www.raywenderlich.com/107439/uicollectionview-custom-layout-tutorial-pinterest) type. It was designed for layouts where we can predict the size of rectangular box which contains the number of full cells. Check out how to copy [TRMosaicLayout](https://github.com/iwheelbuy/SquareMosaicLayout#example---copying-trmosaiclayout) or [FMMosaicLayout](https://github.com/iwheelbuy/SquareMosaicLayout#example---copying-fmmosaiclayout) using __SquareMosaicLayout__
 
+## Visual
 
 | Example | Layout | Pattern | Blocks |
 |:-:|:-:|:-:|:-:|
