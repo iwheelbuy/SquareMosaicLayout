@@ -1,6 +1,6 @@
 # SquareMosaicLayout
 
-![Version](https://img.shields.io/cocoapods/v/SquareMosaicLayout.svg?style=flat)
+[![Version](https://img.shields.io/cocoapods/v/SquareMosaicLayout.svg?style=flat)](https://cocoapods.org/pods/SquareMosaicLayout)
 [![License](https://img.shields.io/cocoapods/l/SquareMosaicLayout.svg?style=flat)](https://raw.githubusercontent.com/iwheelbuy/SquareMosaicLayout/master/LICENSE)
 ![Platform](https://img.shields.io/cocoapods/p/SquareMosaicLayout.svg?style=flat)
 [![Build](https://camo.githubusercontent.com/445fe85830ee8cdb9ebde5c1ae612b16cb2d5f09/68747470733a2f2f7472617669732d63692e6f72672f69776865656c6275792f5371756172654d6f736169634c61796f75742e7376673f6272616e63683d6d6173746572)](https://cocoapods.org/pods/SquareMosaicLayout)
