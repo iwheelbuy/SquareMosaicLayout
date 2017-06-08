@@ -1,23 +1,23 @@
 import Foundation
 
-public protocol SquareMosaicBlock {
+@objc public protocol SquareMosaicBlock {
     
     func blockFrames() -> Int
     func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect]
 }
 
-public enum SquareMosaicBlockSeparatorPosition: Int {
+@objc public enum SquareMosaicBlockSeparatorPosition: Int {
     
-    case beforeBlocks, afterBlocks, betweenBlocks
+    case after, before, between
 }
 
-public protocol SquareMosaicDataSource: class {
+@objc public protocol SquareMosaicDataSource: class {
     
     func layoutPattern(for section: Int) -> SquareMosaicPattern
-    func layoutSeparatorBetweenSections() -> CGFloat
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary?
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
+    @objc optional func layoutSeparatorBetweenSections() -> CGFloat
+    @objc optional func layoutSupplementaryBackerRequired(for section: Int) -> Bool
+    @objc optional func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary?
+    @objc optional func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
 }
 
 public protocol SquareMosaicDelegate: class {
@@ -30,14 +30,14 @@ public enum SquareMosaicDirection: Int {
     case horizontal, vertical
 }
 
-public protocol SquareMosaicPattern {
+@objc public protocol SquareMosaicPattern {
     
     func patternBlocks() -> [SquareMosaicBlock]
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat
+    @objc optional func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat
 }
 
-public protocol SquareMosaicSupplementary {
+@objc public protocol SquareMosaicSupplementary {
     
     func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect
-    func supplementaryHiddenForEmptySection() -> Bool
+    @objc optional func supplementaryHiddenForEmptySection() -> Bool
 }

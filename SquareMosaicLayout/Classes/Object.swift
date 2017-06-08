@@ -12,9 +12,12 @@ class SquareMosaicObject {
         
         var value: String {
             switch self {
-            case .backer:   return SquareMosaicLayoutSectionBacker
-            case .footer:   return SquareMosaicLayoutSectionFooter
-            case .header:   return SquareMosaicLayoutSectionHeader
+            case .backer:
+                return SquareMosaicLayoutSectionBacker
+            case .footer:
+                return SquareMosaicLayoutSectionFooter
+            case .header:
+                return SquareMosaicLayoutSectionHeader
             }
         }
     }
@@ -39,9 +42,9 @@ class SquareMosaicObject {
             let sectionOffset: CGFloat = self.total
             addSupplementary(.header, dataSource: dataSource, rows: rows, section: section)
             let pattern: SquareMosaicPattern = dataSource.layoutPattern(for: section)
-            addSeparatorBlock(.beforeBlocks, pattern: pattern, rows: rows)
+            addSeparatorBlock(.before, pattern: pattern, rows: rows)
             addAttributes(pattern, rows: rows, section: section)
-            addSeparatorBlock(.afterBlocks, pattern: pattern, rows: rows)
+            addSeparatorBlock(.after, pattern: pattern, rows: rows)
             addSupplementary(.footer, dataSource: dataSource, rows: rows, section: section)
             addSupplementaryBackground(.backer, dataSource: dataSource, offset: sectionOffset, section: section)
         }
@@ -101,7 +104,7 @@ fileprivate extension SquareMosaicObject {
         let blocks = pattern.blocks(rows)
         for (index, block) in blocks.enumerated() {
             guard row < rows else { break }
-            addSeparatorBlock(.betweenBlocks, block: index, blocks: blocks.count, pattern: pattern)
+            addSeparatorBlock(.between, block: index, blocks: blocks.count, pattern: pattern)
             let side = self.direction == .vertical ? self.size.width : self.size.height
             let frames = block.blockFrames(origin: self.total, side: side)
             var total: CGFloat = 0
@@ -129,10 +132,14 @@ fileprivate extension SquareMosaicObject {
     
     func addSeparatorBlock(_ position: SquareMosaicBlockSeparatorPosition, block: Int = 0, blocks: Int = 0, pattern: SquareMosaicPattern, rows: Int = 0) {
         switch (position, rows > 0, block > 0 && block < blocks) {
-        case (.beforeBlocks, true, _):  self.total += pattern.patternBlocksSeparator(at: position)
-        case (.betweenBlocks, _, true): self.total += pattern.patternBlocksSeparator(at: position)
-        case (.afterBlocks, true, _):   self.total += pattern.patternBlocksSeparator(at: position)
-        default:                    break
+        case (.before, true, _):
+            self.total += pattern.patternBlocksSeparator?(at: position) ?? 0
+        case (.between, _, true):
+            self.total += pattern.patternBlocksSeparator?(at: position) ?? 0
+        case (.after, true, _):
+            self.total += pattern.patternBlocksSeparator?(at: position) ?? 0
+        default:
+            break
         }
     }
     
@@ -141,14 +148,14 @@ fileprivate extension SquareMosaicObject {
             sectionFirstAdded = section
         }
         guard sections > 0 else { return }
-        let separator = dataSource.layoutSeparatorBetweenSections()
+        let separator = dataSource.layoutSeparatorBetweenSections?() ?? 0
         guard section > sectionFirstAdded! && section < sections else { return }
         self.total += separator
     }
     
     func addSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, rows: Int, section: Int) {
         guard let supplementary = getSupplementary(kind, dataSource: dataSource, section: section) else { return }
-        guard rows > 0 || supplementary.supplementaryHiddenForEmptySection() == false else { return }
+        guard rows > 0 || supplementary.supplementaryHiddenForEmptySection?() ?? false == false else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = 1
@@ -166,7 +173,7 @@ fileprivate extension SquareMosaicObject {
     }
     
     func addSupplementaryBackground(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, offset: CGFloat, section: Int) {
-        guard dataSource.layoutSupplementaryBackerRequired(for: section) == true else { return }
+        guard dataSource.layoutSupplementaryBackerRequired?(for: section) ?? false == true else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = -1
@@ -185,17 +192,17 @@ fileprivate extension SquareMosaicObject {
     
     func getSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, section: Int) -> SquareMosaicSupplementary? {
         switch kind {
-        case .footer:   return dataSource.layoutSupplementaryFooter(for: section)
-        case .header:   return dataSource.layoutSupplementaryHeader(for: section)
+        case .footer:   return dataSource.layoutSupplementaryFooter?(for: section)
+        case .header:   return dataSource.layoutSupplementaryHeader?(for: section)
         default:        return nil
         }
     }
     
     func isEmptySection(dataSource: SquareMosaicDataSource, rows: Int, section: Int) -> Bool {
         guard rows <= 0 else { return false }
-        let dynamicHeader = dataSource.layoutSupplementaryHeader(for: section)?.supplementaryHiddenForEmptySection() ?? false
+        let dynamicHeader = dataSource.layoutSupplementaryHeader?(for: section)?.supplementaryHiddenForEmptySection?() ?? false
         guard dynamicHeader == true else { return false }
-        let dynamicFooter = dataSource.layoutSupplementaryFooter(for: section)?.supplementaryHiddenForEmptySection() ?? false
+        let dynamicFooter = dataSource.layoutSupplementaryFooter?(for: section)?.supplementaryHiddenForEmptySection?() ?? false
         guard dynamicFooter == true else { return false }
         return true
     }
