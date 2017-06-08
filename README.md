@@ -35,6 +35,7 @@ pod 'SquareMosaicLayout', '0.7.0'
 - [x] Each section can have its own footer frame (optional).
 - [x] Each section can have its own background (optional).
 - [x] Space between sections can be changed (optional).
+- [x] Space between, before and after __blocks__ in __pattern__ can be changed (optional).
 
 ## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
 
