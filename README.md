@@ -29,12 +29,12 @@ pod 'SquareMosaicLayout', '0.7.0'
 
 ## Capabilities
 
+- [x] Layout can be vertical or horizontal.
+- [x] Each section can have its own __pattern__ of frames.
 - [x] Each section can have its own header frame (optional).
 - [x] Each section can have its own footer frame (optional).
 - [x] Each section can have its own background (optional).
-- [x] Space between sections can be changed.
-- [x] Layout can be vertical or horizontal.
-- [x] Each section can have its own __pattern__ of frames.
+- [x] Space between sections can be changed (optional).
 
 ## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
 
@@ -49,22 +49,6 @@ final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
         return TRMosaicLayoutCopyPattern()
     }
-    
-    func layoutSeparatorBetweenSections() -> CGFloat {
-        return 0
-    }
-    
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
-        return false
-    }
-    
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
-    
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
 }
 
 class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
@@ -74,10 +58,6 @@ class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
             TRMosaicLayoutCopyBlock1(),
             TRMosaicLayoutCopyBlock2()
         ]
-    }
-    
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
-        return 0.0
     }
 }
 
@@ -133,22 +113,6 @@ final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
         return FMMosaicLayoutCopyPattern()
     }
-    
-    func layoutSeparatorBetweenSections() -> CGFloat {
-        return 0
-    }
-    
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
-        return false
-    }
-    
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
-    
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
 }
 
 class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
@@ -161,10 +125,6 @@ class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
             FMMosaicLayoutCopyBlock2(),
             FMMosaicLayoutCopyBlock2()
         ]
-    }
-    
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
-        return 0.0
     }
 }
 
