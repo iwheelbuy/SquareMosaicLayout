@@ -35,23 +35,11 @@
 		8F0B5A5BCB5E2DB53E891271 /* Pods_SquareMosaicLayout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F382318EEA77CD3B2193CA /* Pods_SquareMosaicLayout_Example.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7A3A59DA1E38F1750023561E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = SquareMosaicLayout_Example;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		607FACD01AFB9204008FA782 /* SquareMosaicLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareMosaicLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7A3A59D51E38F1750023561E /* SquareMosaicLayout_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquareMosaicLayout_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A3A59D91E38F1750023561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A43DFAC1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareMosaicLayoutPatterns.swift; sourceTree = "<group>"; };
 		7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7A4EB21A1E18D7F90077F819 /* rsz_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_1.png; sourceTree = "<group>"; };
@@ -93,13 +81,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7A3A59D21E38F1750023561E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -109,7 +90,6 @@
 				7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SquareMosaicLayout */,
-				7A3A59D61E38F1750023561E /* SquareMosaicLayout_Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				88C2FB221F4A309FF8075F04 /* Pods */,
 				6D6766C0AB7F259F732EDD97 /* Frameworks */,
@@ -120,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* SquareMosaicLayout_Example.app */,
-				7A3A59D51E38F1750023561E /* SquareMosaicLayout_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,14 +145,6 @@
 				B21E9ED64D9F3C18E1DDEF88 /* Pods_SquareMosaicLayout_Tests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7A3A59D61E38F1750023561E /* SquareMosaicLayout_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				7A3A59D91E38F1750023561E /* Info.plist */,
-			);
-			path = SquareMosaicLayout_Tests;
 			sourceTree = "<group>";
 		};
 		7A47BD4C1E69682C0054AF61 /* Extensions */ = {
@@ -329,24 +300,6 @@
 			productReference = 607FACD01AFB9204008FA782 /* SquareMosaicLayout_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7A3A59D41E38F1750023561E /* SquareMosaicLayout_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7A3A59DE1E38F1750023561E /* Build configuration list for PBXNativeTarget "SquareMosaicLayout_Tests" */;
-			buildPhases = (
-				7A3A59D11E38F1750023561E /* Sources */,
-				7A3A59D21E38F1750023561E /* Frameworks */,
-				7A3A59D31E38F1750023561E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7A3A59DB1E38F1750023561E /* PBXTargetDependency */,
-			);
-			name = SquareMosaicLayout_Tests;
-			productName = SquareMosaicLayout_Tests;
-			productReference = 7A3A59D51E38F1750023561E /* SquareMosaicLayout_Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -359,13 +312,8 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = W8XWU92YY3;
+						DevelopmentTeam = E9VNW4TD6Q;
 						LastSwiftMigration = 0820;
-					};
-					7A3A59D41E38F1750023561E = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -382,7 +330,6 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* SquareMosaicLayout_Example */,
-				7A3A59D41E38F1750023561E /* SquareMosaicLayout_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -408,13 +355,6 @@
 				7AEC36E21E6879B400B11356 /* golf_5.jpeg in Resources */,
 				7A6D9F481E6880BE009C368D /* scirocco_1.jpeg in Resources */,
 				7AEC36E71E687A4F00B11356 /* golf_4.jpeg in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7A3A59D31E38F1750023561E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,22 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7A3A59D11E38F1750023561E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7A3A59DB1E38F1750023561E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 607FACCF1AFB9204008FA782 /* SquareMosaicLayout_Example */;
-			targetProxy = 7A3A59DA1E38F1750023561E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		607FACED1AFB9204008FA782 /* Debug */ = {
@@ -595,7 +520,7 @@
 			baseConfigurationReference = DE1CDE085D9E5FAFACDC86D6 /* Pods-SquareMosaicLayout_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = W8XWU92YY3;
+				DEVELOPMENT_TEAM = E9VNW4TD6Q;
 				INFOPLIST_FILE = SquareMosaicLayout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -611,7 +536,7 @@
 			baseConfigurationReference = 9BD6C3045D8325B8D869529A /* Pods-SquareMosaicLayout_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = W8XWU92YY3;
+				DEVELOPMENT_TEAM = E9VNW4TD6Q;
 				INFOPLIST_FILE = SquareMosaicLayout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -619,40 +544,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sidmasters.vkpassword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		7A3A59DC1E38F1750023561E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = SquareMosaicLayout_Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "test.test.SquareMosaicLayout-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquareMosaicLayout_Example.app/SquareMosaicLayout_Example";
-			};
-			name = Debug;
-		};
-		7A3A59DD1E38F1750023561E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				INFOPLIST_FILE = SquareMosaicLayout_Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "test.test.SquareMosaicLayout-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquareMosaicLayout_Example.app/SquareMosaicLayout_Example";
 			};
 			name = Release;
 		};
@@ -673,15 +564,6 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7A3A59DE1E38F1750023561E /* Build configuration list for PBXNativeTarget "SquareMosaicLayout_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7A3A59DC1E38F1750023561E /* Debug */,
-				7A3A59DD1E38F1750023561E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -23,7 +23,7 @@ class VerticalMosaicPattern: SquareMosaicPattern {
     }
     
     func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
-        return position == .betweenBlocks ? offset : 0.0
+        return position == .between ? offset : 0.0
     }
 }
 
@@ -36,7 +36,7 @@ class VerticalTriplePattern: SquareMosaicPattern {
     }
     
     func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
-        return position == .betweenBlocks ? offset : 0.0
+        return position == .between ? offset : 0.0
     }
 }
 
@@ -49,7 +49,7 @@ class VerticalSinglePattern: SquareMosaicPattern {
     }
     
     func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
-        return position == .betweenBlocks ? offset : 0.0
+        return position == .between ? offset : 0.0
     }
 }
 

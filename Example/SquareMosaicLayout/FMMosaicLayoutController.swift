@@ -33,22 +33,6 @@ final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
         return FMMosaicLayoutCopyPattern()
     }
-    
-    func layoutSeparatorBetweenSections() -> CGFloat {
-        return 0
-    }
-    
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
-        return false
-    }
-    
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
-    
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
 }
 
 class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
@@ -61,10 +45,6 @@ class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
             FMMosaicLayoutCopyBlock2(),
             FMMosaicLayoutCopyBlock2()
         ]
-    }
-    
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
-        return 0.0
     }
 }
 

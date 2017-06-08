@@ -33,22 +33,6 @@ final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
         return TRMosaicLayoutCopyPattern()
     }
-    
-    func layoutSeparatorBetweenSections() -> CGFloat {
-        return 0
-    }
-    
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
-        return false
-    }
-    
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
-    
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
-        return nil
-    }
 }
 
 class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
