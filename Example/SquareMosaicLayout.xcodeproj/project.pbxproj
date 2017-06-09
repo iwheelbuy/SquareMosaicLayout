@@ -22,6 +22,7 @@
 		7A6D9F4C1E6880BE009C368D /* scirocco_5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D9F441E6880BE009C368D /* scirocco_5.jpeg */; };
 		7A8322AD1E84234B00A5D6B8 /* TRMosaicLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8322AC1E84234B00A5D6B8 /* TRMosaicLayoutController.swift */; };
 		7A8322B01E84296400A5D6B8 /* FMMosaicLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8322AF1E84296400A5D6B8 /* FMMosaicLayoutController.swift */; };
+		7AB174731EEABDEF0000280F /* Hungcao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB174721EEABDEF0000280F /* Hungcao.swift */; };
 		7AEC36CD1E686EF800B11356 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36CC1E686EF800B11356 /* UICollectionView+Extensions.swift */; };
 		7AEC36D11E68716A00B11356 /* DecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36D01E68716A00B11356 /* DecorationView.swift */; };
 		7AEC36D31E68765400B11356 /* SupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC36D21E68765400B11356 /* SupplementaryView.swift */; };
@@ -53,6 +54,7 @@
 		7A6D9F441E6880BE009C368D /* scirocco_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scirocco_5.jpeg; sourceTree = "<group>"; };
 		7A8322AC1E84234B00A5D6B8 /* TRMosaicLayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRMosaicLayoutController.swift; sourceTree = "<group>"; };
 		7A8322AF1E84296400A5D6B8 /* FMMosaicLayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMMosaicLayoutController.swift; sourceTree = "<group>"; };
+		7AB174721EEABDEF0000280F /* Hungcao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hungcao.swift; sourceTree = "<group>"; };
 		7AEC36CC1E686EF800B11356 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		7AEC36D01E68716A00B11356 /* DecorationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecorationView.swift; sourceTree = "<group>"; };
 		7AEC36D21E68765400B11356 /* SupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplementaryView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				7AB174711EEABDDE0000280F /* Hungcao */,
 				7A8322AE1E84295600A5D6B8 /* FMMosaicLayout */,
 				7A8322AB1E84231100A5D6B8 /* TRMosaicLayout */,
 				7A8322AA1E8422F500A5D6B8 /* View Controller */,
@@ -243,6 +246,14 @@
 				7A8322AF1E84296400A5D6B8 /* FMMosaicLayoutController.swift */,
 			);
 			name = FMMosaicLayout;
+			sourceTree = "<group>";
+		};
+		7AB174711EEABDDE0000280F /* Hungcao */ = {
+			isa = PBXGroup;
+			children = (
+				7AB174721EEABDEF0000280F /* Hungcao.swift */,
+			);
+			name = Hungcao;
 			sourceTree = "<group>";
 		};
 		7AEC36D41E6879A300B11356 /* Controller */ = {
@@ -420,6 +431,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				7AEC36E91E687A5F00B11356 /* CellView.swift in Sources */,
 				7A8322AD1E84234B00A5D6B8 /* TRMosaicLayoutController.swift in Sources */,
+				7AB174731EEABDEF0000280F /* Hungcao.swift in Sources */,
 				7AEC36D11E68716A00B11356 /* DecorationView.swift in Sources */,
 				7A43DFAD1E19740B00ADA267 /* SquareMosaicLayoutPatterns.swift in Sources */,
 			);

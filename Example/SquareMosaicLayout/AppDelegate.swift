@@ -12,10 +12,12 @@ extension AppDelegate {
         let controllerExample = UINavigationController(rootViewController: ViewController())
         controllerExample.title = "Example"
         let controllerTRMosaicLayoutCopy = UINavigationController(rootViewController: TRMosaicLayoutCopyController())
-        controllerTRMosaicLayoutCopy.title = "TRMosaicLayoutCopy"
+        controllerTRMosaicLayoutCopy.title = "TRMosaicLayout"
         let controllerFMMosaicLayoutCopy = UINavigationController(rootViewController: FMMosaicLayoutCopyController())
-        controllerFMMosaicLayoutCopy.title = "FMMosaicLayoutCopy"
-        controllerTab.setViewControllers([controllerExample, controllerTRMosaicLayoutCopy, controllerFMMosaicLayoutCopy], animated: false)
+        controllerFMMosaicLayoutCopy.title = "FMMosaicLayout"
+        let controllerHungcao = UINavigationController(rootViewController: Hungcao())
+        controllerHungcao.title = "Hungcao"
+        controllerTab.setViewControllers([controllerExample, controllerTRMosaicLayoutCopy, controllerFMMosaicLayoutCopy, controllerHungcao], animated: false)
         window?.rootViewController = controllerTab
         window?.makeKeyAndVisible()
         return true
