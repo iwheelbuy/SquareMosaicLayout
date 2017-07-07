@@ -29,14 +29,14 @@ class SquareMosaicObject {
     fileprivate var size: CGSize = .zero
     fileprivate var total: CGFloat = 0.0
     
-    init(capacity: [Int], dataSource: SquareMosaicDataSource?, direction: SquareMosaicDirection, size: CGSize) {
-        self.attributesForCells = Array<Array<UICollectionViewLayoutAttributes>>.init(repeating: [], count: capacity.count)
+    init(_ numberOfItemsInSections: [Int], _ dataSource: SquareMosaicDataSource?, _ direction: SquareMosaicDirection, _ size: CGSize) {
+        self.attributesForCells = Array<Array<UICollectionViewLayoutAttributes>>.init(repeating: [], count: numberOfItemsInSections.count)
         self.direction = direction
         self.size = size
         guard let dataSource = dataSource else { return }
-        let sections = capacity.count
+        let sections = numberOfItemsInSections.count
         for section in 0 ..< sections {
-            let rows: Int = capacity[section]
+            let rows: Int = numberOfItemsInSections[section]
             guard isEmptySection(dataSource: dataSource, rows: rows, section: section) == false else { continue }
             addSeparatorSection(dataSource, section: section, sections: sections)
             let sectionOffset: CGFloat = self.total

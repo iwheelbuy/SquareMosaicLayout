@@ -2,24 +2,29 @@ import UIKit
 
 open class SquareMosaicLayout: UICollectionViewLayout {
     
+    fileprivate let collectionViewForcedSize: CGSize?
     fileprivate let direction: SquareMosaicDirection
     fileprivate var object: SquareMosaicObject? = nil
-    fileprivate let size: CGSize?
     
     public weak var dataSource: SquareMosaicDataSource?
     public weak var delegate: SquareMosaicDelegate? {
         didSet {
-            delegate?.layoutContentSizeChanged(to: layoutSize)
+            delegate?.layoutContentSizeChanged(to: collectionViewContentSize)
         }
     }
     
     override open var collectionViewContentSize: CGSize {
-        return layoutSize
+        switch direction {
+        case .horizontal:
+            return collectionViewContentSizeHorizontal
+        case .vertical:
+            return collectionViewContentSizeVertical
+        }
     }
     
-    public init(direction: SquareMosaicDirection = .vertical, size: CGSize? = nil) {
+    public init(direction: SquareMosaicDirection = .vertical, size collectionViewForcedSize: CGSize? = nil) {
+        self.collectionViewForcedSize = collectionViewForcedSize
         self.direction = direction
-        self.size = size
         super.init()
     }
     
@@ -28,9 +33,9 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     }
     
     open override func prepare() {
-        let capacity = collectionView?.capacity ?? []
-        let size = layoutSize
-        object = SquareMosaicObject(capacity: capacity, dataSource: dataSource, direction: direction, size: size)
+        let numberOfItemsInSections = collectionView?.numberOfItemsInSections ?? []
+        let size = collectionViewContentSize
+        object = SquareMosaicObject(numberOfItemsInSections, dataSource, direction, size)
     }
 
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -52,35 +57,37 @@ open class SquareMosaicLayout: UICollectionViewLayout {
 
 fileprivate extension SquareMosaicLayout {
     
-    var layoutSize: CGSize {
-        switch direction {
-        case .vertical:
-            let height = object?.layoutTotal ?? 0.0
-            let width = size?.width ?? collectionView?.layoutWidth ?? 0.0
-            return CGSize(width: width, height: height)
-        case .horizontal:
-            let width = object?.layoutTotal ?? 0.0
-            let height = size?.height ?? collectionView?.layoutHeight ?? 0.0
-            return CGSize(width: width, height: height)
-        }
+    var collectionViewContentSizeHorizontal: CGSize {
+        let width = object?.layoutTotal ?? 0.0
+        let height = collectionViewForcedSize?.height ?? collectionView?.collectionViewVisibleContentHeight ?? 0.0
+        return CGSize(width: width, height: height)
+    }
+    
+    var collectionViewContentSizeVertical: CGSize {
+        let height = object?.layoutTotal ?? 0.0
+        let width = collectionViewForcedSize?.width ?? collectionView?.collectionViewVisibleContentWidth ?? 0.0
+        return CGSize(width: width, height: height)
     }
 }
 
 fileprivate extension UICollectionView {
     
-    var capacity: [Int] {
-        var array = [Int]()
-        for section in 0..<numberOfSections {
-            array.append(numberOfItems(inSection: section))
-        }
-        return array
-    }
-    
-    var layoutHeight: CGFloat {
+    var collectionViewVisibleContentHeight: CGFloat {
         return bounds.height - contentInset.top - contentInset.bottom
     }
     
-    var layoutWidth: CGFloat {
+    var collectionViewVisibleContentWidth: CGFloat {
         return bounds.width - contentInset.left - contentInset.right
+    }
+}
+
+fileprivate extension UICollectionView {
+
+    var numberOfItemsInSections: [Int] {
+        var array = [Int](repeating: 0, count: numberOfSections)
+        for section in 0 ..< numberOfSections {
+            array[section] = numberOfItems(inSection: section)
+        }
+        return array
     }
 }
