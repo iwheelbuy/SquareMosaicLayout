@@ -1,23 +1,42 @@
 import Foundation
 
-@objc public protocol SquareMosaicBlock {
+public protocol SquareMosaicBlock {
     
     func blockFrames() -> Int
     func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect]
 }
 
-@objc public enum SquareMosaicBlockSeparatorPosition: Int {
+public enum SquareMosaicBlockSeparatorPosition: Int {
     
     case after, before, between
 }
 
-@objc public protocol SquareMosaicDataSource: class {
+public protocol SquareMosaicDataSource: class {
     
     func layoutPattern(for section: Int) -> SquareMosaicPattern
-    @objc optional func layoutSeparatorBetweenSections() -> CGFloat
-    @objc optional func layoutSupplementaryBackerRequired(for section: Int) -> Bool
-    @objc optional func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary?
-    @objc optional func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
+    func layoutSeparatorBetweenSections() -> CGFloat
+    func layoutSupplementaryBackerRequired(for section: Int) -> Bool
+    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary?
+    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
+}
+
+public extension SquareMosaicDataSource {
+    
+    func layoutSeparatorBetweenSections() -> CGFloat {
+        return 0
+    }
+    
+    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+        return false
+    }
+    
+    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
+    
+    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+        return nil
+    }
 }
 
 public protocol SquareMosaicDelegate: class {
@@ -30,14 +49,28 @@ public enum SquareMosaicDirection: Int {
     case horizontal, vertical
 }
 
-@objc public protocol SquareMosaicPattern {
+public protocol SquareMosaicPattern {
     
     func patternBlocks() -> [SquareMosaicBlock]
-    @objc optional func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat
 }
 
-@objc public protocol SquareMosaicSupplementary {
+public extension SquareMosaicPattern {
+    
+    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+        return 0
+    }
+}
+
+public protocol SquareMosaicSupplementary {
     
     func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect
-    @objc optional func supplementaryHiddenForEmptySection() -> Bool
+    func supplementaryHiddenForEmptySection() -> Bool
+}
+
+public extension SquareMosaicSupplementary {
+    
+    func supplementaryHiddenForEmptySection() -> Bool {
+        return true
+    }
 }

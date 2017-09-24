@@ -123,7 +123,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         case SquareMosaicLayoutSectionFooter:
             let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
             if #available(iOS 8.2, *) {
-                view.label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+                view.label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
             } else {
                 view.label.font = UIFont.systemFont(ofSize: 12)
             }
@@ -135,7 +135,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         case SquareMosaicLayoutSectionHeader:
             let view: SupplementaryView = collectionView.dequeueSupplementary(kind, indexPath: indexPath, kind: kind)
             if #available(iOS 8.2, *) {
-                view.label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+                view.label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
             } else {
                 view.label.font = UIFont.systemFont(ofSize: 16)
             }

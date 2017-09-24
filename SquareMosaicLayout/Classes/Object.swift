@@ -133,11 +133,11 @@ fileprivate extension SquareMosaicObject {
     func addSeparatorBlock(_ position: SquareMosaicBlockSeparatorPosition, block: Int = 0, blocks: Int = 0, pattern: SquareMosaicPattern, rows: Int = 0) {
         switch (position, rows > 0, block > 0 && block < blocks) {
         case (.before, true, _):
-            self.total += pattern.patternBlocksSeparator?(at: position) ?? 0
+            self.total += pattern.patternBlocksSeparator(at: position)
         case (.between, _, true):
-            self.total += pattern.patternBlocksSeparator?(at: position) ?? 0
+            self.total += pattern.patternBlocksSeparator(at: position)
         case (.after, true, _):
-            self.total += pattern.patternBlocksSeparator?(at: position) ?? 0
+            self.total += pattern.patternBlocksSeparator(at: position)
         default:
             break
         }
@@ -148,14 +148,14 @@ fileprivate extension SquareMosaicObject {
             sectionFirstAdded = section
         }
         guard sections > 0 else { return }
-        let separator = dataSource.layoutSeparatorBetweenSections?() ?? 0
+        let separator = dataSource.layoutSeparatorBetweenSections()
         guard section > sectionFirstAdded! && section < sections else { return }
         self.total += separator
     }
     
     func addSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, rows: Int, section: Int) {
         guard let supplementary = getSupplementary(kind, dataSource: dataSource, section: section) else { return }
-        guard rows > 0 || supplementary.supplementaryHiddenForEmptySection?() ?? false == false else { return }
+        guard rows > 0 || supplementary.supplementaryHiddenForEmptySection() == false else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = 1
@@ -173,7 +173,7 @@ fileprivate extension SquareMosaicObject {
     }
     
     func addSupplementaryBackground(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, offset: CGFloat, section: Int) {
-        guard dataSource.layoutSupplementaryBackerRequired?(for: section) ?? false == true else { return }
+        guard dataSource.layoutSupplementaryBackerRequired(for: section) == true else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = -1
@@ -192,18 +192,27 @@ fileprivate extension SquareMosaicObject {
     
     func getSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, section: Int) -> SquareMosaicSupplementary? {
         switch kind {
-        case .footer:   return dataSource.layoutSupplementaryFooter?(for: section)
-        case .header:   return dataSource.layoutSupplementaryHeader?(for: section)
-        default:        return nil
+        case .footer:
+            return dataSource.layoutSupplementaryFooter(for: section)
+        case .header:
+            return dataSource.layoutSupplementaryHeader(for: section)
+        default:
+            return nil
         }
     }
     
     func isEmptySection(dataSource: SquareMosaicDataSource, rows: Int, section: Int) -> Bool {
-        guard rows <= 0 else { return false }
-        let dynamicHeader = dataSource.layoutSupplementaryHeader?(for: section)?.supplementaryHiddenForEmptySection?() ?? false
-        guard dynamicHeader == true else { return false }
-        let dynamicFooter = dataSource.layoutSupplementaryFooter?(for: section)?.supplementaryHiddenForEmptySection?() ?? false
-        guard dynamicFooter == true else { return false }
+        guard rows <= 0 else {
+            return false
+        }
+        let dynamicHeader = dataSource.layoutSupplementaryHeader(for: section)?.supplementaryHiddenForEmptySection()
+        guard dynamicHeader == true else {
+            return false
+        }
+        let dynamicFooter = dataSource.layoutSupplementaryFooter(for: section)?.supplementaryHiddenForEmptySection()
+        guard dynamicFooter == true else {
+            return false
+        }
         return true
     }
 }
