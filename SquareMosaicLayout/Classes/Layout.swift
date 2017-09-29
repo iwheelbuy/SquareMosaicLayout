@@ -58,13 +58,13 @@ open class SquareMosaicLayout: UICollectionViewLayout {
 fileprivate extension SquareMosaicLayout {
     
     var collectionViewContentSizeHorizontal: CGSize {
-        let width = object?.layoutTotal ?? 0.0
+        let width = object?.contentSize ?? 0.0
         let height = collectionViewForcedSize?.height ?? collectionView?.collectionViewVisibleContentHeight ?? 0.0
         return CGSize(width: width, height: height)
     }
     
     var collectionViewContentSizeVertical: CGSize {
-        let height = object?.layoutTotal ?? 0.0
+        let height = object?.contentSize ?? 0.0
         let width = collectionViewForcedSize?.width ?? collectionView?.collectionViewVisibleContentWidth ?? 0.0
         return CGSize(width: width, height: height)
     }
