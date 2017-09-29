@@ -8,6 +8,14 @@ public protocol SquareMosaicBlock {
     
     func blockFrames() -> Int
     func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect]
+    func blockRepeated() -> Bool
+}
+
+public extension SquareMosaicBlock {
+    
+    func blockRepeated() -> Bool {
+        return false
+    }
 }
 
 // MARK: - SquareMosaicBlockSeparatorPosition

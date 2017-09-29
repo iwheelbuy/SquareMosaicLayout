@@ -72,15 +72,28 @@ extension SquareMosaicObject {
 fileprivate extension Pattern {
     
     func blocks(_ expectedFramesTotalCount: Int) -> [Block] {
-        let blocks: [Block] = patternBlocks()
-        let framesCount: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
-        var array = [Block]()
-        var count: Int = 0
-        repeat {
-            array.append(contentsOf: blocks)
-            count += framesCount
-        } while (count < expectedFramesTotalCount)
-        return array
+        var blocks: [Block] = patternBlocks()
+        if let index = blocks.enumerated().first(where: { $0.element.blockRepeated() == true })?.offset {
+            let blockToRepeat = blocks[index]
+            blocks = Array(blocks[0 ..< index])
+            let frames: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
+            let framesToRepeat = blockToRepeat.blockFrames()
+            var count: Int = frames
+            while (count < expectedFramesTotalCount) {
+                blocks.append(blockToRepeat)
+                count += framesToRepeat
+            }
+            return blocks
+        } else {
+            let frames: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
+            var array = [Block]()
+            var count: Int = 0
+            repeat {
+                array.append(contentsOf: blocks)
+                count += frames
+            } while (count < expectedFramesTotalCount)
+            return array
+        }
     }
 }
 
@@ -129,6 +142,7 @@ private func getAttributesAndContentSize(_ numberOfItemsInSections: [Int], _ dat
 }
 
 private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ origin: CGFloat, _ rows: Int, _ section: Int, _ size: CGSize) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
+    var append: CGFloat = 0
     var attributes = [UICollectionViewLayoutAttributes]()
     var origin = origin
     var row: Int = 0
@@ -138,6 +152,7 @@ private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ or
             break
         }
         if let separator = getSeparatorBlock(.between, blocks: blocks.count, index: index, pattern: pattern) {
+            append += separator
             origin += separator
         }
         let side = direction == .vertical ? size.width : size.height
@@ -160,10 +175,11 @@ private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ or
             attributes.append(attribute)
             row += 1
         }
+        append += total
         origin += total
     }
     if attributes.count > 0 {
-        return (attributes, origin > 0 ? origin : nil)
+        return (attributes, append > 0 ? append : nil)
     } else {
         return nil
     }

@@ -101,6 +101,10 @@ public class VerticalTripleBlock: SquareMosaicBlock {
         frames.append(CGRect(x: min * 2 + offset * 3, y: origin, width: min, height: min))
         return frames
     }
+    
+    public func blockRepeated() -> Bool {
+        return true
+    }
 }
 
 public class VerticalSingleBlock: SquareMosaicBlock {
@@ -113,5 +117,9 @@ public class VerticalSingleBlock: SquareMosaicBlock {
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: side - offset - offset, height: side - offset - offset))
         return frames
+    }
+    
+    public func blockRepeated() -> Bool {
+        return true
     }
 }
