@@ -1,15 +1,27 @@
 import Foundation
 
+// MARK: - SquareMosaicBlock
+
+typealias Block = SquareMosaicBlock
+
 public protocol SquareMosaicBlock {
     
     func blockFrames() -> Int
     func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect]
 }
 
+// MARK: - SquareMosaicBlockSeparatorPosition
+
+typealias BlockSeparatorPosition = SquareMosaicBlockSeparatorPosition
+
 public enum SquareMosaicBlockSeparatorPosition: Int {
     
     case after, before, between
 }
+
+// MARK: - SquareMosaicDataSource
+
+typealias DataSource = SquareMosaicDataSource
 
 public protocol SquareMosaicDataSource: class {
     
@@ -39,15 +51,27 @@ public extension SquareMosaicDataSource {
     }
 }
 
+// MARK: - SquareMosaicDelegate
+
+typealias Delegate = SquareMosaicDelegate
+
 public protocol SquareMosaicDelegate: class {
     
     func layoutContentSizeChanged(to size: CGSize) -> Void
 }
 
+// MARK: - SquareMosaicDirection
+
+typealias Direction = SquareMosaicDirection
+
 public enum SquareMosaicDirection: Int {
     
     case horizontal, vertical
 }
+
+// MARK: - SquareMosaicPattern
+
+typealias Pattern = SquareMosaicPattern
 
 public protocol SquareMosaicPattern {
     
@@ -61,6 +85,10 @@ public extension SquareMosaicPattern {
         return 0
     }
 }
+
+// MARK: - SquareMosaicSupplementary
+
+typealias Supplementary = SquareMosaicSupplementary
 
 public protocol SquareMosaicSupplementary {
     

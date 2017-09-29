@@ -24,13 +24,13 @@ class SquareMosaicObject {
     
     fileprivate var attributesForCells: [[UICollectionViewLayoutAttributes]]
     fileprivate var attributesForSupplementary = [UICollectionViewLayoutAttributes]()
-    fileprivate var direction: SquareMosaicDirection = .vertical
+    fileprivate var direction: Direction = .vertical
     fileprivate var sectionFirstAdded: Int?
     fileprivate var size: CGSize = .zero
     fileprivate var total: CGFloat = 0.0
     
-    init(_ numberOfItemsInSections: [Int], _ dataSource: SquareMosaicDataSource?, _ direction: SquareMosaicDirection, _ size: CGSize) {
-        self.attributesForCells = Array<Array<UICollectionViewLayoutAttributes>>.init(repeating: [], count: numberOfItemsInSections.count)
+    init(_ numberOfItemsInSections: [Int], _ dataSource: DataSource?, _ direction: Direction, _ size: CGSize) {
+        self.attributesForCells = [[UICollectionViewLayoutAttributes]](repeating: [], count: numberOfItemsInSections.count)
         self.direction = direction
         self.size = size
         guard let dataSource = dataSource else { return }
@@ -41,7 +41,7 @@ class SquareMosaicObject {
             addSeparatorSection(dataSource, section: section, sections: sections)
             let sectionOffset: CGFloat = self.total
             addSupplementary(.header, dataSource: dataSource, rows: rows, section: section)
-            let pattern: SquareMosaicPattern = dataSource.layoutPattern(for: section)
+            let pattern: Pattern = dataSource.layoutPattern(for: section)
             addSeparatorBlock(.before, pattern: pattern, rows: rows)
             addAttributes(pattern, rows: rows, section: section)
             addSeparatorBlock(.after, pattern: pattern, rows: rows)
@@ -63,15 +63,11 @@ extension SquareMosaicObject {
     
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let attributes = attributesForCells.flatMap({ $0 }) + attributesForSupplementary
-        return attributes
-            .filter({ $0.frame.intersects(rect) })
+        return attributes.filter({ $0.frame.intersects(rect) })
     }
     
     func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return attributesForSupplementary
-            .filter({ $0.indexPath == indexPath })
-            .filter({ $0.representedElementKind == elementKind })
-            .first
+        return attributesForSupplementary.first(where: { $0.indexPath == indexPath && $0.representedElementKind == elementKind })
     }
     
     var layoutTotal: CGFloat {
@@ -81,12 +77,12 @@ extension SquareMosaicObject {
 
 // MARK: - Internal
 
-fileprivate extension SquareMosaicPattern {
+fileprivate extension Pattern {
     
-    func blocks(_ expectedFramesTotalCount: Int) -> [SquareMosaicBlock] {
-        let blocks: [SquareMosaicBlock] = patternBlocks()
+    func blocks(_ expectedFramesTotalCount: Int) -> [Block] {
+        let blocks: [Block] = patternBlocks()
         let framesCount: Int = blocks.map({$0.blockFrames()}).reduce(0, +)
-        var layoutTypes = [SquareMosaicBlock]()
+        var layoutTypes = [Block]()
         var count: Int = 0
         repeat {
             layoutTypes.append(contentsOf: blocks)
@@ -98,7 +94,7 @@ fileprivate extension SquareMosaicPattern {
 
 fileprivate extension SquareMosaicObject {
     
-    func addAttributes(_ pattern: SquareMosaicPattern, rows: Int, section: Int) {
+    func addAttributes(_ pattern: Pattern, rows: Int, section: Int) {
         var attributes = [UICollectionViewLayoutAttributes]()
         var row: Int = 0
         let blocks = pattern.blocks(rows)
@@ -130,7 +126,7 @@ fileprivate extension SquareMosaicObject {
         attributesForCells[section] = attributes
     }
     
-    func addSeparatorBlock(_ position: SquareMosaicBlockSeparatorPosition, block: Int = 0, blocks: Int = 0, pattern: SquareMosaicPattern, rows: Int = 0) {
+    func addSeparatorBlock(_ position: BlockSeparatorPosition, block: Int = 0, blocks: Int = 0, pattern: Pattern, rows: Int = 0) {
         switch (position, rows > 0, block > 0 && block < blocks) {
         case (.before, true, _):
             self.total += pattern.patternBlocksSeparator(at: position)
@@ -143,7 +139,7 @@ fileprivate extension SquareMosaicObject {
         }
     }
     
-    func addSeparatorSection(_ dataSource: SquareMosaicDataSource, section: Int, sections: Int) {
+    func addSeparatorSection(_ dataSource: DataSource, section: Int, sections: Int) {
         if sectionFirstAdded == nil {
             sectionFirstAdded = section
         }
@@ -153,7 +149,7 @@ fileprivate extension SquareMosaicObject {
         self.total += separator
     }
     
-    func addSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, rows: Int, section: Int) {
+    func addSupplementary(_ kind: SupplementaryKind, dataSource: DataSource, rows: Int, section: Int) {
         guard let supplementary = getSupplementary(kind, dataSource: dataSource, section: section) else { return }
         guard rows > 0 || supplementary.supplementaryHiddenForEmptySection() == false else { return }
         let indexPath = IndexPath(item: 0, section: section)
@@ -172,7 +168,7 @@ fileprivate extension SquareMosaicObject {
         attributesForSupplementary.append(attributes)
     }
     
-    func addSupplementaryBackground(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, offset: CGFloat, section: Int) {
+    func addSupplementaryBackground(_ kind: SupplementaryKind, dataSource: DataSource, offset: CGFloat, section: Int) {
         guard dataSource.layoutSupplementaryBackerRequired(for: section) == true else { return }
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
@@ -190,7 +186,7 @@ fileprivate extension SquareMosaicObject {
         attributesForSupplementary.append(attributes)
     }
     
-    func getSupplementary(_ kind: SupplementaryKind, dataSource: SquareMosaicDataSource, section: Int) -> SquareMosaicSupplementary? {
+    func getSupplementary(_ kind: SupplementaryKind, dataSource: DataSource, section: Int) -> Supplementary? {
         switch kind {
         case .footer:
             return dataSource.layoutSupplementaryFooter(for: section)
@@ -201,7 +197,7 @@ fileprivate extension SquareMosaicObject {
         }
     }
     
-    func isEmptySection(dataSource: SquareMosaicDataSource, rows: Int, section: Int) -> Bool {
+    func isEmptySection(dataSource: DataSource, rows: Int, section: Int) -> Bool {
         guard rows <= 0 else {
             return false
         }
