@@ -36,6 +36,15 @@ pod 'SquareMosaicLayout', '4.1.0-beta.0'
 - [x] Each section can have its own background (optional).
 - [x] Space between sections can be changed (optional).
 - [x] Space between, before and after __blocks__ in __pattern__ can be changed (optional).
+- [x] Each section can have one repeated __block__.
+
+## Author
+
+iwheelbuy, iwheelbuy@gmail.com
+
+## License
+
+SquareMosaicLayout is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/iwheelbuy/SquareMosaicLayout/master/LICENSE) file for more info.
 
 ## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
 
@@ -184,11 +193,3 @@ public class FMMosaicLayoutCopyBlock3: SquareMosaicBlock {
     }
 }
 ```
-
-## Author
-
-iwheelbuy, iwheelbuy@gmail.com
-
-## License
-
-SquareMosaicLayout is available under the MIT license. See the [LICENSE](https://raw.githubusercontent.com/iwheelbuy/SquareMosaicLayout/master/LICENSE) file for more info.
