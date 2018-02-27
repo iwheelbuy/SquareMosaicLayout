@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22FE06B7F52E5D5E35CACF13A1D56B65 /* SquareMosaicLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E60C06BF0C8ADDC2396FBC825DC4AFC /* SquareMosaicLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22FE06B7F52E5D5E35CACF13A1D56B65 /* SquareMosaicLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E779982191423E87023F12C700774248 /* SquareMosaicLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43BE316F424D9352446079564B11FCBC /* Pods-SquareMosaicLayout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA47274C93AF70E62DAD4D7CB293747 /* Pods-SquareMosaicLayout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F8848571307180937C1DBA34936E029 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		682CDFF9B5BC94ABE7E183B91A8D59ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		7D97F72E36C167B37E8EDECBC9327F72 /* Pods-SquareMosaicLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB4DAA0BEE0AC0FC3A80EC44CD8078 /* Pods-SquareMosaicLayout_Example-dummy.m */; };
-		821FA9F8C98D9587ACECCA6E0C17D823 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8DD4D98A37E328562CC708DEEBC72 /* Protocols.swift */; };
-		9C1E61543ED8CB70040B77ED68B47375 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F01BFEFDC88C2D2FEE3F2BC9BF10CC /* Layout.swift */; };
-		BF3C2629D82C44A8EB682BF489764131 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = A198BB6D39424E32786A55D8F4365804 /* Object.swift */; };
-		C525B57EC1A91E7C2E6EDFF8C23BEB01 /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7E4049ED62DDF2787FE27EB6C878B /* SquareMosaicLayout-dummy.m */; };
+		821FA9F8C98D9587ACECCA6E0C17D823 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D400C49DFD0E41E5B5F91D73DE5F76 /* Protocols.swift */; };
+		9C1E61543ED8CB70040B77ED68B47375 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E667D22E283C2CEADD610D1F709B5 /* Layout.swift */; };
+		BF3C2629D82C44A8EB682BF489764131 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1221B291F8C6EA561E042479AF57580 /* Object.swift */; };
+		C525B57EC1A91E7C2E6EDFF8C23BEB01 /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D5B1712D0A9760CE8BB03EF6FCCFD6 /* SquareMosaicLayout-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,28 +30,31 @@
 
 /* Begin PBXFileReference section */
 		0EAB585E1FFE33768CC030C902A02FCF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		198DF1A2ED743C5F9F9AEB284836B01E /* SquareMosaicLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SquareMosaicLayout.xcconfig; sourceTree = "<group>"; };
-		20C283532B72044FE173B8B45ECDB194 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21681C66563F45D747D466B4A8A9A19F /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
-		22D7E4049ED62DDF2787FE27EB6C878B /* SquareMosaicLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SquareMosaicLayout-dummy.m"; sourceTree = "<group>"; };
+		134387974D607483038F4FDEBF73CC0A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		22CA2C44169AF6C8323C94BB7C50E7BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F93A1FED2AB0DFC5B38A86A0B2EC296 /* Pods-SquareMosaicLayout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-frameworks.sh"; sourceTree = "<group>"; };
-		38F01BFEFDC88C2D2FEE3F2BC9BF10CC /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = SquareMosaicLayout/Layout.swift; sourceTree = "<group>"; };
+		40D5B1712D0A9760CE8BB03EF6FCCFD6 /* SquareMosaicLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SquareMosaicLayout-dummy.m"; sourceTree = "<group>"; };
 		504B9142377B62D37EBBB12FEFE2863D /* Pods-SquareMosaicLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
-		5E60C06BF0C8ADDC2396FBC825DC4AFC /* SquareMosaicLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-umbrella.h"; sourceTree = "<group>"; };
+		578CAE7048A742421F7CA1BE4B0B4CC8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		61D400C49DFD0E41E5B5F91D73DE5F76 /* Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = SquareMosaicLayout/Protocols.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		69C9FE060486258A2392EB34131D7E10 /* SquareMosaicLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-prefix.pch"; sourceTree = "<group>"; };
 		7DB5AE88FE7F192FE307F8A94426DCAE /* Pods-SquareMosaicLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SquareMosaicLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		8146AE30C7D052268AFF32E049CCFAC3 /* SquareMosaicLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SquareMosaicLayout.xcconfig; sourceTree = "<group>"; };
 		8BA47274C93AF70E62DAD4D7CB293747 /* Pods-SquareMosaicLayout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SquareMosaicLayout_Example-umbrella.h"; sourceTree = "<group>"; };
 		8C4CCA362DD96256ED6BF633298B410A /* SquareMosaicLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SquareMosaicLayout.framework; path = SquareMosaicLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ECA11962345D766344B7BE57B4E5BCC /* Pods-SquareMosaicLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SquareMosaicLayout_Example.modulemap"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96AAAD9AFAC050F34974B024A6B026A5 /* Pods-SquareMosaicLayout_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-resources.sh"; sourceTree = "<group>"; };
-		A198BB6D39424E32786A55D8F4365804 /* Object.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Object.swift; path = SquareMosaicLayout/Object.swift; sourceTree = "<group>"; };
-		A1CF05677E77E2DB547C0AF8DD50EC99 /* SquareMosaicLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-prefix.pch"; sourceTree = "<group>"; };
+		979F7EA29287A97A553BEBB1019381A1 /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
 		A3BB4DAA0BEE0AC0FC3A80EC44CD8078 /* Pods-SquareMosaicLayout_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SquareMosaicLayout_Example-dummy.m"; sourceTree = "<group>"; };
 		A599864268C1C36EB45140009A09FE1A /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SquareMosaicLayout_Example.framework; path = "Pods-SquareMosaicLayout_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBA8DD4D98A37E328562CC708DEEBC72 /* Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = SquareMosaicLayout/Protocols.swift; sourceTree = "<group>"; };
+		AD2D4C0237EF9FDE7912A2D7C724F8B8 /* SquareMosaicLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = SquareMosaicLayout.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C1221B291F8C6EA561E042479AF57580 /* Object.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Object.swift; path = SquareMosaicLayout/Object.swift; sourceTree = "<group>"; };
+		C42E667D22E283C2CEADD610D1F709B5 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = SquareMosaicLayout/Layout.swift; sourceTree = "<group>"; };
 		DFEC1EA2EB7BBA994475822CF92ABDE9 /* Pods-SquareMosaicLayout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SquareMosaicLayout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E1CC1F822DC5172EDC67E733E2132561 /* Pods-SquareMosaicLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		E779982191423E87023F12C700774248 /* SquareMosaicLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,26 +77,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07D0E0A13A6A698310C869CBDF410A5D /* Development Pods */ = {
+		496B396BA39995B77FDAA67E680AB388 /* SquareMosaicLayout */ = {
 			isa = PBXGroup;
 			children = (
-				A59BB777DE528FB3B5F8D098D85300DE /* SquareMosaicLayout */,
+				C42E667D22E283C2CEADD610D1F709B5 /* Layout.swift */,
+				C1221B291F8C6EA561E042479AF57580 /* Object.swift */,
+				61D400C49DFD0E41E5B5F91D73DE5F76 /* Protocols.swift */,
+				6C0E867EEA3B750DF95FB4AA9C5B5D01 /* Pod */,
+				B62AE118476E02D11CAC302177B0B8B5 /* Support Files */,
 			);
-			name = "Development Pods";
+			name = SquareMosaicLayout;
+			path = ../..;
 			sourceTree = "<group>";
 		};
-		121B0AD5AD683B8F5C7E1ABE49D4FE3A /* Support Files */ = {
+		4D917156F1D885C161FE0CF981B5EBD0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				20C283532B72044FE173B8B45ECDB194 /* Info.plist */,
-				21681C66563F45D747D466B4A8A9A19F /* SquareMosaicLayout.modulemap */,
-				198DF1A2ED743C5F9F9AEB284836B01E /* SquareMosaicLayout.xcconfig */,
-				22D7E4049ED62DDF2787FE27EB6C878B /* SquareMosaicLayout-dummy.m */,
-				A1CF05677E77E2DB547C0AF8DD50EC99 /* SquareMosaicLayout-prefix.pch */,
-				5E60C06BF0C8ADDC2396FBC825DC4AFC /* SquareMosaicLayout-umbrella.h */,
+				496B396BA39995B77FDAA67E680AB388 /* SquareMosaicLayout */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SquareMosaicLayout";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		67FC19A975D53C5445E49AD717A96910 /* Pods-SquareMosaicLayout_Example */ = {
@@ -114,27 +116,39 @@
 			path = "Target Support Files/Pods-SquareMosaicLayout_Example";
 			sourceTree = "<group>";
 		};
+		6C0E867EEA3B750DF95FB4AA9C5B5D01 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				134387974D607483038F4FDEBF73CC0A /* LICENSE */,
+				578CAE7048A742421F7CA1BE4B0B4CC8 /* README.md */,
+				AD2D4C0237EF9FDE7912A2D7C724F8B8 /* SquareMosaicLayout.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				07D0E0A13A6A698310C869CBDF410A5D /* Development Pods */,
+				4D917156F1D885C161FE0CF981B5EBD0 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				BF4D16D96EB239833E0014257FB5E51C /* Products */,
 				CEC01048F73E477CFAD1CF7BF731D79C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A59BB777DE528FB3B5F8D098D85300DE /* SquareMosaicLayout */ = {
+		B62AE118476E02D11CAC302177B0B8B5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				38F01BFEFDC88C2D2FEE3F2BC9BF10CC /* Layout.swift */,
-				A198BB6D39424E32786A55D8F4365804 /* Object.swift */,
-				BBA8DD4D98A37E328562CC708DEEBC72 /* Protocols.swift */,
-				121B0AD5AD683B8F5C7E1ABE49D4FE3A /* Support Files */,
+				22CA2C44169AF6C8323C94BB7C50E7BF /* Info.plist */,
+				979F7EA29287A97A553BEBB1019381A1 /* SquareMosaicLayout.modulemap */,
+				8146AE30C7D052268AFF32E049CCFAC3 /* SquareMosaicLayout.xcconfig */,
+				40D5B1712D0A9760CE8BB03EF6FCCFD6 /* SquareMosaicLayout-dummy.m */,
+				69C9FE060486258A2392EB34131D7E10 /* SquareMosaicLayout-prefix.pch */,
+				E779982191423E87023F12C700774248 /* SquareMosaicLayout-umbrella.h */,
 			);
-			name = SquareMosaicLayout;
-			path = ../..;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SquareMosaicLayout";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -288,7 +302,7 @@
 /* Begin XCBuildConfiguration section */
 		1A509CD0FDFDF887D93FDF2AAA9AD67B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 198DF1A2ED743C5F9F9AEB284836B01E /* SquareMosaicLayout.xcconfig */;
+			baseConfigurationReference = 8146AE30C7D052268AFF32E049CCFAC3 /* SquareMosaicLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -504,7 +518,7 @@
 		};
 		ED1DE6D1F341453CA5FD4A0825ABB954 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 198DF1A2ED743C5F9F9AEB284836B01E /* SquareMosaicLayout.xcconfig */;
+			baseConfigurationReference = 8146AE30C7D052268AFF32E049CCFAC3 /* SquareMosaicLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

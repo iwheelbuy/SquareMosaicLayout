@@ -23,7 +23,7 @@ SquareMosaicLayout is available through [CocoaPods](http://cocoapods.org). To in
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SquareMosaicLayout', '4.1.0'
+pod 'SquareMosaicLayout', '4.1.1'
 ```
 
 ## Capabilities

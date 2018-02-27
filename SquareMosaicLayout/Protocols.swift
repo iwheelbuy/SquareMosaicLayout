@@ -107,6 +107,6 @@ public protocol SquareMosaicSupplementary {
 public extension SquareMosaicSupplementary {
     
     func supplementaryHiddenForEmptySection() -> Bool {
-        return true
+        return false
     }
 }
