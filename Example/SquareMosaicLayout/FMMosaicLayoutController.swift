@@ -37,7 +37,7 @@
 //
 //class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
 //    
-//    func patternBlocks() -> [SquareMosaicBlock] {
+//    func smlPatternBlocks() -> [SquareMosaicBlock] {
 //        return [
 //            FMMosaicLayoutCopyBlock1(),
 //            FMMosaicLayoutCopyBlock2(),

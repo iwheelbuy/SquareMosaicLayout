@@ -2,10 +2,10 @@ import SquareMosaicLayout
 
 let offset: CGFloat = 10.0
 
-class VerticalSupplementary: SquareMosaicSupplementary {
+class VerticalSupplementary: SMLSupplementary {
     
-    func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: origin, width: side, height: offset * 4)
+    func smlSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect {
+        return CGRect(x: 0, y: origin, width: aspect, height: offset * 4)
     }
 
     func supplementaryHiddenForEmptySection() -> Bool {
@@ -15,53 +15,53 @@ class VerticalSupplementary: SquareMosaicSupplementary {
 
 class VerticalMosaicPattern: SquareMosaicPattern {
     
-    func patternBlocks() -> [SquareMosaicBlock] {
+    func smlPatternBlocks() -> [SMLBlock] {
         return [
             VerticalOneTwoBlock(),
             VerticalTwoOneBlock(),
         ]
     }
     
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
         return position == .between ? offset : 0.0
     }
 }
 
 class VerticalTriplePattern: SquareMosaicPattern {
     
-    func patternBlocks() -> [SquareMosaicBlock] {
+    func smlPatternBlocks() -> [SMLBlock] {
         return [
             VerticalTripleBlock()
         ]
     }
     
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
         return position == .between ? offset : 0.0
     }
 }
 
 class VerticalSinglePattern: SquareMosaicPattern {
     
-    func patternBlocks() -> [SquareMosaicBlock] {
+    func smlPatternBlocks() -> [SMLBlock] {
         return [
             VerticalSingleBlock()
         ]
     }
     
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
         return position == .between ? offset : 0.0
     }
 }
 
-public class VerticalOneTwoBlock: SquareMosaicBlock {
+public class VerticalOneTwoBlock: SMLBlock {
     
-    public func blockFrames() -> Int {
+    public func smlBlockCapacity() -> Int {
         return 3
     }
     
-    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
-        let min = (side - offset * 4) / 3.0
-        let max = side - min - offset * 3
+    public func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
+        let min = (aspect - offset * 4) / 3.0
+        let max = aspect - min - offset * 3
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: max, height: max))
         frames.append(CGRect(x: max + offset * 2, y: origin, width: min, height: min))
@@ -70,15 +70,15 @@ public class VerticalOneTwoBlock: SquareMosaicBlock {
     }
 }
 
-public class VerticalTwoOneBlock: SquareMosaicBlock {
+public class VerticalTwoOneBlock: SMLBlock {
     
-    public func blockFrames() -> Int {
+    public func smlBlockCapacity() -> Int {
         return 3
     }
     
-    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
-        let min = (side - offset * 4) / 3.0
-        let max = side - min - offset * 3
+    public func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
+        let min = (aspect - offset * 4) / 3.0
+        let max = aspect - min - offset * 3
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: min, height: min))
         frames.append(CGRect(x: offset, y: origin + offset + min, width: min, height: min))
@@ -87,14 +87,14 @@ public class VerticalTwoOneBlock: SquareMosaicBlock {
     }
 }
 
-public class VerticalTripleBlock: SquareMosaicBlock {
+public class VerticalTripleBlock: SMLBlock {
     
-    public func blockFrames() -> Int {
+    public func smlBlockCapacity() -> Int {
         return 3
     }
     
-    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
-        let min = (side - offset * 4) / 3.0
+    public func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
+        let min = (aspect - offset * 4) / 3.0
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: min, height: min))
         frames.append(CGRect(x: min + offset * 2, y: origin, width: min, height: min))
@@ -107,15 +107,15 @@ public class VerticalTripleBlock: SquareMosaicBlock {
     }
 }
 
-public class VerticalSingleBlock: SquareMosaicBlock {
+public class VerticalSingleBlock: SMLBlock {
     
-    public func blockFrames() -> Int {
+    public func smlBlockCapacity() -> Int {
         return 1
     }
     
-    public func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect] {
+    public func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
         var frames = [CGRect]()
-        frames.append(CGRect(x: offset, y: origin, width: side - offset - offset, height: side - offset - offset))
+        frames.append(CGRect(x: offset, y: origin, width: aspect - offset - offset, height: aspect - offset - offset))
         return frames
     }
     

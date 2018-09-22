@@ -37,14 +37,14 @@
 //
 //class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
 //    
-//    func patternBlocks() -> [SquareMosaicBlock] {
+//    func smlPatternBlocks() -> [SquareMosaicBlock] {
 //        return [
 //            TRMosaicLayoutCopyBlock1(),
 //            TRMosaicLayoutCopyBlock2()
 //        ]
 //    }
 //    
-//    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+//    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
 //        return 0.0
 //    }
 //}

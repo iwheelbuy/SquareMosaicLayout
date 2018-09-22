@@ -84,21 +84,21 @@
 //        return 60.0
 //    }
 //    
-//    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+//    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary? {
 //        return HungcaoSupplementary()
 //    }
 //}
 //
-//final class HungcaoSupplementary: SquareMosaicSupplementary {
+//final class HungcaoSupplementary: SMLSupplementary {
 //    
-//    func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect {
+//    func smlSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect {
 //        return CGRect(x: 0, y: origin, width: side, height: 60)
 //    }
 //}
 //
 //final class HungcaoPattern: SquareMosaicPattern {
 //    
-//    func patternBlocks() -> [SquareMosaicBlock] {
+//    func smlPatternBlocks() -> [SquareMosaicBlock] {
 //        return [HungcaoBlock()]
 //    }
 //}

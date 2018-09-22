@@ -69,31 +69,54 @@ extension SquareMosaicObject {
 
 // MARK: - Internal
 
-fileprivate extension Pattern {
+private extension Array {
     
-    func blocks(_ expectedFramesTotalCount: Int) -> [Block] {
-        var blocks: [Block] = patternBlocks()
+    mutating func drop(from index: Int) {
+        self = []
+    }
+}
+
+private extension Pattern {
+    
+    func blocks(_ expectedFrames: Int) -> [SMLBlock] {
+        let blocks: [SMLBlock] = smlPatternBlocks()
+        let blocksNoRepeat = blocks.prefix(while: { $0.smlBlockRepeated() == false })
+        let blocksNoRepeatFrames = blocksNoRepeat.map({ $0.smlBlockCapacity() }).reduce(0, +)
+        switch blocksNoRepeat.indices.count < blocks.count {
+        case true:
+            guard blocksNoRepeatFrames < expectedFrames else {
+                return Array(blocksNoRepeat)
+            }
+            let blockToRepeat = blocks[blocksNoRepeat.endIndex]
+            let blockToRepeatFrames = blockToRepeat.smlBlockCapacity()
+            let blockToRepeatRange = 0 ... (expectedFrames - blocksNoRepeatFrames) / blockToRepeatFrames
+            return Array(blocksNoRepeat) + Array(blockToRepeatRange).map({ _ in blockToRepeat })
+        case false:
+            let blocksNoRepeatRange = 0 ... expectedFrames / blocksNoRepeatFrames
+            return Array<Int>(blocksNoRepeatRange).map({ _ in Array(blocksNoRepeat) }).flatMap({ $0 })
+        }
+        /*
         if let index = blocks.enumerated().first(where: { $0.element.blockRepeated() == true })?.offset {
             let blockToRepeat = blocks[index]
             blocks = Array(blocks[0 ..< index])
             let frames: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
             let framesToRepeat = blockToRepeat.blockFrames()
             var count: Int = frames
-            while (count < expectedFramesTotalCount) {
+            while (count < expectedFrames) {
                 blocks.append(blockToRepeat)
                 count += framesToRepeat
             }
             return blocks
         } else {
             let frames: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
-            var array = [Block]()
+            var array = [SquareMosaicBlock]()
             var count: Int = 0
             repeat {
                 array.append(contentsOf: blocks)
                 count += frames
-            } while (count < expectedFramesTotalCount)
+            } while (count < expectedFrames)
             return array
-        }
+        }*/
     }
 }
 
@@ -155,9 +178,10 @@ private func getAttributesCells(_ pattern: Pattern, direction: SMLDirection, _ o
             append += separator
             origin += separator
         }
-        let frames = block.blockFrames(origin: origin, side: direction.smlDirectionAspect())
+        let aspect = direction.smlDirectionAspect()
+        let frames = block.smlBlockFrames(aspect: aspect, origin: origin)
         var total: CGFloat = 0
-        for x in 0..<block.blockFrames() {
+        for x in 0 ..< block.smlBlockCapacity() {
             guard row < rows else { break }
             let indexPath = IndexPath(row: row, section: section)
             let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
@@ -217,16 +241,17 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, source: SMLSo
         guard rows > 0 || supplementary.supplementaryHiddenForEmptySection() == false else {
             return nil
         }
+        let aspect = direction.smlDirectionAspect()
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         var separator: CGFloat
         attributes.zIndex = 1
         switch direction.smlDirectionVertical() {
         case true:
-            attributes.frame = supplementary.supplementaryFrame(for: origin, side: direction.smlDirectionAspect())
+            attributes.frame = supplementary.smlSupplementaryFrame(aspect: aspect, origin: origin)
             separator =  attributes.frame.origin.y + attributes.frame.height - origin
         case false:
-            attributes.frame = supplementary.supplementaryFrame(for: origin, side: direction.smlDirectionAspect())
+            attributes.frame = supplementary.smlSupplementaryFrame(aspect: aspect, origin: origin)
             separator =  attributes.frame.origin.x + attributes.frame.width - origin
         }
         return (attributes, separator)
@@ -284,16 +309,16 @@ private func getSeparatorBeforeSection(source: SMLSource, section: Int, sections
     }
 }
 
-private func getSeparatorBlock(_ position: BlockSeparatorPosition, blocks: Int = 0, index: Int = 0, pattern: Pattern, rows: Int = 0) -> CGFloat? {
+private func getSeparatorBlock(_ position: SMLPosition, blocks: Int = 0, index: Int = 0, pattern: Pattern, rows: Int = 0) -> CGFloat? {
     switch (position, rows > 0, index > 0 && index < blocks) {
     case (.before, true, _), (.between, _, true), (.after, true, _):
-        return pattern.patternBlocksSeparator(at: position)
+        return pattern.smlPatternSpacing(position: position)
     default:
         return nil
     }
 }
 
-private func getSupplementary(_ kind: SupplementaryKind, source: SMLSource, section: Int) -> Supplementary? {
+private func getSupplementary(_ kind: SupplementaryKind, source: SMLSource, section: Int) -> SMLSupplementary? {
     switch kind {
     case .footer:
         return source.layoutSupplementaryFooter(for: section)

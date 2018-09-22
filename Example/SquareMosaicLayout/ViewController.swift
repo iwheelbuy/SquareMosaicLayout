@@ -88,11 +88,11 @@ final class Layout: SquareMosaicLayout, SquareMosaicLayoutSource {
         return true
     }
     
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
+    func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary? {
         return VerticalSupplementary()
     }
     
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary? {
         return VerticalSupplementary()
     }
 }

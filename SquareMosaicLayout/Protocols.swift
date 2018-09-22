@@ -1,28 +1,26 @@
 import Foundation
 
-// MARK: - SquareMosaicBlock
+// MARK: -
 
-typealias Block = SquareMosaicBlock
-
-public protocol SquareMosaicBlock {
-    
-    func blockFrames() -> Int
-    func blockFrames(origin: CGFloat, side: CGFloat) -> [CGRect]
-    func blockRepeated() -> Bool
+public protocol SMLBlock {
+    ///
+    func smlBlockCapacity() -> Int
+    ///
+    func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect]
+    ///
+    func smlBlockRepeated() -> Bool
 }
 
-public extension SquareMosaicBlock {
+public extension SMLBlock {
     
-    func blockRepeated() -> Bool {
+    func smlBlockRepeated() -> Bool {
         return false
     }
 }
 
-// MARK: - SquareMosaicBlockSeparatorPosition
+// MARK: - SMLPosition
 
-typealias BlockSeparatorPosition = SquareMosaicBlockSeparatorPosition
-
-public enum SquareMosaicBlockSeparatorPosition: Int {
+public enum SMLPosition: Int {
     
     case after, before, between
 }
@@ -36,8 +34,8 @@ public protocol SquareMosaicLayoutSource: class {
     func layoutPattern(for section: Int) -> SquareMosaicPattern
     func layoutSeparatorBetweenSections() -> CGFloat
     func layoutSupplementaryBackerRequired(for section: Int) -> Bool
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary?
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
+    func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary?
+    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary?
 }
 
 public extension SquareMosaicLayoutSource {
@@ -50,20 +48,18 @@ public extension SquareMosaicLayoutSource {
         return false
     }
     
-    func layoutSupplementaryFooter(for section: Int) -> SquareMosaicSupplementary? {
+    func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary? {
         return nil
     }
     
-    func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary? {
+    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary? {
         return nil
     }
 }
 
-// MARK: - SquareMosaicLayoutDelegate
+// MARK: - SMLDelegate
 
-typealias Delegate = SquareMosaicLayoutDelegate
-
-public protocol SquareMosaicLayoutDelegate: class {
+public protocol SMLDelegate: class {
     
     func layoutContentSizeChanged(to size: CGSize) -> Void
 }
@@ -81,28 +77,27 @@ typealias Pattern = SquareMosaicPattern
 
 public protocol SquareMosaicPattern {
     
-    func patternBlocks() -> [SquareMosaicBlock]
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat
+    func smlPatternBlocks() -> [SMLBlock]
+    func smlPatternSpacing(position: SMLPosition) -> CGFloat
 }
 
 public extension SquareMosaicPattern {
     
-    func patternBlocksSeparator(at position: SquareMosaicBlockSeparatorPosition) -> CGFloat {
+    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
         return 0
     }
 }
 
-// MARK: - SquareMosaicSupplementary
+// MARK: - SMLSupplementary
 
-typealias Supplementary = SquareMosaicSupplementary
-
-public protocol SquareMosaicSupplementary {
+public protocol SMLSupplementary {
     
-    func supplementaryFrame(for origin: CGFloat, side: CGFloat) -> CGRect
+//    func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect]
+    func smlSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect
     func supplementaryHiddenForEmptySection() -> Bool
 }
 
-public extension SquareMosaicSupplementary {
+public extension SMLSupplementary {
     
     func supplementaryHiddenForEmptySection() -> Bool {
         return false

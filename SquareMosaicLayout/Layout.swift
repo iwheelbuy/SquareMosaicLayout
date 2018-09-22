@@ -17,7 +17,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     private var object: SquareMosaicObject? = nil
     private let vertical: Bool
     public weak var source: SquareMosaicLayoutSource?
-    public weak var delegate: SquareMosaicLayoutDelegate? {
+    public weak var delegate: SMLDelegate? {
         didSet {
             delegate?.layoutContentSizeChanged(to: collectionViewContentSize)
         }
