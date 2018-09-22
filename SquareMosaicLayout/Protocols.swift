@@ -27,11 +27,11 @@ public enum SquareMosaicBlockSeparatorPosition: Int {
     case after, before, between
 }
 
-// MARK: - SquareMosaicDataSource
+// MARK: - SquareMosaicLayoutSource
 
-typealias DataSource = SquareMosaicDataSource
+typealias DataSource = SquareMosaicLayoutSource
 
-public protocol SquareMosaicDataSource: class {
+public protocol SquareMosaicLayoutSource: class {
     
     func layoutPattern(for section: Int) -> SquareMosaicPattern
     func layoutSeparatorBetweenSections() -> CGFloat
@@ -40,7 +40,7 @@ public protocol SquareMosaicDataSource: class {
     func layoutSupplementaryHeader(for section: Int) -> SquareMosaicSupplementary?
 }
 
-public extension SquareMosaicDataSource {
+public extension SquareMosaicLayoutSource {
     
     func layoutSeparatorBetweenSections() -> CGFloat {
         return 0
@@ -59,18 +59,16 @@ public extension SquareMosaicDataSource {
     }
 }
 
-// MARK: - SquareMosaicDelegate
+// MARK: - SquareMosaicLayoutDelegate
 
-typealias Delegate = SquareMosaicDelegate
+typealias Delegate = SquareMosaicLayoutDelegate
 
-public protocol SquareMosaicDelegate: class {
+public protocol SquareMosaicLayoutDelegate: class {
     
     func layoutContentSizeChanged(to size: CGSize) -> Void
 }
 
 // MARK: - SquareMosaicDirection
-
-typealias Direction = SquareMosaicDirection
 
 public enum SquareMosaicDirection: Int {
     

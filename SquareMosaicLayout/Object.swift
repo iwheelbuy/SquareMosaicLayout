@@ -38,11 +38,11 @@ final class SquareMosaicObject {
     fileprivate let attributes: Attributes
     let contentSize: CGFloat
     
-    init?(_ numberOfItemsInSections: [Int], _ dataSource: DataSource?, _ direction: Direction, _ size: CGSize) {
-        guard let dataSource = dataSource else {
+    init?(dimension: SMLDimension, source: DataSource?, _ direction: SMLDirection) {
+        guard let source = source else {
             return nil
         }
-        let attributesAndContentSize = getAttributesAndContentSize(numberOfItemsInSections, dataSource, direction, size)
+        let attributesAndContentSize = getAttributesAndContentSize(numberOfItemsInSections: dimension.numberOfItemsInSections, source: source, direction)
         attributes = attributesAndContentSize.attributes
         contentSize = attributesAndContentSize.contentSize
     }
@@ -99,27 +99,27 @@ fileprivate extension Pattern {
 
 // MARK: -
 
-private func getAttributesAndContentSize(_ numberOfItemsInSections: [Int], _ dataSource: DataSource, _ direction: Direction, _ size: CGSize) -> (attributes: Attributes, contentSize: CGFloat) {
+private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source: DataSource, _ direction: SMLDirection) -> (attributes: Attributes, contentSize: CGFloat) {
     var attributesCell = [[UICollectionViewLayoutAttributes]](repeating: [], count: numberOfItemsInSections.count)
     var attributesSupplementary = [UICollectionViewLayoutAttributes]()
     var origin: CGFloat = 0
-    let sectionsNonEmpty = getSectionsNonEmpty(dataSource, numberOfItemsInSections)
+    let sectionsNonEmpty = getSectionsNonEmpty(source: source, numberOfItemsInSections: numberOfItemsInSections)
     for (rows, section) in Array(0 ..< numberOfItemsInSections.count).map({ (numberOfItemsInSections[$0], $0) }) {
-        if let separator = getSeparatorBeforeSection(dataSource, section: section, sectionsNonEmpty: sectionsNonEmpty) {
+        if let separator = getSeparatorBeforeSection(source: source, section: section, sectionsNonEmpty: sectionsNonEmpty) {
             origin += separator
         }
         let sectionOrigin = origin
-        if let (attributes, separator) = getAttributesSupplementary(.header, dataSource, direction, origin, rows: rows, section, size) {
+        if let (attributes, separator) = getAttributesSupplementary(.header, source: source, direction, origin, rows: rows, section) {
             if let separator = separator {
                 origin += separator
             }
             attributesSupplementary.append(attributes)
         }
-        let pattern: Pattern = dataSource.layoutPattern(for: section)
+        let pattern: Pattern = source.layoutPattern(for: section)
         if let separator = getSeparatorBlock(.before, pattern: pattern, rows: rows) {
             origin += separator
         }
-        if let (attributes, separator) = getAttributesCells(pattern, direction, origin, rows, section, size) {
+        if let (attributes, separator) = getAttributesCells(pattern, direction, origin, rows, section) {
             if let separator = separator {
                 origin += separator
             }
@@ -128,20 +128,20 @@ private func getAttributesAndContentSize(_ numberOfItemsInSections: [Int], _ dat
         if let separator = getSeparatorBlock(.after, pattern: pattern, rows: rows) {
             origin += separator
         }
-        if let (attributes, separator) = getAttributesSupplementary(.footer, dataSource, direction, origin, rows: rows, section, size) {
+        if let (attributes, separator) = getAttributesSupplementary(.footer, source: source, direction, origin, rows: rows, section) {
             if let separator = separator {
                 origin += separator
             }
             attributesSupplementary.append(attributes)
         }
-        if let (attributes, _) = getAttributesSupplementary(.backer, dataSource, direction, origin, section, sectionOrigin: sectionOrigin, size) {
+        if let (attributes, _) = getAttributesSupplementary(.backer, source: source, direction, origin, section, sectionOrigin: sectionOrigin) {
             attributesSupplementary.append(attributes)
         }
     }
     return (Attributes(cell: attributesCell, supplementary: attributesSupplementary), origin)
 }
 
-private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ origin: CGFloat, _ rows: Int, _ section: Int, _ size: CGSize) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
+private func getAttributesCells(_ pattern: Pattern, _ direction: SMLDirection, _ origin: CGFloat, _ rows: Int, _ section: Int) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
     var append: CGFloat = 0
     var attributes = [UICollectionViewLayoutAttributes]()
     var origin = origin
@@ -155,8 +155,7 @@ private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ or
             append += separator
             origin += separator
         }
-        let side = direction == .vertical ? size.width : size.height
-        let frames = block.blockFrames(origin: origin, side: side)
+        let frames = block.blockFrames(origin: origin, side: direction.smlDirectionAspect())
         var total: CGFloat = 0
         for x in 0..<block.blockFrames() {
             guard row < rows else { break }
@@ -164,11 +163,11 @@ private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ or
             let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attribute.frame = frames[x]
             attribute.zIndex = 0
-            switch direction {
-            case .vertical:
+            switch direction.smlDirectionVertical() {
+            case true:
                 let dy = attribute.frame.origin.y + attribute.frame.height - origin
                 total = dy > total ? dy : total
-            case .horizontal:
+            case false:
                 let dx = attribute.frame.origin.x + attribute.frame.width - origin
                 total = dx > total ? dx : total
             }
@@ -185,10 +184,10 @@ private func getAttributesCells(_ pattern: Pattern, _ direction: Direction, _ or
     }
 }
 
-private func getAttributesSupplementary(_ kind: SupplementaryKind, _ dataSource: DataSource, _ direction: Direction, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0, _ size: CGSize) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
+private func getAttributesSupplementary(_ kind: SupplementaryKind, source: DataSource, _ direction: SMLDirection, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
     switch kind {
     case .backer:
-        guard dataSource.layoutSupplementaryBackerRequired(for: section) == true else {
+        guard source.layoutSupplementaryBackerRequired(for: section) == true else {
             return nil
         }
         let side = origin - sectionOrigin
@@ -198,21 +197,21 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, _ dataSource:
         let indexPath = IndexPath(item: 0, section: section)
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         attributes.zIndex = -1
-        switch direction {
-        case .vertical:
+        switch direction.smlDirectionVertical() {
+        case true:
             attributes.frame = CGRect(
                 origin: CGPoint(x: 0.0, y: sectionOrigin),
-                size: CGSize(width: size.width, height: side)
+                size: CGSize(width: direction.smlDirectionAspect(), height: side)
             )
-        case .horizontal:
+        case false:
             attributes.frame = CGRect(
                 origin: CGPoint(x: sectionOrigin, y: 0.0),
-                size: CGSize(width: side, height: size.height)
+                size: CGSize(width: side, height: direction.smlDirectionAspect())
             )
         }
         return (attributes, nil)
     default:
-        guard let supplementary = getSupplementary(kind, dataSource: dataSource, section: section) else {
+        guard let supplementary = getSupplementary(kind, source: source, section: section) else {
             return nil
         }
         guard rows > 0 || supplementary.supplementaryHiddenForEmptySection() == false else {
@@ -222,36 +221,36 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, _ dataSource:
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind.value, with: indexPath)
         var separator: CGFloat
         attributes.zIndex = 1
-        switch direction {
-        case .vertical:
-            attributes.frame = supplementary.supplementaryFrame(for: origin, side: size.width)
+        switch direction.smlDirectionVertical() {
+        case true:
+            attributes.frame = supplementary.supplementaryFrame(for: origin, side: direction.smlDirectionAspect())
             separator =  attributes.frame.origin.y + attributes.frame.height - origin
-        case .horizontal:
-            attributes.frame = supplementary.supplementaryFrame(for: origin, side: size.height)
+        case false:
+            attributes.frame = supplementary.supplementaryFrame(for: origin, side: direction.smlDirectionAspect())
             separator =  attributes.frame.origin.x + attributes.frame.width - origin
         }
         return (attributes, separator)
     }
 }
 
-private func getSectionNonEmpty(_ dataSource: DataSource, _ rows: Int, _ section: Int) -> Bool {
+private func getSectionNonEmpty(source: DataSource, _ rows: Int, _ section: Int) -> Bool {
     if rows > 0 {
         return true
-    } else if dataSource.layoutSupplementaryHeader(for: section)?.supplementaryHiddenForEmptySection() == false {
+    } else if source.layoutSupplementaryHeader(for: section)?.supplementaryHiddenForEmptySection() == false {
         return true
-    } else if dataSource.layoutSupplementaryFooter(for: section)?.supplementaryHiddenForEmptySection() == false {
+    } else if source.layoutSupplementaryFooter(for: section)?.supplementaryHiddenForEmptySection() == false {
         return true
     } else {
         return false
     }
 }
 
-private func getSectionsNonEmpty(_ dataSource: DataSource, _ numberOfItemsInSections: [Int]) -> SectionsNonEmpty {
+private func getSectionsNonEmpty(source: DataSource, numberOfItemsInSections: [Int]) -> SectionsNonEmpty {
     let sectionsNonEmpty = numberOfItemsInSections
         .enumerated()
         .map({ (rows: $0.element, section: $0.offset) })
         .filter({ object -> Bool in
-            return getSectionNonEmpty(dataSource, object.rows, object.section)
+            return getSectionNonEmpty(source: source, object.rows, object.section)
         })
     switch sectionsNonEmpty.count {
     case 2...:
@@ -265,10 +264,10 @@ private func getSectionsNonEmpty(_ dataSource: DataSource, _ numberOfItemsInSect
     }
 }
 
-private func getSeparatorBeforeSection(_ dataSource: DataSource, section: Int, sectionsNonEmpty: SectionsNonEmpty) -> CGFloat? {
+private func getSeparatorBeforeSection(source: DataSource, section: Int, sectionsNonEmpty: SectionsNonEmpty) -> CGFloat? {
     switch sectionsNonEmpty {
     case .multiple(let sections):
-        let separator = dataSource.layoutSeparatorBetweenSections()
+        let separator = source.layoutSeparatorBetweenSections()
         switch separator {
         case ...0:
             return nil
@@ -294,12 +293,12 @@ private func getSeparatorBlock(_ position: BlockSeparatorPosition, blocks: Int =
     }
 }
 
-private func getSupplementary(_ kind: SupplementaryKind, dataSource: DataSource, section: Int) -> Supplementary? {
+private func getSupplementary(_ kind: SupplementaryKind, source: DataSource, section: Int) -> Supplementary? {
     switch kind {
     case .footer:
-        return dataSource.layoutSupplementaryFooter(for: section)
+        return source.layoutSupplementaryFooter(for: section)
     case .header:
-        return dataSource.layoutSupplementaryHeader(for: section)
+        return source.layoutSupplementaryHeader(for: section)
     default:
         return nil
     }

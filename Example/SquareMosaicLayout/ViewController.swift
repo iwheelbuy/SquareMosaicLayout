@@ -43,27 +43,34 @@ fileprivate extension ViewController {
     
     func getViewLayout() -> SquareMosaicLayout {
         switch viewControl.selectedSegmentIndex {
-        case 0:     return Layout(.vertical,    pattern: VerticalMosaicPattern())
-        case 1:     return Layout(.vertical,    pattern: VerticalTriplePattern())
-        default:    return Layout(.vertical,    pattern: VerticalSinglePattern())
+        case 0:
+            return Layout(vertical: true, pattern: VerticalMosaicPattern())
+        case 1:
+            return Layout(vertical: true, pattern: VerticalTriplePattern())
+        default:
+            return Layout(vertical: true, pattern: VerticalSinglePattern())
         }
     }
 }
 
-final class Layout: SquareMosaicLayout, SquareMosaicDataSource {
+final class Layout: SquareMosaicLayout, SquareMosaicLayoutSource {
     
-    let direction: SquareMosaicDirection
-    let pattern: SquareMosaicPattern
-    
-    required init(_ direction: SquareMosaicDirection, pattern: SquareMosaicPattern) {
-        self.direction = direction
-        self.pattern = pattern
-        super.init(direction: direction)
-        self.dataSource = self
-    }
-    
+    let vertical: Bool
+    var pattern: SquareMosaicPattern!
+
     required convenience init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(aspect: CGFloat? = nil, vertical: Bool, pattern: SquareMosaicPattern) {
+        self.init(aspect: aspect, vertical: vertical)
+        self.pattern = pattern
+    }
+    
+    required init(aspect: CGFloat?, vertical: Bool) {
+        self.vertical = vertical
+        super.init(aspect: aspect, vertical: vertical)
+        self.source = self
     }
     
     func layoutPattern(for section: Int) -> SquareMosaicPattern {

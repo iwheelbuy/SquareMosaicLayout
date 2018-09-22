@@ -1,41 +1,58 @@
 import UIKit
 
+extension UICollectionView {
+    
+    var desiredHeight: CGFloat {
+        return bounds.height - contentInset.top - contentInset.bottom
+    }
+    
+    var desiredWidth: CGFloat {
+        return bounds.width - contentInset.left - contentInset.right
+    }
+}
+
 open class SquareMosaicLayout: UICollectionViewLayout {
-    
-    fileprivate let collectionViewForcedSize: CGSize?
-    fileprivate let direction: SquareMosaicDirection
-    fileprivate var object: SquareMosaicObject? = nil
-    
-    public weak var dataSource: SquareMosaicDataSource?
-    public weak var delegate: SquareMosaicDelegate? {
+
+    private let aspect: CGFloat?
+    private var object: SquareMosaicObject? = nil
+    private let vertical: Bool
+    public weak var source: SquareMosaicLayoutSource?
+    public weak var delegate: SquareMosaicLayoutDelegate? {
         didSet {
             delegate?.layoutContentSizeChanged(to: collectionViewContentSize)
         }
     }
     
     override open var collectionViewContentSize: CGSize {
-        switch direction {
-        case .horizontal:
-            return collectionViewContentSizeHorizontal
-        case .vertical:
-            return collectionViewContentSizeVertical
+        switch collectionView {
+        case .some(let collectionView):
+            switch vertical {
+            case false:
+                return CGSize(width: object?.contentSize ?? 0, height: collectionView.desiredHeight)
+            case true:
+                return CGSize(width: collectionView.desiredWidth, height: object?.contentSize ?? 0)
+            }
+        case .none:
+            return .zero
         }
     }
     
-    public init(direction: SquareMosaicDirection = .vertical, size collectionViewForcedSize: CGSize? = nil) {
-        self.collectionViewForcedSize = collectionViewForcedSize
-        self.direction = direction
+    public required init(aspect: CGFloat? = nil, vertical: Bool = true) {
+        self.aspect = aspect
+        self.vertical = vertical
         super.init()
     }
     
-    public convenience required init?(coder aDecoder: NSCoder) {
+    public required convenience init?(coder aDecoder: NSCoder) {
         self.init()
     }
     
     open override func prepare() {
-        let numberOfItemsInSections = collectionView?.numberOfItemsInSections ?? []
-        let size = collectionViewContentSize
-        object = SquareMosaicObject(numberOfItemsInSections, dataSource, direction, size)
+        if let dimension = self.dimension, let direction = self.direction {
+            self.object = SquareMosaicObject(dimension: dimension, source: source, direction)
+        } else {
+            self.object = nil
+        }
     }
 
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -55,39 +72,25 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     }
 }
 
-fileprivate extension SquareMosaicLayout {
+private extension SquareMosaicLayout {
     
-    var collectionViewContentSizeHorizontal: CGSize {
-        let width = object?.contentSize ?? 0.0
-        let height = collectionViewForcedSize?.height ?? collectionView?.collectionViewVisibleContentHeight ?? 0.0
-        return CGSize(width: width, height: height)
-    }
-    
-    var collectionViewContentSizeVertical: CGSize {
-        let height = object?.contentSize ?? 0.0
-        let width = collectionViewForcedSize?.width ?? collectionView?.collectionViewVisibleContentWidth ?? 0.0
-        return CGSize(width: width, height: height)
-    }
-}
-
-fileprivate extension UICollectionView {
-    
-    var collectionViewVisibleContentHeight: CGFloat {
-        return bounds.height - contentInset.top - contentInset.bottom
-    }
-    
-    var collectionViewVisibleContentWidth: CGFloat {
-        return bounds.width - contentInset.left - contentInset.right
-    }
-}
-
-fileprivate extension UICollectionView {
-
-    var numberOfItemsInSections: [Int] {
-        var array = [Int](repeating: 0, count: numberOfSections)
-        for section in 0 ..< numberOfSections {
-            array[section] = numberOfItems(inSection: section)
+    var dimension: SMLDimension? {
+        switch collectionView {
+        case .some(let collectionView):
+            return Dimension(collectionView: collectionView)
+        case .none:
+            return nil
         }
-        return array
+    }
+    
+    var direction: SMLDirection? {
+        if let aspect = self.aspect {
+            return Direction(aspect: aspect, vertical: vertical)
+        }
+        guard let collectionView = collectionView else {
+            return nil
+        }
+        let aspect = vertical ? collectionView.desiredWidth : collectionView.desiredHeight
+        return Direction(aspect: aspect, vertical: vertical)
     }
 }

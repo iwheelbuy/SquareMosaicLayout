@@ -23,7 +23,7 @@ SquareMosaicLayout is available through [CocoaPods](http://cocoapods.org). To in
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SquareMosaicLayout', '4.1.1'
+pod 'SquareMosaicLayout', '5.0.0'
 ```
 
 ## Capabilities
@@ -48,11 +48,11 @@ SquareMosaicLayout is available under the MIT license. See the [LICENSE](https:/
 ## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
 
 ```swift
-final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
+final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicLayoutSource {
     
     convenience init() {
         self.init(direction: SquareMosaicDirection.vertical)
-        self.dataSource = self
+        self.source = self
     }
 
     func layoutPattern(for section: Int) -> SquareMosaicPattern {
@@ -112,11 +112,11 @@ public class TRMosaicLayoutCopyBlock2: SquareMosaicBlock {
 ## Example - copying [FMMosaicLayout](https://github.com/fmitech/FMMosaicLayout)
 
 ```swift
-final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicDataSource {
+final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicLayoutSource {
     
     convenience init() {
         self.init(direction: SquareMosaicDirection.vertical)
-        self.dataSource = self
+        self.source = self
     }
     
     func layoutPattern(for section: Int) -> SquareMosaicPattern {

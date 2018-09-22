@@ -11,13 +11,14 @@ extension AppDelegate {
         let controllerTab = UITabBarController()
         let controllerExample = UINavigationController(rootViewController: ViewController())
         controllerExample.title = "Example"
-        let controllerTRMosaicLayoutCopy = UINavigationController(rootViewController: TRMosaicLayoutCopyController())
-        controllerTRMosaicLayoutCopy.title = "TRMosaicLayout"
-        let controllerFMMosaicLayoutCopy = UINavigationController(rootViewController: FMMosaicLayoutCopyController())
-        controllerFMMosaicLayoutCopy.title = "FMMosaicLayout"
-        let controllerHungcao = UINavigationController(rootViewController: Hungcao())
-        controllerHungcao.title = "Hungcao"
-        controllerTab.setViewControllers([controllerExample, controllerTRMosaicLayoutCopy, controllerFMMosaicLayoutCopy, controllerHungcao], animated: false)
+//        let controllerTRMosaicLayoutCopy = UINavigationController(rootViewController: TRMosaicLayoutCopyController())
+//        controllerTRMosaicLayoutCopy.title = "TRMosaicLayout"
+//        let controllerFMMosaicLayoutCopy = UINavigationController(rootViewController: FMMosaicLayoutCopyController())
+//        controllerFMMosaicLayoutCopy.title = "FMMosaicLayout"
+//        let controllerHungcao = UINavigationController(rootViewController: Hungcao())
+//        controllerHungcao.title = "Hungcao"
+//        controllerTab.setViewControllers([controllerExample, controllerTRMosaicLayoutCopy, controllerFMMosaicLayoutCopy, controllerHungcao], animated: false)
+        controllerTab.setViewControllers([controllerExample], animated: false)
         window?.rootViewController = controllerTab
         window?.makeKeyAndVisible()
         return true
