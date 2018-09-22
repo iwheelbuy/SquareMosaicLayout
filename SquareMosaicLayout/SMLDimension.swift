@@ -1,16 +1,9 @@
-//
-//  File.swift
-//  Pods
-//
-//  Created by Vasilyev Mikhail on 22.09.2018.
-//
-
 import Foundation
 
 protocol SMLDimension {
     
-    func smlNumberOfItems(section: Int) -> Int
-    func smlNumberOfSection() -> Int
+    func smlDimensionItems(section: Int) -> Int
+    func smlDimensionSections() -> Int
     
     var numberOfItemsInSections: [Int] { get }
 }
@@ -30,40 +23,15 @@ struct Dimension: SMLDimension {
         }
     }
     
-    func smlNumberOfItems(section: Int) -> Int {
+    func smlDimensionItems(section: Int) -> Int {
         return array.count > section ? array[section] : 0
     }
     
-    func smlNumberOfSection() -> Int {
+    func smlDimensionSections() -> Int {
         return array.count
     }
     
     var numberOfItemsInSections: [Int] {
         return array
-    }
-}
-
-protocol SMLDirection {
-    
-    func smlDirectionAspect() -> CGFloat
-    func smlDirectionVertical() -> Bool
-}
-
-struct Direction: SMLDirection {
-    
-    let aspect: CGFloat
-    let vertical: Bool
-    
-    init(aspect: CGFloat, vertical: Bool) {
-        self.aspect = aspect
-        self.vertical = vertical
-    }
-    
-    func smlDirectionAspect() -> CGFloat {
-        return aspect
-    }
-    
-    func smlDirectionVertical() -> Bool {
-        return vertical
     }
 }

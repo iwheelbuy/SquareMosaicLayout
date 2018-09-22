@@ -19,7 +19,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     public weak var source: SMLSource?
     public weak var delegate: SMLDelegate? {
         didSet {
-            delegate?.layoutContentSizeChanged(to: collectionViewContentSize)
+            delegate?.smlDelegateChanged(collectionViewContentSize: collectionViewContentSize)
         }
     }
     

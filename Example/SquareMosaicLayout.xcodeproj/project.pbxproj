@@ -70,6 +70,7 @@
 		A1F382318EEA77CD3B2193CA /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21E9ED64D9F3C18E1DDEF88 /* Pods_SquareMosaicLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12B7CBE2D15DCBE0D35E126 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		CCC15BDA21569BD900E4FB0A /* SquareMosaicLayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SquareMosaicLayout; path = ../SquareMosaicLayout; sourceTree = "<group>"; };
 		DA182A60400C96148F6947B4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DE1CDE085D9E5FAFACDC86D6 /* Pods-SquareMosaicLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquareMosaicLayout_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SquareMosaicLayout_Example/Pods-SquareMosaicLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				7A478CEC1E1560FE00F52C72 /* Default-568h@2x.png */,
+				CCC15BDA21569BD900E4FB0A /* SquareMosaicLayout */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SquareMosaicLayout */,
 				607FACD11AFB9204008FA782 /* Products */,
