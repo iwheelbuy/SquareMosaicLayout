@@ -29,7 +29,7 @@ public enum SquareMosaicBlockSeparatorPosition: Int {
 
 // MARK: - SquareMosaicLayoutSource
 
-typealias DataSource = SquareMosaicLayoutSource
+typealias SMLSource = SquareMosaicLayoutSource
 
 public protocol SquareMosaicLayoutSource: class {
     

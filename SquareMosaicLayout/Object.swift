@@ -38,7 +38,7 @@ final class SquareMosaicObject {
     fileprivate let attributes: Attributes
     let contentSize: CGFloat
     
-    init?(dimension: SMLDimension, source: DataSource?, direction: SMLDirection) {
+    init?(dimension: SMLDimension, source: SMLSource?, direction: SMLDirection) {
         guard let source = source else {
             return nil
         }
@@ -99,7 +99,7 @@ fileprivate extension Pattern {
 
 // MARK: -
 
-private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source: DataSource, direction: SMLDirection) -> (attributes: Attributes, contentSize: CGFloat) {
+private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source: SMLSource, direction: SMLDirection) -> (attributes: Attributes, contentSize: CGFloat) {
     var attributesCell = [[UICollectionViewLayoutAttributes]](repeating: [], count: numberOfItemsInSections.count)
     var attributesSupplementary = [UICollectionViewLayoutAttributes]()
     var origin: CGFloat = 0
@@ -184,7 +184,7 @@ private func getAttributesCells(_ pattern: Pattern, direction: SMLDirection, _ o
     }
 }
 
-private func getAttributesSupplementary(_ kind: SupplementaryKind, source: DataSource, direction: SMLDirection, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
+private func getAttributesSupplementary(_ kind: SupplementaryKind, source: SMLSource, direction: SMLDirection, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
     switch kind {
     case .backer:
         guard source.layoutSupplementaryBackerRequired(for: section) == true else {
@@ -233,7 +233,7 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, source: DataS
     }
 }
 
-private func getSectionNonEmpty(source: DataSource, _ rows: Int, _ section: Int) -> Bool {
+private func getSectionNonEmpty(source: SMLSource, _ rows: Int, _ section: Int) -> Bool {
     if rows > 0 {
         return true
     } else if source.layoutSupplementaryHeader(for: section)?.supplementaryHiddenForEmptySection() == false {
@@ -245,7 +245,7 @@ private func getSectionNonEmpty(source: DataSource, _ rows: Int, _ section: Int)
     }
 }
 
-private func getSectionsNonEmpty(source: DataSource, numberOfItemsInSections: [Int]) -> SectionsNonEmpty {
+private func getSectionsNonEmpty(source: SMLSource, numberOfItemsInSections: [Int]) -> SectionsNonEmpty {
     let sectionsNonEmpty = numberOfItemsInSections
         .enumerated()
         .map({ (rows: $0.element, section: $0.offset) })
@@ -264,7 +264,7 @@ private func getSectionsNonEmpty(source: DataSource, numberOfItemsInSections: [I
     }
 }
 
-private func getSeparatorBeforeSection(source: DataSource, section: Int, sectionsNonEmpty: SectionsNonEmpty) -> CGFloat? {
+private func getSeparatorBeforeSection(source: SMLSource, section: Int, sectionsNonEmpty: SectionsNonEmpty) -> CGFloat? {
     switch sectionsNonEmpty {
     case .multiple(let sections):
         let separator = source.layoutSeparatorBetweenSections()
@@ -293,7 +293,7 @@ private func getSeparatorBlock(_ position: BlockSeparatorPosition, blocks: Int =
     }
 }
 
-private func getSupplementary(_ kind: SupplementaryKind, source: DataSource, section: Int) -> Supplementary? {
+private func getSupplementary(_ kind: SupplementaryKind, source: SMLSource, section: Int) -> Supplementary? {
     switch kind {
     case .footer:
         return source.layoutSupplementaryFooter(for: section)
