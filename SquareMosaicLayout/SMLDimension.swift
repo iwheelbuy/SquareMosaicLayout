@@ -1,14 +1,6 @@
 import Foundation
 
-protocol SMLDimension {
-    
-    func smlDimensionItems(section: Int) -> Int
-    func smlDimensionSections() -> Int
-    
-    var numberOfItemsInSections: [Int] { get }
-}
-
-struct Dimension: SMLDimension {
+struct SMLDimension {
     
     private let array: [Int]
     

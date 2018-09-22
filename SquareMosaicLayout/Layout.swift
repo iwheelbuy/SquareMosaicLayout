@@ -14,7 +14,7 @@ extension UICollectionView {
 open class SquareMosaicLayout: UICollectionViewLayout {
 
     private let aspect: CGFloat?
-    private var object: SquareMosaicObject? = nil
+    private var object: SMLObject? = nil
     private let vertical: Bool
     public weak var source: SMLSource?
     public weak var delegate: SMLDelegate? {
@@ -49,7 +49,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     
     open override func prepare() {
         if let dimension = self.dimension, let direction = self.direction {
-            self.object = SquareMosaicObject(dimension: dimension, source: source, direction: direction)
+            self.object = SMLObject(dimension: dimension, source: source, direction: direction)
         } else {
             self.object = nil
         }
@@ -77,7 +77,7 @@ private extension SquareMosaicLayout {
     var dimension: SMLDimension? {
         switch collectionView {
         case .some(let collectionView):
-            return Dimension(collectionView: collectionView)
+            return SMLDimension(collectionView: collectionView)
         case .none:
             return nil
         }
@@ -85,12 +85,12 @@ private extension SquareMosaicLayout {
     
     var direction: SMLDirection? {
         if let aspect = self.aspect {
-            return Direction(aspect: aspect, vertical: vertical)
+            return SMLDirection(aspect: aspect, vertical: vertical)
         }
         guard let collectionView = collectionView else {
             return nil
         }
         let aspect = vertical ? collectionView.desiredWidth : collectionView.desiredHeight
-        return Direction(aspect: aspect, vertical: vertical)
+        return SMLDirection(aspect: aspect, vertical: vertical)
     }
 }

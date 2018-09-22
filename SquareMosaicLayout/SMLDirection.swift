@@ -1,12 +1,6 @@
 import Foundation
 
-protocol SMLDirection {
-    
-    func smlDirectionAspect() -> CGFloat
-    func smlDirectionVertical() -> Bool
-}
-
-struct Direction: SMLDirection {
+struct SMLDirection {
     
     let aspect: CGFloat
     let vertical: Bool

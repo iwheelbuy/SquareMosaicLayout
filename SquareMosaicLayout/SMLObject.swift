@@ -33,7 +33,7 @@ fileprivate struct Attributes {
     let supplementary: [UICollectionViewLayoutAttributes]
 }
 
-final class SquareMosaicObject {
+final class SMLObject {
     
     fileprivate let attributes: Attributes
     let contentSize: CGFloat
@@ -50,7 +50,7 @@ final class SquareMosaicObject {
 
 // MARK: -
 
-extension SquareMosaicObject {
+extension SMLObject {
     
     func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard indexPath.section < attributes.cell.count else { return  nil }
