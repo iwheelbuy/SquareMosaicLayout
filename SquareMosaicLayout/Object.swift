@@ -209,7 +209,7 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, source: SMLSo
         guard let supplementary = getSupplementary(kind, source: source, section: section) else {
             return nil
         }
-        guard rows > 0 || supplementary.supplementaryHiddenForEmptySection() == false else {
+        guard rows > 0 || supplementary.smlSupplementaryIsHiddenForEmptySection() == false else {
             return nil
         }
         let aspect = direction.smlDirectionAspect()
@@ -232,9 +232,9 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, source: SMLSo
 private func getSectionNonEmpty(source: SMLSource, _ rows: Int, _ section: Int) -> Bool {
     if rows > 0 {
         return true
-    } else if source.layoutSupplementaryHeader(for: section)?.supplementaryHiddenForEmptySection() == false {
+    } else if source.layoutSupplementaryHeader(for: section)?.smlSupplementaryIsHiddenForEmptySection() == false {
         return true
-    } else if source.layoutSupplementaryFooter(for: section)?.supplementaryHiddenForEmptySection() == false {
+    } else if source.layoutSupplementaryFooter(for: section)?.smlSupplementaryIsHiddenForEmptySection() == false {
         return true
     } else {
         return false

@@ -8,7 +8,7 @@ class VerticalSupplementary: SMLSupplementary {
         return CGRect(x: 0, y: origin, width: aspect, height: offset * 4)
     }
 
-    func supplementaryHiddenForEmptySection() -> Bool {
+    func smlSupplementaryIsHiddenForEmptySection() -> Bool {
         return true
     }
 }

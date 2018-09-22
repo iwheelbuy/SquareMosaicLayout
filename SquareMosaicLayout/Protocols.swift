@@ -83,14 +83,13 @@ public extension SMLPattern {
 
 public protocol SMLSupplementary {
     
-//    func smlBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect]
     func smlSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect
-    func supplementaryHiddenForEmptySection() -> Bool
+    func smlSupplementaryIsHiddenForEmptySection() -> Bool
 }
 
 public extension SMLSupplementary {
     
-    func supplementaryHiddenForEmptySection() -> Bool {
+    func smlSupplementaryIsHiddenForEmptySection() -> Bool {
         return false
     }
 }
