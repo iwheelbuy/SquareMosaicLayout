@@ -15,7 +15,7 @@ struct SMLDimension {
         }
     }
     
-    func smlDimensionItems(section: Int) -> Int {
+    func smlDimensionRows(section: Int) -> Int {
         return array.count > section ? array[section] : 0
     }
     

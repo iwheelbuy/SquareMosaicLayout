@@ -2,8 +2,8 @@ import Foundation
 
 struct SMLDirection {
     
-    let aspect: CGFloat
-    let vertical: Bool
+    private let aspect: CGFloat
+    private let vertical: Bool
     
     init(aspect: CGFloat, vertical: Bool) {
         self.aspect = aspect
