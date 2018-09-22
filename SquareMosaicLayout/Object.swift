@@ -182,7 +182,7 @@ private func getAttributesCells(_ pattern: SMLPattern, direction: SMLDirection, 
 private func getAttributesSupplementary(_ kind: SupplementaryKind, source: SMLSource, direction: SMLDirection, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
     switch kind {
     case .backer:
-        guard source.layoutSupplementaryBackerRequired(for: section) == true else {
+        guard source.smlSourceBacker(section: section) == true else {
             return nil
         }
         let side = origin - sectionOrigin
@@ -232,9 +232,9 @@ private func getAttributesSupplementary(_ kind: SupplementaryKind, source: SMLSo
 private func getSectionNonEmpty(source: SMLSource, _ rows: Int, _ section: Int) -> Bool {
     if rows > 0 {
         return true
-    } else if source.layoutSupplementaryHeader(for: section)?.smlSupplementaryIsHiddenForEmptySection() == false {
+    } else if source.smlSourceHeader(section: section)?.smlSupplementaryIsHiddenForEmptySection() == false {
         return true
-    } else if source.layoutSupplementaryFooter(for: section)?.smlSupplementaryIsHiddenForEmptySection() == false {
+    } else if source.smlSourceFooter(section: section)?.smlSupplementaryIsHiddenForEmptySection() == false {
         return true
     } else {
         return false
@@ -263,7 +263,7 @@ private func getSectionsNonEmpty(source: SMLSource, numberOfItemsInSections: [In
 private func getSeparatorBeforeSection(source: SMLSource, section: Int, sectionsNonEmpty: SectionsNonEmpty) -> CGFloat? {
     switch sectionsNonEmpty {
     case .multiple(let sections):
-        let separator = source.layoutSeparatorBetweenSections()
+        let separator = source.smlSourceSpacing()
         switch separator {
         case ...0:
             return nil
@@ -292,9 +292,9 @@ private func getSeparatorBlock(_ position: SMLPosition, blocks: Int = 0, index: 
 private func getSupplementary(_ kind: SupplementaryKind, source: SMLSource, section: Int) -> SMLSupplementary? {
     switch kind {
     case .footer:
-        return source.layoutSupplementaryFooter(for: section)
+        return source.smlSourceFooter(section: section)
     case .header:
-        return source.layoutSupplementaryHeader(for: section)
+        return source.smlSourceHeader(section: section)
     default:
         return nil
     }

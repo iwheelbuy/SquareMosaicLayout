@@ -76,15 +76,15 @@
 //        return HungcaoPattern()
 //    }
 //    
-//    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+//    func smlSourceBacker(section: Int) -> Bool {
 //        return true
 //    }
 //    
-//    func layoutSeparatorBetweenSections() -> CGFloat {
+//    func smlSourceSpacing() -> CGFloat {
 //        return 60.0
 //    }
 //    
-//    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary? {
+//    func smlSourceHeader(section: Int) -> SMLSupplementary? {
 //        return HungcaoSupplementary()
 //    }
 //}

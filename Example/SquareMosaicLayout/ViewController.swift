@@ -80,19 +80,19 @@ final class Layout: SquareMosaicLayout, SMLSource {
         }
     }
     
-    func layoutSeparatorBetweenSections() -> CGFloat {
+    func smlSourceSpacing() -> CGFloat {
         return offset
     }
     
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+    func smlSourceBacker(section: Int) -> Bool {
         return true
     }
     
-    func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary? {
+    func smlSourceFooter(section: Int) -> SMLSupplementary? {
         return VerticalSupplementary()
     }
     
-    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary? {
+    func smlSourceHeader(section: Int) -> SMLSupplementary? {
         return VerticalSupplementary()
     }
 }

@@ -29,29 +29,29 @@ public enum SMLPosition: Int {
 
 public protocol SMLSource: class {
     
+    func smlSourceBacker(section: Int) -> Bool
+    func smlSourceFooter(section: Int) -> SMLSupplementary?
+    func smlSourceHeader(section: Int) -> SMLSupplementary?
     func smlSourcePattern(section: Int) -> SMLPattern
-    func layoutSeparatorBetweenSections() -> CGFloat
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool
-    func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary?
-    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary?
+    func smlSourceSpacing() -> CGFloat
 }
 
 public extension SMLSource {
     
-    func layoutSeparatorBetweenSections() -> CGFloat {
-        return 0
-    }
-    
-    func layoutSupplementaryBackerRequired(for section: Int) -> Bool {
+    func smlSourceBacker(section: Int) -> Bool {
         return false
     }
     
-    func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary? {
+    func smlSourceFooter(section: Int) -> SMLSupplementary? {
         return nil
     }
     
-    func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary? {
+    func smlSourceHeader(section: Int) -> SMLSupplementary? {
         return nil
+    }
+    
+    func smlSourceSpacing() -> CGFloat {
+        return 0
     }
 }
 
