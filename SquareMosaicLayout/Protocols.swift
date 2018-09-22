@@ -31,7 +31,7 @@ typealias SMLSource = SquareMosaicLayoutSource
 
 public protocol SquareMosaicLayoutSource: class {
     
-    func layoutPattern(for section: Int) -> SquareMosaicPattern
+    func layoutPattern(for section: Int) -> SMLPattern
     func layoutSeparatorBetweenSections() -> CGFloat
     func layoutSupplementaryBackerRequired(for section: Int) -> Bool
     func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary?
@@ -64,24 +64,15 @@ public protocol SMLDelegate: class {
     func layoutContentSizeChanged(to size: CGSize) -> Void
 }
 
-// MARK: - SquareMosaicDirection
+// MARK: - SMLPattern
 
-public enum SquareMosaicDirection: Int {
-    
-    case horizontal, vertical
-}
-
-// MARK: - SquareMosaicPattern
-
-typealias Pattern = SquareMosaicPattern
-
-public protocol SquareMosaicPattern {
+public protocol SMLPattern {
     
     func smlPatternBlocks() -> [SMLBlock]
     func smlPatternSpacing(position: SMLPosition) -> CGFloat
 }
 
-public extension SquareMosaicPattern {
+public extension SMLPattern {
     
     func smlPatternSpacing(position: SMLPosition) -> CGFloat {
         return 0

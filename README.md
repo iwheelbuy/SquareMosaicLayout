@@ -55,12 +55,12 @@ final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicLayoutSource {
         self.source = self
     }
 
-    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+    func layoutPattern(for section: Int) -> SMLPattern {
         return TRMosaicLayoutCopyPattern()
     }
 }
 
-class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
+class TRMosaicLayoutCopyPattern: SMLPattern {
     
     func smlPatternBlocks() -> [SquareMosaicBlock] {
         return [
@@ -119,12 +119,12 @@ final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicLayoutSource {
         self.source = self
     }
     
-    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+    func layoutPattern(for section: Int) -> SMLPattern {
         return FMMosaicLayoutCopyPattern()
     }
 }
 
-class FMMosaicLayoutCopyPattern: SquareMosaicPattern {
+class FMMosaicLayoutCopyPattern: SMLPattern {
     
     func smlPatternBlocks() -> [SquareMosaicBlock] {
         return [

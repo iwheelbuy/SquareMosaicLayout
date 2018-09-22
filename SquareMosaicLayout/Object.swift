@@ -69,14 +69,7 @@ extension SquareMosaicObject {
 
 // MARK: - Internal
 
-private extension Array {
-    
-    mutating func drop(from index: Int) {
-        self = []
-    }
-}
-
-private extension Pattern {
+private extension SMLPattern {
     
     func blocks(_ expectedFrames: Int) -> [SMLBlock] {
         let blocks: [SMLBlock] = smlPatternBlocks()
@@ -95,28 +88,6 @@ private extension Pattern {
             let blocksNoRepeatRange = 0 ... expectedFrames / blocksNoRepeatFrames
             return Array<Int>(blocksNoRepeatRange).map({ _ in Array(blocksNoRepeat) }).flatMap({ $0 })
         }
-        /*
-        if let index = blocks.enumerated().first(where: { $0.element.blockRepeated() == true })?.offset {
-            let blockToRepeat = blocks[index]
-            blocks = Array(blocks[0 ..< index])
-            let frames: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
-            let framesToRepeat = blockToRepeat.blockFrames()
-            var count: Int = frames
-            while (count < expectedFrames) {
-                blocks.append(blockToRepeat)
-                count += framesToRepeat
-            }
-            return blocks
-        } else {
-            let frames: Int = blocks.map({ $0.blockFrames() }).reduce(0, +)
-            var array = [SquareMosaicBlock]()
-            var count: Int = 0
-            repeat {
-                array.append(contentsOf: blocks)
-                count += frames
-            } while (count < expectedFrames)
-            return array
-        }*/
     }
 }
 
@@ -138,7 +109,7 @@ private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source:
             }
             attributesSupplementary.append(attributes)
         }
-        let pattern: Pattern = source.layoutPattern(for: section)
+        let pattern: SMLPattern = source.layoutPattern(for: section)
         if let separator = getSeparatorBlock(.before, pattern: pattern, rows: rows) {
             origin += separator
         }
@@ -164,7 +135,7 @@ private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source:
     return (Attributes(cell: attributesCell, supplementary: attributesSupplementary), origin)
 }
 
-private func getAttributesCells(_ pattern: Pattern, direction: SMLDirection, _ origin: CGFloat, _ rows: Int, _ section: Int) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
+private func getAttributesCells(_ pattern: SMLPattern, direction: SMLDirection, _ origin: CGFloat, _ rows: Int, _ section: Int) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
     var append: CGFloat = 0
     var attributes = [UICollectionViewLayoutAttributes]()
     var origin = origin
@@ -309,7 +280,7 @@ private func getSeparatorBeforeSection(source: SMLSource, section: Int, sections
     }
 }
 
-private func getSeparatorBlock(_ position: SMLPosition, blocks: Int = 0, index: Int = 0, pattern: Pattern, rows: Int = 0) -> CGFloat? {
+private func getSeparatorBlock(_ position: SMLPosition, blocks: Int = 0, index: Int = 0, pattern: SMLPattern, rows: Int = 0) -> CGFloat? {
     switch (position, rows > 0, index > 0 && index < blocks) {
     case (.before, true, _), (.between, _, true), (.after, true, _):
         return pattern.smlPatternSpacing(position: position)

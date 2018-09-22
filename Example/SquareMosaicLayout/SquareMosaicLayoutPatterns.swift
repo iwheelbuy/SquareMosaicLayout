@@ -13,7 +13,7 @@ class VerticalSupplementary: SMLSupplementary {
     }
 }
 
-class VerticalMosaicPattern: SquareMosaicPattern {
+class VerticalMosaicPattern: SMLPattern {
     
     func smlPatternBlocks() -> [SMLBlock] {
         return [
@@ -27,7 +27,7 @@ class VerticalMosaicPattern: SquareMosaicPattern {
     }
 }
 
-class VerticalTriplePattern: SquareMosaicPattern {
+class VerticalTriplePattern: SMLPattern {
     
     func smlPatternBlocks() -> [SMLBlock] {
         return [
@@ -40,7 +40,7 @@ class VerticalTriplePattern: SquareMosaicPattern {
     }
 }
 
-class VerticalSinglePattern: SquareMosaicPattern {
+class VerticalSinglePattern: SMLPattern {
     
     func smlPatternBlocks() -> [SMLBlock] {
         return [

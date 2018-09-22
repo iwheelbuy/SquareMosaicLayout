@@ -56,13 +56,13 @@ fileprivate extension ViewController {
 final class Layout: SquareMosaicLayout, SquareMosaicLayoutSource {
     
     let vertical: Bool
-    var pattern: SquareMosaicPattern!
+    var pattern: SMLPattern!
 
     required convenience init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(aspect: CGFloat? = nil, vertical: Bool, pattern: SquareMosaicPattern) {
+    convenience init(aspect: CGFloat? = nil, vertical: Bool, pattern: SMLPattern) {
         self.init(aspect: aspect, vertical: vertical)
         self.pattern = pattern
     }
@@ -73,7 +73,7 @@ final class Layout: SquareMosaicLayout, SquareMosaicLayoutSource {
         self.source = self
     }
     
-    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+    func layoutPattern(for section: Int) -> SMLPattern {
         switch section {
         case 2:     return VerticalSinglePattern()
         default:    return pattern

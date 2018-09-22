@@ -30,12 +30,12 @@
 //        self.dataSource = self
 //    }
 //
-//    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+//    func layoutPattern(for section: Int) -> SMLPattern {
 //        return TRMosaicLayoutCopyPattern()
 //    }
 //}
 //
-//class TRMosaicLayoutCopyPattern: SquareMosaicPattern {
+//class TRMosaicLayoutCopyPattern: SMLPattern {
 //    
 //    func smlPatternBlocks() -> [SquareMosaicBlock] {
 //        return [

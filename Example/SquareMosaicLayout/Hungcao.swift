@@ -72,7 +72,7 @@
 //        self.dataSource = self
 //    }
 //    
-//    func layoutPattern(for section: Int) -> SquareMosaicPattern {
+//    func layoutPattern(for section: Int) -> SMLPattern {
 //        return HungcaoPattern()
 //    }
 //    
@@ -96,7 +96,7 @@
 //    }
 //}
 //
-//final class HungcaoPattern: SquareMosaicPattern {
+//final class HungcaoPattern: SMLPattern {
 //    
 //    func smlPatternBlocks() -> [SquareMosaicBlock] {
 //        return [HungcaoBlock()]
