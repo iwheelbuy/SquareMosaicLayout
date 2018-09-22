@@ -38,11 +38,11 @@ final class SquareMosaicObject {
     fileprivate let attributes: Attributes
     let contentSize: CGFloat
     
-    init?(dimension: SMLDimension, source: DataSource?, _ direction: SMLDirection) {
+    init?(dimension: SMLDimension, source: DataSource?, direction: SMLDirection) {
         guard let source = source else {
             return nil
         }
-        let attributesAndContentSize = getAttributesAndContentSize(numberOfItemsInSections: dimension.numberOfItemsInSections, source: source, direction)
+        let attributesAndContentSize = getAttributesAndContentSize(numberOfItemsInSections: dimension.numberOfItemsInSections, source: source, direction: direction)
         attributes = attributesAndContentSize.attributes
         contentSize = attributesAndContentSize.contentSize
     }
@@ -99,7 +99,7 @@ fileprivate extension Pattern {
 
 // MARK: -
 
-private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source: DataSource, _ direction: SMLDirection) -> (attributes: Attributes, contentSize: CGFloat) {
+private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source: DataSource, direction: SMLDirection) -> (attributes: Attributes, contentSize: CGFloat) {
     var attributesCell = [[UICollectionViewLayoutAttributes]](repeating: [], count: numberOfItemsInSections.count)
     var attributesSupplementary = [UICollectionViewLayoutAttributes]()
     var origin: CGFloat = 0
@@ -109,7 +109,7 @@ private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source:
             origin += separator
         }
         let sectionOrigin = origin
-        if let (attributes, separator) = getAttributesSupplementary(.header, source: source, direction, origin, rows: rows, section) {
+        if let (attributes, separator) = getAttributesSupplementary(.header, source: source, direction: direction, origin, rows: rows, section) {
             if let separator = separator {
                 origin += separator
             }
@@ -119,7 +119,7 @@ private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source:
         if let separator = getSeparatorBlock(.before, pattern: pattern, rows: rows) {
             origin += separator
         }
-        if let (attributes, separator) = getAttributesCells(pattern, direction, origin, rows, section) {
+        if let (attributes, separator) = getAttributesCells(pattern, direction: direction, origin, rows, section) {
             if let separator = separator {
                 origin += separator
             }
@@ -128,20 +128,20 @@ private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source:
         if let separator = getSeparatorBlock(.after, pattern: pattern, rows: rows) {
             origin += separator
         }
-        if let (attributes, separator) = getAttributesSupplementary(.footer, source: source, direction, origin, rows: rows, section) {
+        if let (attributes, separator) = getAttributesSupplementary(.footer, source: source, direction: direction, origin, rows: rows, section) {
             if let separator = separator {
                 origin += separator
             }
             attributesSupplementary.append(attributes)
         }
-        if let (attributes, _) = getAttributesSupplementary(.backer, source: source, direction, origin, section, sectionOrigin: sectionOrigin) {
+        if let (attributes, _) = getAttributesSupplementary(.backer, source: source, direction: direction, origin, section, sectionOrigin: sectionOrigin) {
             attributesSupplementary.append(attributes)
         }
     }
     return (Attributes(cell: attributesCell, supplementary: attributesSupplementary), origin)
 }
 
-private func getAttributesCells(_ pattern: Pattern, _ direction: SMLDirection, _ origin: CGFloat, _ rows: Int, _ section: Int) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
+private func getAttributesCells(_ pattern: Pattern, direction: SMLDirection, _ origin: CGFloat, _ rows: Int, _ section: Int) -> (attributes: [UICollectionViewLayoutAttributes], separator: CGFloat?)? {
     var append: CGFloat = 0
     var attributes = [UICollectionViewLayoutAttributes]()
     var origin = origin
@@ -184,7 +184,7 @@ private func getAttributesCells(_ pattern: Pattern, _ direction: SMLDirection, _
     }
 }
 
-private func getAttributesSupplementary(_ kind: SupplementaryKind, source: DataSource, _ direction: SMLDirection, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
+private func getAttributesSupplementary(_ kind: SupplementaryKind, source: DataSource, direction: SMLDirection, _ origin: CGFloat, rows: Int = 0, _ section: Int, sectionOrigin: CGFloat = 0) -> (attributes: UICollectionViewLayoutAttributes, separator: CGFloat?)? {
     switch kind {
     case .backer:
         guard source.layoutSupplementaryBackerRequired(for: section) == true else {

@@ -49,7 +49,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     
     open override func prepare() {
         if let dimension = self.dimension, let direction = self.direction {
-            self.object = SquareMosaicObject(dimension: dimension, source: source, direction)
+            self.object = SquareMosaicObject(dimension: dimension, source: source, direction: direction)
         } else {
             self.object = nil
         }
