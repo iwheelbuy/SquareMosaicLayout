@@ -65,14 +65,14 @@
 //    }
 //}
 //
-//final class HungcaoLayout: SquareMosaicLayout, SquareMosaicLayoutSource {
+//final class HungcaoLayout: SquareMosaicLayout, SMLSource {
 //    
 //    convenience init() {
 //        self.init(direction: SquareMosaicDirection.vertical)
 //        self.dataSource = self
 //    }
 //    
-//    func layoutPattern(for section: Int) -> SMLPattern {
+//    func smlSourcePattern(section: Int) -> SMLPattern {
 //        return HungcaoPattern()
 //    }
 //    

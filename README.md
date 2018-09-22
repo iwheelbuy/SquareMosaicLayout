@@ -48,14 +48,14 @@ SquareMosaicLayout is available under the MIT license. See the [LICENSE](https:/
 ## Example - copying [TRMosaicLayout](https://github.com/vinnyoodles/TRMosaicLayout)
 
 ```swift
-final class TRMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicLayoutSource {
+final class TRMosaicLayoutCopy: SquareMosaicLayout, SMLSource {
     
     convenience init() {
         self.init(direction: SquareMosaicDirection.vertical)
         self.source = self
     }
 
-    func layoutPattern(for section: Int) -> SMLPattern {
+    func smlSourcePattern(section: Int) -> SMLPattern {
         return TRMosaicLayoutCopyPattern()
     }
 }
@@ -112,14 +112,14 @@ public class TRMosaicLayoutCopyBlock2: SquareMosaicBlock {
 ## Example - copying [FMMosaicLayout](https://github.com/fmitech/FMMosaicLayout)
 
 ```swift
-final class FMMosaicLayoutCopy: SquareMosaicLayout, SquareMosaicLayoutSource {
+final class FMMosaicLayoutCopy: SquareMosaicLayout, SMLSource {
     
     convenience init() {
         self.init(direction: SquareMosaicDirection.vertical)
         self.source = self
     }
     
-    func layoutPattern(for section: Int) -> SMLPattern {
+    func smlSourcePattern(section: Int) -> SMLPattern {
         return FMMosaicLayoutCopyPattern()
     }
 }

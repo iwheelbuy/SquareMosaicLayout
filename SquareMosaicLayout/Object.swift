@@ -109,7 +109,7 @@ private func getAttributesAndContentSize(numberOfItemsInSections: [Int], source:
             }
             attributesSupplementary.append(attributes)
         }
-        let pattern: SMLPattern = source.layoutPattern(for: section)
+        let pattern: SMLPattern = source.smlSourcePattern(section: section)
         if let separator = getSeparatorBlock(.before, pattern: pattern, rows: rows) {
             origin += separator
         }

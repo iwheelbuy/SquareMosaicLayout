@@ -53,7 +53,7 @@ fileprivate extension ViewController {
     }
 }
 
-final class Layout: SquareMosaicLayout, SquareMosaicLayoutSource {
+final class Layout: SquareMosaicLayout, SMLSource {
     
     let vertical: Bool
     var pattern: SMLPattern!
@@ -73,7 +73,7 @@ final class Layout: SquareMosaicLayout, SquareMosaicLayoutSource {
         self.source = self
     }
     
-    func layoutPattern(for section: Int) -> SMLPattern {
+    func smlSourcePattern(section: Int) -> SMLPattern {
         switch section {
         case 2:     return VerticalSinglePattern()
         default:    return pattern

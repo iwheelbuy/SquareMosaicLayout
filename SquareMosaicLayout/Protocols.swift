@@ -25,20 +25,18 @@ public enum SMLPosition: Int {
     case after, before, between
 }
 
-// MARK: - SquareMosaicLayoutSource
+// MARK: - SMLSource
 
-typealias SMLSource = SquareMosaicLayoutSource
-
-public protocol SquareMosaicLayoutSource: class {
+public protocol SMLSource: class {
     
-    func layoutPattern(for section: Int) -> SMLPattern
+    func smlSourcePattern(section: Int) -> SMLPattern
     func layoutSeparatorBetweenSections() -> CGFloat
     func layoutSupplementaryBackerRequired(for section: Int) -> Bool
     func layoutSupplementaryFooter(for section: Int) -> SMLSupplementary?
     func layoutSupplementaryHeader(for section: Int) -> SMLSupplementary?
 }
 
-public extension SquareMosaicLayoutSource {
+public extension SMLSource {
     
     func layoutSeparatorBetweenSections() -> CGFloat {
         return 0
