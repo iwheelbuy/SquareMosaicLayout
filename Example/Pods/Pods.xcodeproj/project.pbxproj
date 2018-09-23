@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EC39953558EDD108B296DC4C007DAF9 /* SMLPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC09A51A2FBEFC976DA14F17A1A3D4DE /* SMLPattern.swift */; };
-		19FC8F3AE3DD4E1B3C3A03D23C9A1CFF /* SMLObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462B5EF45E6378CB0524BCA22CD8752 /* SMLObject.swift */; };
-		1DB9ADA335474C7E800F9A844039C0C8 /* SMLSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6ABBC03D4C3EFDC11880CE458AB7B0 /* SMLSource.swift */; };
-		3C2327CD9D87B471F051277A42906E1C /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A5136FF970B742C8A9CA15D973CF58 /* SquareMosaicLayout-dummy.m */; };
-		3DDCC45CF4CCF3907ECE764AA68BAB81 /* SMLDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF057D4BEAD5EECE30CADE08BF61C1 /* SMLDirection.swift */; };
+		073CC5F1D9B84546F5897D3B5718279C /* SMLPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60111E9EB989A5487B087B462E790C26 /* SMLPosition.swift */; };
+		09ED8DB3D8BA3FEB0D959ACA6B4BD89F /* SMLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E15086DEF4AF6227F6B2B258E67A95F /* SMLDelegate.swift */; };
+		10297483B68199A09BCE91BC839D9304 /* SMLBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24649D429CD67FCA081C92466D5FC96C /* SMLBlock.swift */; };
+		29F946B11FC5331B7414EDD8AEA9B0EF /* SMLObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6DA3B5BACB470DB3EA2B2FEA77C9B2 /* SMLObject.swift */; };
+		330F0C1D628C6E47370E2812507978F3 /* SMLPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C24CA19841534BB4890F25483D54D53 /* SMLPattern.swift */; };
+		37159DDD5D9C5C2DB3C03C1A764904DB /* SquareMosaicLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C036D940592E2A65C67234E4F3EB9F /* SquareMosaicLayout-dummy.m */; };
 		4F551285593AF0146D5976B4A79DB2D1 /* Pods-SquareMosaicLayout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C241FE7AD9F25F0C22AD1F9CE75AA3B2 /* Pods-SquareMosaicLayout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		53B5E96539C3592C8EC133DC539C8549 /* SMLBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA7F2946593965321A7B7F4B95A7407 /* SMLBlock.swift */; };
-		558E29941D2AC2848F8BA34A4F2DBA25 /* SMLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143FC922FF096108DAE399A60F0C380C /* SMLDelegate.swift */; };
-		77638CD7E6A08CBFA0B2B6A00F61BAFE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5334270FB64B956867AAB00D36F8EB54 /* Layout.swift */; };
-		7CA9C4B9B2979CF68D70387947AB2380 /* SquareMosaicLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD690A9D1097240B7BA9099720D48032 /* SquareMosaicLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C155DF449342275A691403A232109A7 /* SMLSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F671D1EF8E21225CFDB2A3F871678 /* SMLSections.swift */; };
+		7CA9C4B9B2979CF68D70387947AB2380 /* SquareMosaicLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CF0B9779649D1AB57CFB581198B441E /* SquareMosaicLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87DF457E3C9D3A61C406A80D46AE7518 /* Pods-SquareMosaicLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C39964C4B61AF62C1BE9694CC011AA8D /* Pods-SquareMosaicLayout_Example-dummy.m */; };
+		8BF7CB4ED2F82D572A8333EEC46E7376 /* SMLSupplementary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FF517B7A724FC6B9348424CA6AB38 /* SMLSupplementary.swift */; };
+		95C8A3D70ECD06842D1EE78CEF5FA081 /* SMLSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3377FEBA205799A5F86CBD52A1562 /* SMLSource.swift */; };
 		A49D6162D9A4C30DAB5A38B2BAE7F51E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		C51357425E36B1DE9639B47BF4DFC796 /* SMLDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4B229E45813ACD1111A67E3745A29 /* SMLDimension.swift */; };
-		C93119272AE387A54003C5433DA06B08 /* SMLPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3783E01B9B3774040B487ED31160533 /* SMLPosition.swift */; };
 		D6AEBBA67C533B2D2E101CA3BCEB9AFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		F083C3B266BBA43A68F9A0F2422BA323 /* SMLSupplementary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081DC70BAB04B6DAB266CB41AACF7ED6 /* SMLSupplementary.swift */; };
+		E62A7F8BC90C770943550B231CD9F21D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568241EE596905B971D9F67BEBE64499 /* Layout.swift */; };
+		FF6AC460EB0546CF71417AB77BEBF717 /* SMLDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29702DC98F8E397681A2F996DD3CA1AE /* SMLDirection.swift */; };
+		FF79B3706B6191651710C71D2A651DB9 /* SMLDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F0E68995D0B7B0BD216D87BF9D8F8 /* SMLDimension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,39 +37,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01ED72915017E6457BC940310CC85FAB /* SquareMosaicLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SquareMosaicLayout.xcconfig; sourceTree = "<group>"; };
-		081DC70BAB04B6DAB266CB41AACF7ED6 /* SMLSupplementary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLSupplementary.swift; path = SquareMosaicLayout/SMLSupplementary.swift; sourceTree = "<group>"; };
-		0CF1701F147595E768C5156000A9C87C /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
-		143FC922FF096108DAE399A60F0C380C /* SMLDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLDelegate.swift; path = SquareMosaicLayout/SMLDelegate.swift; sourceTree = "<group>"; };
-		18DFA9E52D7A6A772A9956961E5BE97B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		0603FEB5979076B80CD645B38F17B12C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		0A4F0E68995D0B7B0BD216D87BF9D8F8 /* SMLDimension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLDimension.swift; path = SquareMosaicLayout/SMLDimension.swift; sourceTree = "<group>"; };
+		150F671D1EF8E21225CFDB2A3F871678 /* SMLSections.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLSections.swift; path = SquareMosaicLayout/SMLSections.swift; sourceTree = "<group>"; };
+		1DCBAC9D1EFC64137C0BACD20C8BD89B /* SquareMosaicLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = SquareMosaicLayout.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1E94F4DB81A5187B475A63833A069C01 /* Pods-SquareMosaicLayout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-frameworks.sh"; sourceTree = "<group>"; };
+		24649D429CD67FCA081C92466D5FC96C /* SMLBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLBlock.swift; path = SquareMosaicLayout/SMLBlock.swift; sourceTree = "<group>"; };
 		276116BC9E1AE040F6D43EC9D7CA6397 /* Pods-SquareMosaicLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
+		28C036D940592E2A65C67234E4F3EB9F /* SquareMosaicLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SquareMosaicLayout-dummy.m"; sourceTree = "<group>"; };
+		29702DC98F8E397681A2F996DD3CA1AE /* SMLDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLDirection.swift; path = SquareMosaicLayout/SMLDirection.swift; sourceTree = "<group>"; };
+		2CF0B9779649D1AB57CFB581198B441E /* SquareMosaicLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-umbrella.h"; sourceTree = "<group>"; };
+		2D6DA3B5BACB470DB3EA2B2FEA77C9B2 /* SMLObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLObject.swift; path = SquareMosaicLayout/SMLObject.swift; sourceTree = "<group>"; };
+		2DD3377FEBA205799A5F86CBD52A1562 /* SMLSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLSource.swift; path = SquareMosaicLayout/SMLSource.swift; sourceTree = "<group>"; };
 		4C6C15D92D3E0D241EDADA2684DDB74C /* Pods-SquareMosaicLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SquareMosaicLayout_Example.modulemap"; sourceTree = "<group>"; };
-		5334270FB64B956867AAB00D36F8EB54 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = SquareMosaicLayout/Layout.swift; sourceTree = "<group>"; };
+		568241EE596905B971D9F67BEBE64499 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = SquareMosaicLayout/Layout.swift; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		62F6397BBEED345E126076962981E17C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6AA7F2946593965321A7B7F4B95A7407 /* SMLBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLBlock.swift; path = SquareMosaicLayout/SMLBlock.swift; sourceTree = "<group>"; };
+		60111E9EB989A5487B087B462E790C26 /* SMLPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLPosition.swift; path = SquareMosaicLayout/SMLPosition.swift; sourceTree = "<group>"; };
+		665E119FD0F2D1F74BB4A6A041461099 /* SquareMosaicLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SquareMosaicLayout.modulemap; sourceTree = "<group>"; };
+		672CB0C17BE1BF68A137A0B3BA8C9221 /* SquareMosaicLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SquareMosaicLayout.xcconfig; sourceTree = "<group>"; };
+		77C664179099283C63B61D5B35A8F84B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C24CA19841534BB4890F25483D54D53 /* SMLPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLPattern.swift; path = SquareMosaicLayout/SMLPattern.swift; sourceTree = "<group>"; };
+		7E692C312366A0472192F3CC787943FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		7F41313F9876B3944E37918DD41F5DA0 /* Pods-SquareMosaicLayout_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SquareMosaicLayout_Example-resources.sh"; sourceTree = "<group>"; };
 		8156BF1C806477DD0CB64F73F448DFE3 /* Pods-SquareMosaicLayout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SquareMosaicLayout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8C4CCA362DD96256ED6BF633298B410A /* SquareMosaicLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SquareMosaicLayout.framework; path = SquareMosaicLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E15086DEF4AF6227F6B2B258E67A95F /* SMLDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLDelegate.swift; path = SquareMosaicLayout/SMLDelegate.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A599864268C1C36EB45140009A09FE1A /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SquareMosaicLayout_Example.framework; path = "Pods-SquareMosaicLayout_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD095A8A55170BB973D81BCFCF1C733 /* Pods-SquareMosaicLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SquareMosaicLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		B5D4B229E45813ACD1111A67E3745A29 /* SMLDimension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLDimension.swift; path = SquareMosaicLayout/SMLDimension.swift; sourceTree = "<group>"; };
-		BC09A51A2FBEFC976DA14F17A1A3D4DE /* SMLPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLPattern.swift; path = SquareMosaicLayout/SMLPattern.swift; sourceTree = "<group>"; };
-		BD690A9D1097240B7BA9099720D48032 /* SquareMosaicLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-umbrella.h"; sourceTree = "<group>"; };
-		BECF057D4BEAD5EECE30CADE08BF61C1 /* SMLDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLDirection.swift; path = SquareMosaicLayout/SMLDirection.swift; sourceTree = "<group>"; };
-		C06AABFC101B82C6939237086DC3845D /* SquareMosaicLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-prefix.pch"; sourceTree = "<group>"; };
+		BA8FF517B7A724FC6B9348424CA6AB38 /* SMLSupplementary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLSupplementary.swift; path = SquareMosaicLayout/SMLSupplementary.swift; sourceTree = "<group>"; };
 		C241FE7AD9F25F0C22AD1F9CE75AA3B2 /* Pods-SquareMosaicLayout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SquareMosaicLayout_Example-umbrella.h"; sourceTree = "<group>"; };
-		C3783E01B9B3774040B487ED31160533 /* SMLPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLPosition.swift; path = SquareMosaicLayout/SMLPosition.swift; sourceTree = "<group>"; };
 		C39964C4B61AF62C1BE9694CC011AA8D /* Pods-SquareMosaicLayout_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SquareMosaicLayout_Example-dummy.m"; sourceTree = "<group>"; };
-		D1CAD453761DA1410F77137DF1777E48 /* SquareMosaicLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = SquareMosaicLayout.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D3A5136FF970B742C8A9CA15D973CF58 /* SquareMosaicLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SquareMosaicLayout-dummy.m"; sourceTree = "<group>"; };
-		D462B5EF45E6378CB0524BCA22CD8752 /* SMLObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLObject.swift; path = SquareMosaicLayout/SMLObject.swift; sourceTree = "<group>"; };
 		E21C15B27FFB23C73221D802588E9FA5 /* Pods-SquareMosaicLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SquareMosaicLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E22AF5FBDD9942113D49ED28B942A99F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA6ABBC03D4C3EFDC11880CE458AB7B0 /* SMLSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMLSource.swift; path = SquareMosaicLayout/SMLSource.swift; sourceTree = "<group>"; };
-		F4B826AF22407103CEE0AC9EDFFD835D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		F72CAEE4D254C6990BDA079A0EE806C3 /* SquareMosaicLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SquareMosaicLayout-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,48 +93,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E4DB4EFFEB6086B24B7BF0CE14542B1 /* Pod */ = {
+		188C7B854935CC67897437C4F7EC81F7 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F4B826AF22407103CEE0AC9EDFFD835D /* LICENSE */,
-				18DFA9E52D7A6A772A9956961E5BE97B /* README.md */,
-				D1CAD453761DA1410F77137DF1777E48 /* SquareMosaicLayout.podspec */,
+				2A53814B949EBA497E166D58E76C010F /* SquareMosaicLayout */,
 			);
-			name = Pod;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		41ACC72007C8F26C210CEB82B82E0DE2 /* SquareMosaicLayout */ = {
+		2A53814B949EBA497E166D58E76C010F /* SquareMosaicLayout */ = {
 			isa = PBXGroup;
 			children = (
-				5334270FB64B956867AAB00D36F8EB54 /* Layout.swift */,
-				6AA7F2946593965321A7B7F4B95A7407 /* SMLBlock.swift */,
-				143FC922FF096108DAE399A60F0C380C /* SMLDelegate.swift */,
-				B5D4B229E45813ACD1111A67E3745A29 /* SMLDimension.swift */,
-				BECF057D4BEAD5EECE30CADE08BF61C1 /* SMLDirection.swift */,
-				D462B5EF45E6378CB0524BCA22CD8752 /* SMLObject.swift */,
-				BC09A51A2FBEFC976DA14F17A1A3D4DE /* SMLPattern.swift */,
-				C3783E01B9B3774040B487ED31160533 /* SMLPosition.swift */,
-				EA6ABBC03D4C3EFDC11880CE458AB7B0 /* SMLSource.swift */,
-				081DC70BAB04B6DAB266CB41AACF7ED6 /* SMLSupplementary.swift */,
-				3E4DB4EFFEB6086B24B7BF0CE14542B1 /* Pod */,
-				5AA0738746B2446362C0B1A8549710BB /* Support Files */,
+				568241EE596905B971D9F67BEBE64499 /* Layout.swift */,
+				24649D429CD67FCA081C92466D5FC96C /* SMLBlock.swift */,
+				8E15086DEF4AF6227F6B2B258E67A95F /* SMLDelegate.swift */,
+				0A4F0E68995D0B7B0BD216D87BF9D8F8 /* SMLDimension.swift */,
+				29702DC98F8E397681A2F996DD3CA1AE /* SMLDirection.swift */,
+				2D6DA3B5BACB470DB3EA2B2FEA77C9B2 /* SMLObject.swift */,
+				7C24CA19841534BB4890F25483D54D53 /* SMLPattern.swift */,
+				60111E9EB989A5487B087B462E790C26 /* SMLPosition.swift */,
+				150F671D1EF8E21225CFDB2A3F871678 /* SMLSections.swift */,
+				2DD3377FEBA205799A5F86CBD52A1562 /* SMLSource.swift */,
+				BA8FF517B7A724FC6B9348424CA6AB38 /* SMLSupplementary.swift */,
+				431C0CCA2C09B2EC6D0EF7EF6EDB95FF /* Pod */,
+				83C4BD617AFED3457725CE02A13728FF /* Support Files */,
 			);
 			name = SquareMosaicLayout;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		5AA0738746B2446362C0B1A8549710BB /* Support Files */ = {
+		431C0CCA2C09B2EC6D0EF7EF6EDB95FF /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				62F6397BBEED345E126076962981E17C /* Info.plist */,
-				0CF1701F147595E768C5156000A9C87C /* SquareMosaicLayout.modulemap */,
-				01ED72915017E6457BC940310CC85FAB /* SquareMosaicLayout.xcconfig */,
-				D3A5136FF970B742C8A9CA15D973CF58 /* SquareMosaicLayout-dummy.m */,
-				C06AABFC101B82C6939237086DC3845D /* SquareMosaicLayout-prefix.pch */,
-				BD690A9D1097240B7BA9099720D48032 /* SquareMosaicLayout-umbrella.h */,
+				7E692C312366A0472192F3CC787943FB /* LICENSE */,
+				0603FEB5979076B80CD645B38F17B12C /* README.md */,
+				1DCBAC9D1EFC64137C0BACD20C8BD89B /* SquareMosaicLayout.podspec */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SquareMosaicLayout";
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
@@ -147,11 +144,25 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				C8B908BB8B0359A14629A950ECC8E8C5 /* Development Pods */,
+				188C7B854935CC67897437C4F7EC81F7 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				BF4D16D96EB239833E0014257FB5E51C /* Products */,
 				CEC01048F73E477CFAD1CF7BF731D79C /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		83C4BD617AFED3457725CE02A13728FF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				77C664179099283C63B61D5B35A8F84B /* Info.plist */,
+				665E119FD0F2D1F74BB4A6A041461099 /* SquareMosaicLayout.modulemap */,
+				672CB0C17BE1BF68A137A0B3BA8C9221 /* SquareMosaicLayout.xcconfig */,
+				28C036D940592E2A65C67234E4F3EB9F /* SquareMosaicLayout-dummy.m */,
+				F72CAEE4D254C6990BDA079A0EE806C3 /* SquareMosaicLayout-prefix.pch */,
+				2CF0B9779649D1AB57CFB581198B441E /* SquareMosaicLayout-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SquareMosaicLayout";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -189,14 +200,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C8B908BB8B0359A14629A950ECC8E8C5 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				41ACC72007C8F26C210CEB82B82E0DE2 /* SquareMosaicLayout */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		CEC01048F73E477CFAD1CF7BF731D79C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +235,7 @@
 			buildConfigurationList = F4F6114C5C7B2EF69CBBE302079D2F71 /* Build configuration list for PBXNativeTarget "SquareMosaicLayout" */;
 			buildPhases = (
 				DCECEB691CD6D8205BAD7A112FFD994F /* Headers */,
-				B513107B869157792DA8F71CB1A89F6E /* Sources */,
+				623B1289B3A8B4FC2F58288B0243B0F7 /* Sources */,
 				41AD49B606FC327EAD981BC702D15686 /* Frameworks */,
 				8F89D92F8A6D6B30C8C092E786FB12B8 /* Resources */,
 			);
@@ -309,29 +312,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		623B1289B3A8B4FC2F58288B0243B0F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E62A7F8BC90C770943550B231CD9F21D /* Layout.swift in Sources */,
+				10297483B68199A09BCE91BC839D9304 /* SMLBlock.swift in Sources */,
+				09ED8DB3D8BA3FEB0D959ACA6B4BD89F /* SMLDelegate.swift in Sources */,
+				FF79B3706B6191651710C71D2A651DB9 /* SMLDimension.swift in Sources */,
+				FF6AC460EB0546CF71417AB77BEBF717 /* SMLDirection.swift in Sources */,
+				29F946B11FC5331B7414EDD8AEA9B0EF /* SMLObject.swift in Sources */,
+				330F0C1D628C6E47370E2812507978F3 /* SMLPattern.swift in Sources */,
+				073CC5F1D9B84546F5897D3B5718279C /* SMLPosition.swift in Sources */,
+				5C155DF449342275A691403A232109A7 /* SMLSections.swift in Sources */,
+				95C8A3D70ECD06842D1EE78CEF5FA081 /* SMLSource.swift in Sources */,
+				8BF7CB4ED2F82D572A8333EEC46E7376 /* SMLSupplementary.swift in Sources */,
+				37159DDD5D9C5C2DB3C03C1A764904DB /* SquareMosaicLayout-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68655F70BBFB7E7681024B9E0C2BDBC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				87DF457E3C9D3A61C406A80D46AE7518 /* Pods-SquareMosaicLayout_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B513107B869157792DA8F71CB1A89F6E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				77638CD7E6A08CBFA0B2B6A00F61BAFE /* Layout.swift in Sources */,
-				53B5E96539C3592C8EC133DC539C8549 /* SMLBlock.swift in Sources */,
-				558E29941D2AC2848F8BA34A4F2DBA25 /* SMLDelegate.swift in Sources */,
-				C51357425E36B1DE9639B47BF4DFC796 /* SMLDimension.swift in Sources */,
-				3DDCC45CF4CCF3907ECE764AA68BAB81 /* SMLDirection.swift in Sources */,
-				19FC8F3AE3DD4E1B3C3A03D23C9A1CFF /* SMLObject.swift in Sources */,
-				0EC39953558EDD108B296DC4C007DAF9 /* SMLPattern.swift in Sources */,
-				C93119272AE387A54003C5433DA06B08 /* SMLPosition.swift in Sources */,
-				1DB9ADA335474C7E800F9A844039C0C8 /* SMLSource.swift in Sources */,
-				F083C3B266BBA43A68F9A0F2422BA323 /* SMLSupplementary.swift in Sources */,
-				3C2327CD9D87B471F051277A42906E1C /* SquareMosaicLayout-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +490,7 @@
 		};
 		74AB6941F8A07E02830BC9BA5C2AF59F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01ED72915017E6457BC940310CC85FAB /* SquareMosaicLayout.xcconfig */;
+			baseConfigurationReference = 672CB0C17BE1BF68A137A0B3BA8C9221 /* SquareMosaicLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -520,7 +524,7 @@
 		};
 		98D3B13682A4150C97B1B723D4D4C016 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01ED72915017E6457BC940310CC85FAB /* SquareMosaicLayout.xcconfig */;
+			baseConfigurationReference = 672CB0C17BE1BF68A137A0B3BA8C9221 /* SquareMosaicLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

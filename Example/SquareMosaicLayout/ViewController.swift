@@ -84,16 +84,16 @@ final class Layout: SquareMosaicLayout, SMLSource {
         return offset
     }
     
-    func smlSourceBacker(section: Int) -> Bool {
-        return true
+    func smlSourceBacker(section: Int) -> String? {
+        return SquareMosaicLayoutSectionBacker
     }
     
     func smlSourceFooter(section: Int) -> SMLSupplementary? {
-        return VerticalSupplementary()
+        return VerticalSupplementary(kind: SquareMosaicLayoutSectionFooter)
     }
     
     func smlSourceHeader(section: Int) -> SMLSupplementary? {
-        return VerticalSupplementary()
+        return VerticalSupplementary(kind: SquareMosaicLayoutSectionHeader)
     }
 }
 

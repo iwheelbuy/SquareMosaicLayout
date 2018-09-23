@@ -4,8 +4,18 @@ let offset: CGFloat = 10.0
 
 class VerticalSupplementary: SMLSupplementary {
     
+    let kind: String
+    
+    init(kind: String) {
+        self.kind = kind
+    }
+    
     func smlSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect {
         return CGRect(x: 0, y: origin, width: aspect, height: offset * 4)
+    }
+    
+    func smlSupplementaryKind() -> String {
+        return kind
     }
 
     func smlSupplementaryIsHiddenForEmptySection() -> Bool {

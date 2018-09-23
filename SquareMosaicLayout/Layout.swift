@@ -1,20 +1,9 @@
 import UIKit
 
-extension UICollectionView {
-    
-    var desiredHeight: CGFloat {
-        return bounds.height - contentInset.top - contentInset.bottom
-    }
-    
-    var desiredWidth: CGFloat {
-        return bounds.width - contentInset.left - contentInset.right
-    }
-}
-
 open class SquareMosaicLayout: UICollectionViewLayout {
 
     private let aspect: CGFloat?
-    private var object: SMLObject? = nil
+    private var attributes: (SMLAttributes & SMLContentSize)? = nil
     private let vertical: Bool
     public weak var source: SMLSource?
     public weak var delegate: SMLDelegate? {
@@ -24,17 +13,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     }
     
     override open var collectionViewContentSize: CGSize {
-        switch collectionView {
-        case .some(let collectionView):
-            switch vertical {
-            case false:
-                return CGSize(width: object?.contentSize ?? 0, height: collectionView.desiredHeight)
-            case true:
-                return CGSize(width: collectionView.desiredWidth, height: object?.contentSize ?? 0)
-            }
-        case .none:
-            return .zero
-        }
+        return attributes?.smlContentSize() ?? .zero
     }
     
     public required init(aspect: CGFloat? = nil, vertical: Bool = true) {
@@ -49,22 +28,22 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     
     open override func prepare() {
         if let dimension = self.dimension, let direction = self.direction, let source = source {
-            self.object = SMLObject(dimension: dimension, direction: direction, source: source)
+            self.attributes = SMLObjectOld(dimension: dimension, direction: direction, source: source)
         } else {
-            self.object = nil
+            self.attributes = nil
         }
     }
 
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return object?.layoutAttributesForItem(at: indexPath)
+        return attributes?.smlAttributesForItem(indexPath: indexPath)
     }
     
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return object?.layoutAttributesForElements(in: rect)
+        return attributes?.smlAttributesForElement(rect: rect)
     }
     
     open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return object?.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
+        return attributes?.smlAttributesForSupplementary(elementKind: elementKind, indexPath: indexPath)
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
@@ -92,5 +71,16 @@ private extension SquareMosaicLayout {
         }
         let aspect = vertical ? collectionView.desiredWidth : collectionView.desiredHeight
         return SMLDirection(aspect: aspect, vertical: vertical)
+    }
+}
+
+private extension UICollectionView {
+    
+    var desiredHeight: CGFloat {
+        return bounds.height - contentInset.top - contentInset.bottom
+    }
+    
+    var desiredWidth: CGFloat {
+        return bounds.width - contentInset.left - contentInset.right
     }
 }

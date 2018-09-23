@@ -2,7 +2,7 @@ import Foundation
 
 public protocol SMLSource: class {
     
-    func smlSourceBacker(section: Int) -> Bool
+    func smlSourceBacker(section: Int) -> String?
     func smlSourceFooter(section: Int) -> SMLSupplementary?
     func smlSourceHeader(section: Int) -> SMLSupplementary?
     func smlSourcePattern(section: Int) -> SMLPattern
@@ -11,8 +11,8 @@ public protocol SMLSource: class {
 
 public extension SMLSource {
     
-    func smlSourceBacker(section: Int) -> Bool {
-        return false
+    func smlSourceBacker(section: Int) -> String? {
+        return nil
     }
     
     func smlSourceFooter(section: Int) -> SMLSupplementary? {
