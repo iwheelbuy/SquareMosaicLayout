@@ -28,7 +28,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     
     open override func prepare() {
         if let dimension = self.dimension, let direction = self.direction, let source = source {
-            self.attributes = SMLSections(dimension: dimension, direction: direction, source: source)
+            self.attributes = SMLObject(dimension: dimension, direction: direction, source: source)
 //            self.attributes = SMLObjectOld(dimension: dimension, direction: direction, source: source)
         } else {
             self.attributes = nil
@@ -63,15 +63,15 @@ private extension SquareMosaicLayout {
         }
     }
     
-    var direction: SMLDirection? {
+    var direction: SMLObjectDirection? {
         if let aspect = self.aspect {
-            return SMLDirection(aspect: aspect, vertical: vertical)
+            return SMLObjectDirection(aspect: aspect, vertical: vertical)
         }
         guard let collectionView = collectionView else {
             return nil
         }
         let aspect = vertical ? collectionView.desiredWidth : collectionView.desiredHeight
-        return SMLDirection(aspect: aspect, vertical: vertical)
+        return SMLObjectDirection(aspect: aspect, vertical: vertical)
     }
 }
 

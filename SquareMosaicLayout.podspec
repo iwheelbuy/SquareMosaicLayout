@@ -16,6 +16,9 @@ Pod::Spec.new do |s|
   s.author                  = { 'iWheelBuy' => 'iwheelbuy@gmail.com' }
   s.source                  = { :git => 'https://github.com/iwheelbuy/SquareMosaicLayout.git', :tag => s.version.to_s }
   s.ios.deployment_target   = '9.0'
-  s.source_files            = 'SquareMosaicLayout/*.swift'
+  s.source_files            = 'SquareMosaicLayout/Source/**/*.swift'
+  s.test_spec 'Tests' do |ss|
+    ss.source_files = 'SquareMosaicLayout/Tests/**/*.swift'
+  end
 
 end

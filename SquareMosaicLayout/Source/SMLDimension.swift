@@ -14,16 +14,12 @@ struct SMLDimension {
             self.array = []
         }
     }
-    
-    func smlDimensionRows(section: Int) -> Int {
+
+    subscript(section: Int) -> Int {
         return array.count > section ? array[section] : 0
     }
     
-    func smlDimensionSections() -> Int {
+    var sections: Int {
         return array.count
-    }
-    
-    var numberOfItemsInSections: [Int] {
-        return array
     }
 }

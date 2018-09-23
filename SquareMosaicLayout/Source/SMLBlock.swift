@@ -8,10 +8,3 @@ public protocol SMLBlock {
     ///
     func smlBlockRepeated() -> Bool
 }
-
-public extension SMLBlock {
-    
-    func smlBlockRepeated() -> Bool {
-        return false
-    }
-}

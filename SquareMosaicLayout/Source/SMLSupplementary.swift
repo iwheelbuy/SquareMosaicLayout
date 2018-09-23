@@ -6,10 +6,3 @@ public protocol SMLSupplementary {
     func smlSupplementaryKind() -> String
     func smlSupplementaryIsHiddenForEmptySection() -> Bool
 }
-
-public extension SMLSupplementary {
-    
-    func smlSupplementaryIsHiddenForEmptySection() -> Bool {
-        return false
-    }
-}

@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'Example' do
 
-   pod 'SquareMosaicLayout', :path => '../', :testspecs => ['Tests']
+   pod 'SquareMosaicLayout', :path => '../'
 
 end
 

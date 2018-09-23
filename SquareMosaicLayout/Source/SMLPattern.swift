@@ -6,13 +6,6 @@ public protocol SMLPattern {
     func smlPatternSpacing(position: SMLPosition) -> CGFloat
 }
 
-public extension SMLPattern {
-    
-    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
-        return 0
-    }
-}
-
 extension SMLPattern {
     
     func smlPatternBlocks(rows expectedFrames: Int) -> [SMLBlock] {
