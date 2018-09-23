@@ -36,7 +36,7 @@ struct SMLObjectSection {
     
     static func makeItems(direction: SMLObjectDirection, origin: inout CGFloat, pattern: SMLPattern, rows: Int, section: Int) -> [SMLObjectItem] {
         let aspect = direction.aspect
-        let blocks = pattern.smlPatternBlocks(rows: rows)
+        let blocks = SMLObjectBlockArray(pattern: pattern, rows: rows).blocks
         let total = blocks.count
         var frames = ArraySlice<CGRect>()
         let vertical = direction.vertical
