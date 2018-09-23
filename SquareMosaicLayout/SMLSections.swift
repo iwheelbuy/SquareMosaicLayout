@@ -30,9 +30,9 @@ struct SMLSections {
     }
 }
 
-extension SMLSections: SMLAttributes {
+extension SMLSections: SMLAttributes, SMLContentSize {
     
-    func smlAttributesCollectionViewContentSize() -> CGSize {
+    func smlContentSize() -> CGSize {
         switch sections.last {
         case .some(let section):
             let aspect = direction.smlDirectionAspect()
@@ -49,18 +49,15 @@ extension SMLSections: SMLAttributes {
     }
     
     func smlAttributesForElement(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        fatalError()
-//        let aaa = sections.map({ [$0.header, $0.footer] })
-//        let bbb = aaa.flatMap({ $0 }).com
-//        bb
+        return sections.compactMap({ $0.smlAttributesForElement(rect: rect) }).flatMap({ $0 })
     }
     
     func smlAttributesForItem(indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        fatalError()
+        return sections.compactMap({ $0.smlAttributesForItem(indexPath: indexPath) }).first
     }
     
     func smlAttributesForSupplementary(elementKind: String, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        fatalError()
+        return sections.compactMap({ $0.smlAttributesForSupplementary(elementKind: elementKind, indexPath: indexPath) }).first
     }
 }
 
@@ -157,9 +154,9 @@ struct SMLSection {
         let vertical = direction.smlDirectionVertical()
         switch vertical {
         case true:
-            frame = CGRect(origin: CGPoint(x: 0, y: origin), size: CGSize(width: aspect, height: origin))
+            frame = CGRect(origin: .zero, size: CGSize(width: aspect, height: origin))
         case false:
-            frame = CGRect(origin: CGPoint(x: origin, y: 0), size: CGSize(width: origin, height: aspect))
+            frame = CGRect(origin: .zero, size: CGSize(width: origin, height: aspect))
         }
         return Supplementary(frame: frame, kind: kind, zIndex: -1)
     }
@@ -254,6 +251,60 @@ struct SMLSection {
     }
 }
 
+extension SMLSection: SMLAttributes {
+    
+    func smlAttributesForElement(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let section = self.index
+        let items = self.items
+            .filter({ $0.frame.intersects(rect) })
+            .map({ (item) -> UICollectionViewLayoutAttributes in
+                let row = item.index
+                let indexPath = IndexPath(row: row, section: section)
+                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                attributes.frame = item.frame
+                attributes.zIndex = 0
+                return attributes
+            })
+        let supplementary = [backer, footer, header]
+            .compactMap({ $0 })
+            .filter({ $0.frame.intersects(rect) })
+            .map({ (supplementary) -> UICollectionViewLayoutAttributes in
+                let elementKind = supplementary.kind
+                let indexPath = IndexPath(row: 0, section: section)
+                let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
+                attributes.frame = supplementary.frame
+                attributes.zIndex = supplementary.zIndex
+                return attributes
+            })
+        return items + supplementary
+    }
+    
+    func smlAttributesForItem(indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard indexPath.section == self.index else {
+            return nil
+        }
+        guard let item = items.first(where: { $0.index == indexPath.row }) else {
+            return nil
+        }
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        attributes.frame = item.frame
+        attributes.zIndex = 0
+        return attributes
+    }
+    
+    func smlAttributesForSupplementary(elementKind: String, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard indexPath.section == self.index else {
+            return nil
+        }
+        guard let supplementary = [backer, footer, header].compactMap({ $0 }).first(where: { $0?.kind == elementKind }) else {
+            return nil
+        }
+        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
+        attributes.frame = supplementary.frame
+        attributes.zIndex = supplementary.zIndex
+        return attributes
+    }
+}
 
 private extension ArraySlice {
     
