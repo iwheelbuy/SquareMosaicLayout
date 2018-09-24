@@ -5,6 +5,11 @@ struct SMLObject {
     let direction: SMLObjectDirection
     let sections: [SMLObjectSection]
     
+    init(direction: SMLObjectDirection, sections: [SMLObjectSection]) {
+        self.direction = direction
+        self.sections = sections
+    }
+    
     init(dimension: SMLDimension, direction: SMLObjectDirection, source: SMLSource) {
         self.direction = direction
         let sections = dimension.sections
@@ -28,9 +33,20 @@ struct SMLObject {
             self.sections = []
         }
     }
+    
+    func invalidationRequiredFor(visible: SMLVisible) -> Bool {
+        return true
+    }
+    
+    func updated(visible: SMLVisible) -> SMLObject {
+        guard smlAttributesInvalidationRequired(visible: visible) else {
+            return self
+        }
+        return SMLObject(direction: direction, sections: sections.map({ $0.updated(visible: visible) }))
+    }
 }
 
-extension SMLObject: SMLAttributes {
+extension SMLObject {
     
     func smlAttributesForElement(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return sections.compactMap({ $0.smlAttributesForElement(rect: rect) }).flatMap({ $0 })
@@ -43,9 +59,14 @@ extension SMLObject: SMLAttributes {
     func smlAttributesForSupplementary(elementKind: String, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return sections.compactMap({ $0.smlAttributesForSupplementary(elementKind: elementKind, indexPath: indexPath) }).first
     }
-}
-
-extension SMLObject: SMLContentSize {
+    
+    func smlAttributesInvalidationRequired(visible: SMLVisible) -> Bool {
+        guard let section = sections.first(where: { $0.smlAttributesInvalidationRequired(visible: visible) }) else {
+            return false
+        }
+        print(section.index)
+        return true
+    }
     
     func smlContentSize() -> CGSize {
         switch sections.last {

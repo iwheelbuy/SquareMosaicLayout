@@ -20,6 +20,16 @@ struct SMLObjectSection {
         self.origin = origin
     }
     
+    func updated(visible: SMLVisible) -> SMLObjectSection {
+        guard smlAttributesInvalidationRequired(visible: visible) else {
+            return self
+        }
+        guard let header = self.header?.updated(direction: SMLObjectDirection(aspect: 0, vertical: true), origin: visible.origin) else {
+            return self
+        }
+        return SMLObjectSection(backer: backer, footer: footer, header: header, index: index, items: items, length: length, origin: origin)
+    }
+    
     func updated(direction: SMLObjectDirection, origin: inout CGFloat) -> SMLObjectSection {
         let section = SMLObjectSection(
             backer: backer?.updated(direction: direction, origin: origin),
@@ -104,7 +114,7 @@ struct SMLObjectSection {
     }
 }
 
-extension SMLObjectSection: SMLAttributes {
+extension SMLObjectSection {
     
     func smlAttributesForElement(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let section = self.index
@@ -156,5 +166,11 @@ extension SMLObjectSection: SMLAttributes {
         attributes.frame = supplementary.frame
         attributes.zIndex = supplementary.zIndex
         return attributes
+    }
+    
+    func smlAttributesInvalidationRequired(visible: SMLVisible) -> Bool {
+        let range = origin ... origin + length
+        print(range, visible.range)
+        return range.overlaps(visible.range)
     }
 }
