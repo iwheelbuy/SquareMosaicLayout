@@ -8,6 +8,14 @@ import UIKit
 extension AppDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let aaa: ClosedRange<CGFloat> = 0 ... 1
+        let bbb: ClosedRange<CGFloat> = 0.5 ... 2.3
+        let ccc = aaa.clamped(to: bbb)
+        let ddd = bbb.clamped(to: aaa)
+        print(ccc, ddd, aaa.overlaps(bbb))
+
+        
         let controllerTab = UITabBarController()
         let controllerExample = UINavigationController(rootViewController: ViewController())
         controllerExample.title = "Example"

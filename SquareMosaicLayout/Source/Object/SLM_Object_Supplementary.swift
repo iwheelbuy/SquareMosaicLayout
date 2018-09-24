@@ -1,5 +1,67 @@
 import Foundation
 
+//struct SMLFrame {
+//    
+//    private let direction: SMLObjectDirection
+//    private(set) var frame: CGRect
+//    
+//    init(direction: SMLObjectDirection, frame: CGRect) {
+//        self.direction = direction
+//        self.frame = frame
+//    }
+//    
+//    var origin: CGFloat {
+//        get {
+//            switch direction {
+//            case .vertical:
+//                return frame.origin.y
+//            case .horizontal:
+//                return frame.origin.x
+//            }
+//        }
+//        set {
+//            switch direction {
+//            case .vertical:
+//                frame.origin.y = newValue
+//            case .horizontal:
+//                frame.origin.x = newValue
+//            }
+//        }
+//    }
+//}
+
+enum SMLStick {
+    
+    case bottom, top
+}
+
+struct Nice {
+    
+    let frame: CGRect
+    let kind: String
+    let range: ClosedRange<CGFloat>
+    let stick: SMLStick
+    let zIndex: Int
+    
+    func attributes(direction: SMLObjectDirection, indexPath: IndexPath, visible: SMLVisible) -> UICollectionViewLayoutAttributes {
+        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind, with: indexPath)
+        var frame = self.frame
+        if visible.range.overlaps(self.range) {
+            let range = visible.range.clamped(to: self.range)
+            let origin = stick == .bottom ? range.upperBound : range.lowerBound
+            switch direction {
+            case .vertical:
+                frame.origin.y = origin
+            case .horizontal:
+                frame.origin.x = origin
+            }
+        }
+        attributes.frame = frame
+        attributes.zIndex = zIndex
+        return attributes
+    }
+}
+
 struct SMLObjectSupplementary: Equatable {
     
     let frame: CGRect
@@ -12,6 +74,7 @@ struct SMLObjectSupplementary: Equatable {
         self.zIndex = zIndex
     }
     
+    /// создается
     init(aspect: SMLObjectAspect, direction: SMLObjectDirection, kind: String, length: CGFloat, zIndex: Int) {
         let size: CGSize
         switch direction {
