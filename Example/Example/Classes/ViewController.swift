@@ -44,32 +44,31 @@ fileprivate extension ViewController {
     func getViewLayout() -> SquareMosaicLayout {
         switch viewControl.selectedSegmentIndex {
         case 0:
-            return Layout(vertical: true, pattern: VerticalMosaicPattern())
+            return Layout(direction: .vertical, pattern: VerticalMosaicPattern())
         case 1:
-            return Layout(vertical: true, pattern: VerticalTriplePattern())
+            return Layout(direction: .vertical, pattern: VerticalTriplePattern())
         default:
-            return Layout(vertical: true, pattern: VerticalSinglePattern())
+            return Layout(direction: .vertical, pattern: VerticalSinglePattern())
         }
     }
 }
 
 final class Layout: SquareMosaicLayout, SMLSource {
     
-    let vertical: Bool
+//    let vertical: Bool
     var pattern: SMLPattern!
 
     required convenience init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(aspect: CGFloat? = nil, vertical: Bool, pattern: SMLPattern) {
-        self.init(aspect: aspect, vertical: vertical)
+    convenience init(aspect: SMLObjectAspect? = nil, direction: SMLObjectDirection, pattern: SMLPattern) {
+        self.init(aspect: aspect, direction: direction)
         self.pattern = pattern
     }
     
-    required init(aspect: CGFloat?, vertical: Bool) {
-        self.vertical = vertical
-        super.init(aspect: aspect, vertical: vertical)
+    required init(aspect: SMLObjectAspect?, direction: SMLObjectDirection) {
+        super.init(aspect: aspect, direction: direction)
         self.source = self
     }
     

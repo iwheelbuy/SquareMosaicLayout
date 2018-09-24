@@ -20,11 +20,11 @@ struct SMLObjectSection {
         self.origin = origin
     }
     
-    func updated(visible: SMLVisible) -> SMLObjectSection {
+    func updated(direction: SMLObjectDirection, visible: SMLVisible) -> SMLObjectSection {
         guard smlAttributesInvalidationRequired(visible: visible) else {
             return self
         }
-        guard let header = self.header?.updated(direction: SMLObjectDirection(aspect: 0, vertical: true), origin: visible.origin) else {
+        guard let header = self.header?.updated(direction: direction, origin: visible.origin) else {
             return self
         }
         return SMLObjectSection(backer: backer, footer: footer, header: header, index: index, items: items, length: length, origin: origin)
@@ -44,12 +44,10 @@ struct SMLObjectSection {
         return section
     }
     
-    static func makeItems(direction: SMLObjectDirection, origin: inout CGFloat, pattern: SMLPattern, rows: Int, section: Int) -> [SMLObjectItem] {
-        let aspect = direction.aspect
+    static func makeItems(aspect: SMLObjectAspect, direction: SMLObjectDirection, origin: inout CGFloat, pattern: SMLPattern, rows: Int, section: Int) -> [SMLObjectItem] {
         let blocks = SMLObjectBlockArray(pattern: pattern, rows: rows).blocks
         let total = blocks.count
         var frames = ArraySlice<CGRect>()
-        let vertical = direction.vertical
         for (current, block) in blocks.enumerated() {
             let row = frames.count
             guard row < rows else {
@@ -58,10 +56,10 @@ struct SMLObjectSection {
             origin += SMLObjectSpacing(current: current, pattern: pattern, position: .before, total: total)?.value ?? 0
             origin += SMLObjectSpacing(current: current, pattern: pattern, position: .between, total: total)?.value ?? 0
             let slice = block.smlBlockFrames(aspect: aspect, origin: origin).prefix(rows - row)
-            switch vertical {
-            case true:
+            switch direction {
+            case .vertical:
                 origin += slice.map({ $0.origin.y - origin + $0.size.height }).max() ?? 0
-            case false:
+            case .horizontal:
                 origin += slice.map({ $0.origin.x - origin + $0.size.width }).max() ?? 0
             }
             frames += slice
@@ -70,7 +68,7 @@ struct SMLObjectSection {
         return frames.enumerated().map({ SMLObjectItem(frame: $0.element, index: $0.offset) })
     }
     
-    init?(dimension: SMLDimension, direction: SMLObjectDirection, section: Int, source: SMLSource) {
+    init?(aspect: SMLObjectAspect, dimension: SMLDimension, direction: SMLObjectDirection, section: Int, source: SMLSource) {
         self.index = section
         let rows = dimension[section]
         let supplementaries = [source.smlSourceHeader(section: section), source.smlSourceFooter(section: section)]
@@ -82,14 +80,14 @@ struct SMLObjectSection {
             case true:
                 var origin: CGFloat = 0
                 self.origin = origin
-                self.header = SMLObjectSupplementary(direction: direction, origin: &origin, supplementary: supplementaries[0], zIndex: 1)
+                self.header = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[0], zIndex: 1)
                 self.items = []
-                self.footer = SMLObjectSupplementary(direction: direction, origin: &origin, supplementary: supplementaries[1], zIndex: 1)
+                self.footer = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[1], zIndex: 1)
                 self.backer = {
                     guard supplementaries.contains(where: { $0 != nil }), let kind = source.smlSourceBacker(section: section) else {
                         return nil
                     }
-                    return SMLObjectSupplementary(direction: direction, kind: kind, length: origin, zIndex: -1)
+                    return SMLObjectSupplementary(aspect: aspect, direction: direction, kind: kind, length: origin, zIndex: -1)
                 }()
                 self.length = origin
             }
@@ -97,14 +95,14 @@ struct SMLObjectSection {
             var origin: CGFloat = 0
             let pattern = source.smlSourcePattern(section: section)
             self.origin = origin
-            self.header = SMLObjectSupplementary(direction: direction, origin: &origin, supplementary: supplementaries[0], zIndex: 1)
-            self.items = SMLObjectSection.makeItems(direction: direction, origin: &origin, pattern: pattern, rows: rows, section: section)
-            self.footer = SMLObjectSupplementary(direction: direction, origin: &origin, supplementary: supplementaries[1], zIndex: 1)
+            self.header = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[0], zIndex: 1)
+            self.items = SMLObjectSection.makeItems(aspect: aspect, direction: direction, origin: &origin, pattern: pattern, rows: rows, section: section)
+            self.footer = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[1], zIndex: 1)
             self.backer = {
                 guard let kind = source.smlSourceBacker(section: section) else {
                     return nil
                 }
-                return SMLObjectSupplementary(direction: direction, kind: kind, length: origin, zIndex: -1)
+                return SMLObjectSupplementary(aspect: aspect, direction: direction, kind: kind, length: origin, zIndex: -1)
             }()
             self.length = origin
         default:

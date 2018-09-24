@@ -9,14 +9,14 @@ struct SMLVisible {
         return origin ... length + origin
     }
     
-    init?(bounds: CGRect, insets: UIEdgeInsets, size: CGSize, vertical: Bool) {
+    init?(bounds: CGRect, direction: SMLObjectDirection, insets: UIEdgeInsets, size: CGSize) {
         let origin: CGFloat
         let length: CGFloat
-        switch vertical {
-        case true:
+        switch direction {
+        case .vertical:
             origin = max(0, bounds.origin.y + insets.top)
             length = min(size.height, bounds.height - insets.bottom - insets.top)
-        case false:
+        case .horizontal:
             origin = max(0, bounds.origin.x + insets.left)
             length = min(size.width, bounds.width - insets.right - insets.left)
         }
@@ -30,9 +30,9 @@ struct SMLVisible {
 
 open class SquareMosaicLayout: UICollectionViewLayout {
 
-    private let aspect: CGFloat?
+    private let aspectForced: SMLObjectAspect?
     private var object: SMLObject? = nil
-    private let vertical: Bool
+    private let direction: SMLObjectDirection
     private var visible: SMLVisible? = nil
     public weak var source: SMLSource?
     public weak var delegate: SMLDelegate? {
@@ -45,9 +45,9 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         return object?.smlContentSize() ?? .zero
     }
     
-    public required init(aspect: CGFloat? = nil, vertical: Bool = true) {
-        self.aspect = aspect
-        self.vertical = vertical
+    public required init(aspect: SMLObjectAspect? = nil, direction: SMLObjectDirection = .vertical) {
+        self.aspectForced = aspect
+        self.direction = direction
         super.init()
     }
     
@@ -56,13 +56,13 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     }
     
     open override func prepare() {
-        if let dimension = self.dimension, let direction = self.direction, let source = source {
-            let object = SMLObject(dimension: dimension, direction: direction, source: source)
+        if let aspect = self.aspect, let dimension = self.dimension, let source = source {
+            let object = SMLObject(aspect: aspect, dimension: dimension, direction: direction, source: source)
             switch visible {
             case .none:
                 self.object = object
             case .some(let visible):
-                self.object = object.updated(visible: visible)
+                self.object = object.updated(aspect: aspect, direction: direction, visible: visible)
             }
         } else {
             self.object = nil
@@ -93,7 +93,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         let bounds = collectionView.bounds
         let insets = collectionView.adjustedContentInset
         let size = collectionViewContentSize
-        self.visible = SMLVisible(bounds: bounds, insets: insets, size: size, vertical: vertical) ?? self.visible
+        self.visible = SMLVisible(bounds: bounds, direction: direction, insets: insets, size: size) ?? self.visible
     }
     
     open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
@@ -103,7 +103,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         let bounds = newBounds
         let insets = collectionView.adjustedContentInset
         let size = collectionViewContentSize
-        guard let visible = SMLVisible(bounds: bounds, insets: insets, size: size, vertical: vertical) else {
+        guard let visible = SMLVisible(bounds: bounds, direction: direction, insets: insets, size: size) else {
             return false
         }
         return object?.smlAttributesInvalidationRequired(visible: visible) ?? false
@@ -112,6 +112,20 @@ open class SquareMosaicLayout: UICollectionViewLayout {
 
 private extension SquareMosaicLayout {
     
+    var aspect: SMLObjectAspect? {
+        guard let collectionView = collectionView else {
+            return nil
+        }
+        let bounds = collectionView.bounds
+        let contentInset = collectionView.contentInset
+        switch direction {
+        case .vertical:
+            return bounds.width - contentInset.left - contentInset.right
+        case .horizontal:
+            return bounds.height - contentInset.top - contentInset.bottom
+        }
+    }
+    
     var dimension: SMLDimension? {
         switch collectionView {
         case .some(let collectionView):
@@ -119,27 +133,5 @@ private extension SquareMosaicLayout {
         case .none:
             return nil
         }
-    }
-    
-    var direction: SMLObjectDirection? {
-        if let aspect = self.aspect {
-            return SMLObjectDirection(aspect: aspect, vertical: vertical)
-        }
-        guard let collectionView = collectionView else {
-            return nil
-        }
-        let aspect = vertical ? collectionView.desiredWidth : collectionView.desiredHeight
-        return SMLObjectDirection(aspect: aspect, vertical: vertical)
-    }
-}
-
-private extension UICollectionView {
-    
-    var desiredHeight: CGFloat {
-        return bounds.height - contentInset.top - contentInset.bottom
-    }
-    
-    var desiredWidth: CGFloat {
-        return bounds.width - contentInset.left - contentInset.right
     }
 }

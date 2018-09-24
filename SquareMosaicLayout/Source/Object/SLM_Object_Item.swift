@@ -7,11 +7,10 @@ struct SMLObjectItem: Equatable {
     
     func updated(direction: SMLObjectDirection, origin: CGFloat) -> SMLObjectItem {
         var frame = self.frame
-        let vertical = direction.vertical
-        switch vertical {
-        case true:
+        switch direction {
+        case .vertical:
             frame.origin.y = origin + frame.origin.y
-        case false:
+        case .horizontal:
             frame.origin.x = origin + frame.origin.x
         }
         return SMLObjectItem(frame: frame, index: index)

@@ -1,7 +1,9 @@
 import Foundation
 
-struct SMLObjectDirection: Equatable {
+public enum SMLObjectDirection: Int {
     
-    let aspect: CGFloat
-    let vertical: Bool
+    case horizontal
+    case vertical
 }
+
+public typealias SMLObjectAspect = CGFloat
