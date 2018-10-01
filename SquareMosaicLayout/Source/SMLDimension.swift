@@ -23,3 +23,10 @@ struct SMLDimension {
         return array.count
     }
 }
+
+extension SMLDimension: Equatable {
+    
+    static func ==(lhs: SMLDimension, rhs: SMLDimension) -> Bool {
+        return lhs.array == rhs.array
+    }
+}

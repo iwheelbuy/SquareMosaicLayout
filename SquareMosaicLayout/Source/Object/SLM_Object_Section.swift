@@ -1,6 +1,6 @@
 import Foundation
 
-struct SMLObjectSection {
+final class SMLObjectSection {
     
     var backer: SMLObjectSupplementary?
     var footer: SMLObjectSupplementary?
@@ -9,6 +9,7 @@ struct SMLObjectSection {
     var items: [SMLObjectItem]
     let length: CGFloat
     let origin: CGFloat
+    var visible: SMLVisible?
     
     init(backer: SMLObjectSupplementary?, footer: SMLObjectSupplementary?, header: SMLObjectSupplementary?, index: Int, items: [SMLObjectItem], length: CGFloat, origin: CGFloat) {
         self.backer = backer
@@ -68,47 +69,21 @@ struct SMLObjectSection {
         return frames.enumerated().map({ SMLObjectItem(frame: $0.element, index: $0.offset) })
     }
     
-    init?(aspect: SMLObjectAspect, dimension: SMLDimension, direction: SMLObjectDirection, section: Int, source: SMLSource) {
+    init?(aspect: SMLObjectAspect, direction: SMLObjectDirection, rows: Int, section: Int, source: SMLSource) {
         self.index = section
-        let rows = dimension[section]
-        let supplementaries = [source.smlSourceHeader(section: section), source.smlSourceFooter(section: section)]
-        switch rows {
-        case 0:
-            switch supplementaries.contains(where: { $0?.smlSupplementaryIsHiddenForEmptySection() == false }) {
-            case false:
+        var origin: CGFloat = 0
+        let pattern = source.smlSourcePattern(section: section)
+        self.origin = origin
+        self.header = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: source.smlSourceHeader(section: section), zIndex: 1)
+        self.items = SMLObjectSection.makeItems(aspect: aspect, direction: direction, origin: &origin, pattern: pattern, rows: rows, section: section)
+        self.footer = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: source.smlSourceFooter(section: section), zIndex: 1)
+        self.backer = {
+            guard let kind = source.smlSourceBacker(section: section) else {
                 return nil
-            case true:
-                var origin: CGFloat = 0
-                self.origin = origin
-                self.header = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[0], zIndex: 1)
-                self.items = []
-                self.footer = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[1], zIndex: 1)
-                self.backer = {
-                    guard supplementaries.contains(where: { $0 != nil }), let kind = source.smlSourceBacker(section: section) else {
-                        return nil
-                    }
-                    return SMLObjectSupplementary(aspect: aspect, direction: direction, kind: kind, length: origin, zIndex: -1)
-                }()
-                self.length = origin
             }
-        case 1...:
-            var origin: CGFloat = 0
-            let pattern = source.smlSourcePattern(section: section)
-            self.origin = origin
-            self.header = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[0], zIndex: 1)
-            self.items = SMLObjectSection.makeItems(aspect: aspect, direction: direction, origin: &origin, pattern: pattern, rows: rows, section: section)
-            self.footer = SMLObjectSupplementary(aspect: aspect, direction: direction, origin: &origin, supplementary: supplementaries[1], zIndex: 1)
-            self.backer = {
-                guard let kind = source.smlSourceBacker(section: section) else {
-                    return nil
-                }
-                return SMLObjectSupplementary(aspect: aspect, direction: direction, kind: kind, length: origin, zIndex: -1)
-            }()
-            self.length = origin
-        default:
-            assertionFailure()
-            return nil
-        }
+            return SMLObjectSupplementary(aspect: aspect, direction: direction, kind: kind, length: origin, zIndex: -1)
+        }()
+        self.length = origin
     }
 }
 
@@ -166,9 +141,10 @@ extension SMLObjectSection {
         return attributes
     }
     
-    func smlAttributesInvalidationRequired(visible: SMLVisible) -> Bool {
-        let range = origin ... origin + length
-        print(range, visible.range)
-        return range.overlaps(visible.range)
+    func smlAttributesInvalidationRequired(visible: SMLVisible?) -> Bool {
+        return true
+//        let range = origin ... origin + length
+//        print(range, visible.range)
+//        return range.overlaps(visible.range)
     }
 }

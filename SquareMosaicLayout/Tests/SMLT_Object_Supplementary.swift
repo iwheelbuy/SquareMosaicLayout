@@ -49,18 +49,7 @@ class SLMTObjectSupplementary: XCTestCase {
     }
 }
 
-//struct SMLObjectSupplementary: Equatable {
-//    
-//    let frame: CGRect
-//    let kind: String
-//    let zIndex: Int
-
 private struct Supplementary: SMLSupplementary {
-    
-    func smlSupplementaryIsHiddenForEmptySection() -> Bool {
-        return false
-    }
-    
     
     let kind: String
     let length: CGFloat

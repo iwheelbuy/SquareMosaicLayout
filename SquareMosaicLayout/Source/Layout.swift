@@ -57,12 +57,14 @@ open class SquareMosaicLayout: UICollectionViewLayout {
     
     open override func prepare() {
         if let aspect = self.aspect, let dimension = self.dimension, let source = source {
-            let object = SMLObject(aspect: aspect, dimension: dimension, direction: direction, source: source)
-            switch visible {
-            case .none:
-                self.object = object
-            case .some(let visible):
-                self.object = object.updated(aspect: aspect, direction: direction, visible: visible)
+            if let object = self.object {
+                if object.aspect == aspect, object.dimension == dimension, object.source === source {
+                    if object.invalidationRequiredFor(visible: visible) {
+                        object.updateFor(visible: visible)
+                    }
+                }
+            } else {
+                self.object = SMLObject(aspect: aspect, dimension: dimension, direction: direction, source: source, visible: visible)
             }
         } else {
             self.object = nil
@@ -106,7 +108,7 @@ open class SquareMosaicLayout: UICollectionViewLayout {
         guard let visible = SMLVisible(bounds: bounds, direction: direction, insets: insets, size: size) else {
             return false
         }
-        return object?.smlAttributesInvalidationRequired(visible: visible) ?? false
+        return object?.invalidationRequiredFor(visible: visible) ?? false
     }
 }
 

@@ -17,10 +17,6 @@ class VerticalSupplementary: SMLSupplementary {
     func smlSupplementaryKind() -> String {
         return kind
     }
-
-    func smlSupplementaryIsHiddenForEmptySection() -> Bool {
-        return true
-    }
 }
 
 class VerticalMosaicPattern: SMLPattern {

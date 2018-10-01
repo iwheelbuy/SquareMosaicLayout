@@ -1,27 +1,26 @@
 import Foundation
 
-struct SMLObject {
+final class SMLObject {
     
     let aspect: SMLObjectAspect
-    let direction: SMLObjectDirection
-    let sections: [SMLObjectSection]
+    let dimension: SMLDimension
+    private let direction: SMLObjectDirection
+    private let sections: [SMLObjectSection]
+    private(set) unowned var source: SMLSource
+    private var visible: SMLVisible?
     
-    init(aspect: SMLObjectAspect, direction: SMLObjectDirection, sections: [SMLObjectSection]) {
+    init(aspect: SMLObjectAspect, dimension: SMLDimension, direction: SMLObjectDirection, source: SMLSource, visible: SMLVisible?) {
         self.aspect = aspect
+        self.dimension = dimension
         self.direction = direction
-        self.sections = sections
-    }
-    
-    init(aspect: SMLObjectAspect, dimension: SMLDimension, direction: SMLObjectDirection, source: SMLSource) {
-        self.aspect = aspect
-        self.direction = direction
-        let sections = dimension.sections
-        switch sections {
-        case 1...:
+        self.sections = {
+            guard dimension.sections > 0 else {
+                return []
+            }
             var origin: CGFloat = 0
             let spacing = source.smlSourceSpacing()
-            self.sections = Array<Int>(0 ..< sections)
-                .compactMap({ SMLObjectSection(aspect: aspect, dimension: dimension, direction: direction, section: $0, source: source) })
+            return Array<Int>(0 ..< dimension.sections)
+                .compactMap({ SMLObjectSection(aspect: aspect, direction: direction, rows: dimension[$0], section: $0, source: source) })
                 .enumerated()
                 .map({ (index, section) -> SMLObjectSection in
                     if index > 0 {
@@ -29,23 +28,17 @@ struct SMLObject {
                     }
                     return section.updated(direction: direction, origin: &origin)
                 })
-        case 0:
-            self.sections = []
-        default:
-            assertionFailure()
-            self.sections = []
-        }
+        }()
+        self.source = source
+        self.visible = visible
     }
     
-    func invalidationRequiredFor(visible: SMLVisible) -> Bool {
-        return true
+    func updateFor(visible: SMLVisible?) {
+        //
     }
     
-    func updated(aspect: SMLObjectAspect, direction: SMLObjectDirection, visible: SMLVisible) -> SMLObject {
-        guard smlAttributesInvalidationRequired(visible: visible) else {
-            return self
-        }
-        return SMLObject(aspect: aspect, direction: direction, sections: sections.map({ $0.updated(direction: direction, visible: visible) }))
+    func invalidationRequiredFor(visible: SMLVisible?) -> Bool {
+        return sections.contains(where: { $0.smlAttributesInvalidationRequired(visible: visible) })
     }
 }
 
@@ -63,13 +56,12 @@ extension SMLObject {
         return sections.compactMap({ $0.smlAttributesForSupplementary(elementKind: elementKind, indexPath: indexPath) }).first
     }
     
-    func smlAttributesInvalidationRequired(visible: SMLVisible) -> Bool {
-        guard let section = sections.first(where: { $0.smlAttributesInvalidationRequired(visible: visible) }) else {
-            return false
-        }
-        print(section.index)
-        return true
-    }
+//    func smlAttributesInvalidationRequired(visible: SMLVisible) -> Bool {
+//        guard let section = sections.first(where: { $0.smlAttributesInvalidationRequired(visible: visible) }) else {
+//            return false
+//        }
+//        return true
+//    }
     
     func smlContentSize() -> CGSize {
         switch sections.last {
