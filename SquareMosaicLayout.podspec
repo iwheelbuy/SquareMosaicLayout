@@ -1,5 +1,5 @@
 # git tag 4.1.1
-# git push origin 4.1.1
+# git push origin 4.1.2
 # pod lib lint SquareMosaicLayout.podspec --no-clean
 # pod spec lint SquareMosaicLayout.podspec --allow-warnings
 # pod trunk push SquareMosaicLayout.podspec
