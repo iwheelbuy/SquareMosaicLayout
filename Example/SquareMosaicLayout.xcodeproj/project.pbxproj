@@ -65,7 +65,7 @@
 		7AEC36DA1E6879B400B11356 /* golf_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_5.jpeg; sourceTree = "<group>"; };
 		7AEC36E61E687A4F00B11356 /* golf_4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf_4.jpeg; sourceTree = "<group>"; };
 		7AEC36E81E687A5F00B11356 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
-		85C8CBE1A7D6C9894878C8EF /* SquareMosaicLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SquareMosaicLayout.podspec; path = ../SquareMosaicLayout.podspec; sourceTree = "<group>"; };
+		85C8CBE1A7D6C9894878C8EF /* SquareMosaicLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SquareMosaicLayout.podspec; path = ../SquareMosaicLayout.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9BD6C3045D8325B8D869529A /* Pods-SquareMosaicLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquareMosaicLayout_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SquareMosaicLayout_Example/Pods-SquareMosaicLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A1F382318EEA77CD3B2193CA /* Pods_SquareMosaicLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21E9ED64D9F3C18E1DDEF88 /* Pods_SquareMosaicLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquareMosaicLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,7 +300,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				DA304A5E2A85C8F84A6D7B80 /* [CP] Embed Pods Frameworks */,
-				8535E3417800E9891E3DBE0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -388,21 +387,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8535E3417800E9891E3DBE0A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SquareMosaicLayout_Example/Pods-SquareMosaicLayout_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA304A5E2A85C8F84A6D7B80 /* [CP] Embed Pods Frameworks */ = {
