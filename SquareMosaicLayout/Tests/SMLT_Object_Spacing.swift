@@ -16,7 +16,7 @@ class SMLTObjectSpacing: XCTestCase {
         let pattern = Pattern.random
         for current in 0 ..< total {
             let isLast = current + 1 == total
-            let isEqual = SMLObjectSpacing(current: current, pattern: pattern, position: .after, total: total)?.value == pattern.smlPatternSpacing(position: .after)
+            let isEqual = SMLObjectSpacing(current: current, pattern: pattern, position: .after, total: total)?.value == pattern.smlPatternBlockSpacing(position: .after)
             XCTAssert((isLast && isEqual) || (!isLast && !isEqual))
         }
     }
@@ -26,7 +26,7 @@ class SMLTObjectSpacing: XCTestCase {
         let pattern = Pattern.random
         for current in 0 ..< total {
             let isFirst = current == 0
-            let isEqual = SMLObjectSpacing(current: current, pattern: pattern, position: .before, total: total)?.value == pattern.smlPatternSpacing(position: .before)
+            let isEqual = SMLObjectSpacing(current: current, pattern: pattern, position: .before, total: total)?.value == pattern.smlPatternBlockSpacing(position: .before)
             XCTAssert((isFirst && isEqual) || (!isFirst && !isEqual))
         }
     }
@@ -36,7 +36,7 @@ class SMLTObjectSpacing: XCTestCase {
         let pattern = Pattern.random
         for current in 0 ..< total {
             let isNotFirst = current != 0
-            let isEqual = SMLObjectSpacing(current: current, pattern: pattern, position: .between, total: total)?.value == pattern.smlPatternSpacing(position: .between)
+            let isEqual = SMLObjectSpacing(current: current, pattern: pattern, position: .between, total: total)?.value == pattern.smlPatternBlockSpacing(position: .between)
             XCTAssert((isNotFirst && isEqual) || (!isNotFirst && !isEqual))
         }
     }
@@ -52,16 +52,20 @@ private struct Pattern: SMLPattern {
         return []
     }
     
-    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
-        switch position {
-        case .after:
-            return after
-        case .before:
-            return before
-        case .between:
-            return between
-        }
+    func smlPatternSpacing(previous: SMLBlock, current: SMLBlock) -> CGFloat {
+        return 0
     }
+
+//    func smlPatternBlockSpacing(position: SMLPosition) -> CGFloat {
+//        switch position {
+//        case .after:
+//            return after
+//        case .before:
+//            return before
+//        case .between:
+//            return between
+//        }
+//    }
     
     static var random: Pattern {
         return Pattern(after: .random, before: .random, between: .random)

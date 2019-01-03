@@ -1,6 +1,7 @@
 import Foundation
+import UIKit
 /// Размерность коллекции
-struct SMLDimension {
+struct SMLayoutDimension {
     
     private let array: [Int]
     
@@ -24,9 +25,9 @@ struct SMLDimension {
     }
 }
 
-extension SMLDimension: Equatable {
+extension SMLayoutDimension: Equatable {
     
-    static func ==(lhs: SMLDimension, rhs: SMLDimension) -> Bool {
+    static func ==(lhs: SMLayoutDimension, rhs: SMLayoutDimension) -> Bool {
         return lhs.array == rhs.array
     }
 }

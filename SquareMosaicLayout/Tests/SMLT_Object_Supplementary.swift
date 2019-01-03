@@ -73,7 +73,7 @@ private struct Supplementary: SMLSupplementary {
 //        return []
 //    }
 //    
-//    func smlPatternSpacing(position: SMLPosition) -> CGFloat {
+//    func smlPatternBlockSpacing(position: SMLPosition) -> CGFloat {
 //        switch position {
 //        case .after:
 //            return after

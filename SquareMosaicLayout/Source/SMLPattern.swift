@@ -3,7 +3,7 @@ import Foundation
 public protocol SMLPattern {
     
     func smlPatternBlocks() -> [SMLBlock]
-    func smlPatternSpacing(position: SMLPosition) -> CGFloat
+    func smlPatternSpacing(previous: SMLBlock, current: SMLBlock) -> CGFloat
 }
 
 struct SMLObjectBlockArray {

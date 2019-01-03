@@ -1,0 +1,18 @@
+PODS:
+  - SquareMosaicLayout (5.0.0)
+  - SquareMosaicLayout/Tests (5.0.0)
+
+DEPENDENCIES:
+  - SquareMosaicLayout (from `../`)
+  - SquareMosaicLayout/Tests (from `../`)
+
+EXTERNAL SOURCES:
+  SquareMosaicLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SquareMosaicLayout: 7f25d7fccffbc0eeed7df20de0c36125c47ec5a2
+
+PODFILE CHECKSUM: 0221e23ee8761483558135c8d7fde627a35a68a6
+
+COCOAPODS: 1.6.0.beta.2
