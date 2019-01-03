@@ -5,7 +5,7 @@ public protocol SMLayoutBlock {
     ///
     func smLayoutBlockCapacity() -> Int
     ///
-    func smLayoutBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect]
+    func smLayoutBlockFrames(aspect: SMLayoutAspect, origin: CGFloat) -> [CGRect]
     ///
     func smLayoutBlockRepeated() -> Bool
 }

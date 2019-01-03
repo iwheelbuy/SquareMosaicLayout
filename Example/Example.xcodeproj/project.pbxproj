@@ -10,6 +10,8 @@
 		A3BC7A0D21DDD93E001ED4BB /* SMLayoutOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC7A0C21DDD93E001ED4BB /* SMLayoutOrigin.swift */; };
 		A3BC7A0F21DDDEF4001ED4BB /* Supplementary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC7A0E21DDDEF4001ED4BB /* Supplementary.swift */; };
 		A3BC7A1121DDDF8D001ED4BB /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC7A1021DDDF8D001ED4BB /* Cell.swift */; };
+		A3BC7A1421DE119A001ED4BB /* SMLayoutFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC7A1321DE119A001ED4BB /* SMLayoutFrame.swift */; };
+		A3BC7A1621DE17CF001ED4BB /* SMLayoutAspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC7A1521DE17CF001ED4BB /* SMLayoutAspect.swift */; };
 		A3D0928C21DC8D6000E844E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D0928B21DC8D6000E844E1 /* AppDelegate.swift */; };
 		A3D0928E21DC8D6000E844E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D0928D21DC8D6000E844E1 /* ViewController.swift */; };
 		A3D0929321DC8D6200E844E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3D0929221DC8D6200E844E1 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		A3BC7A0C21DDD93E001ED4BB /* SMLayoutOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMLayoutOrigin.swift; sourceTree = "<group>"; };
 		A3BC7A0E21DDDEF4001ED4BB /* Supplementary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplementary.swift; sourceTree = "<group>"; };
 		A3BC7A1021DDDF8D001ED4BB /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		A3BC7A1321DE119A001ED4BB /* SMLayoutFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMLayoutFrame.swift; sourceTree = "<group>"; };
+		A3BC7A1521DE17CF001ED4BB /* SMLayoutAspect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMLayoutAspect.swift; sourceTree = "<group>"; };
 		A3D0928821DC8D6000E844E1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3D0928B21DC8D6000E844E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3D0928D21DC8D6000E844E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3BC7A1221DE118F001ED4BB /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				A3BC7A1521DE17CF001ED4BB /* SMLayoutAspect.swift */,
+				A3BC7A1321DE119A001ED4BB /* SMLayoutFrame.swift */,
+			);
+			path = Temp;
+			sourceTree = "<group>";
+		};
 		A3D0927F21DC8D6000E844E1 = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				A3D092B621DCBD7600E844E1 /* SMLayout.swift */,
+				A3BC7A1221DE118F001ED4BB /* Temp */,
 				A3D092DD21DD411F00E844E1 /* Classes */,
 				A3D092D621DCCB4400E844E1 /* Enums */,
 				A3D092D121DCC02C00E844E1 /* Structs */,
@@ -321,6 +335,7 @@
 				A3BC7A0F21DDDEF4001ED4BB /* Supplementary.swift in Sources */,
 				A3D092D321DCC04800E844E1 /* SMLayoutPattern.swift in Sources */,
 				A3D092CD21DCBD7F00E844E1 /* SMLayoutObjectSection.swift in Sources */,
+				A3BC7A1421DE119A001ED4BB /* SMLayoutFrame.swift in Sources */,
 				A3D092D821DCCC7700E844E1 /* SMLayoutVisible.swift in Sources */,
 				A3D092DA21DCDC5D00E844E1 /* SMLayoutUpdatable.swift in Sources */,
 				A3D092BC21DCBD7700E844E1 /* SMLayoutDelegate.swift in Sources */,
@@ -330,6 +345,7 @@
 				A3BC7A1121DDDF8D001ED4BB /* Cell.swift in Sources */,
 				A3D092BD21DCBD7700E844E1 /* SMLayoutSource.swift in Sources */,
 				A3D092CA21DCBD7F00E844E1 /* SMLayoutObject.swift in Sources */,
+				A3BC7A1621DE17CF001ED4BB /* SMLayoutAspect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

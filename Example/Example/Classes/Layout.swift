@@ -12,9 +12,9 @@ private struct Block0Left: SMLayoutBlock {
         return 3
     }
     
-    func smLayoutBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
-        let min = (aspect - offset * 4) / 3.0
-        let max = aspect - min - offset * 3
+    func smLayoutBlockFrames(aspect: SMLayoutAspect, origin: CGFloat) -> [CGRect] {
+        let min = (aspect.value - offset * 4) / 3.0
+        let max = aspect.value - min - offset * 3
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: max, height: max))
         frames.append(CGRect(x: max + offset * 2, y: origin, width: min, height: min))
@@ -39,9 +39,9 @@ private struct Block0Right: SMLayoutBlock {
         return 3
     }
     
-    func smLayoutBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
-        let min = (aspect - offset * 4) / 3.0
-        let max = aspect - min - offset * 3
+    func smLayoutBlockFrames(aspect: SMLayoutAspect, origin: CGFloat) -> [CGRect] {
+        let min = (aspect.value - offset * 4) / 3.0
+        let max = aspect.value - min - offset * 3
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: min, height: min))
         frames.append(CGRect(x: offset, y: origin + offset + min, width: min, height: min))
@@ -66,8 +66,8 @@ private struct Block0Triple: SMLayoutBlock {
         return 3
     }
     
-    func smLayoutBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
-        let min = (aspect - offset * 4) / 3.0
+    func smLayoutBlockFrames(aspect: SMLayoutAspect, origin: CGFloat) -> [CGRect] {
+        let min = (aspect.value - offset * 4) / 3.0
         var frames = [CGRect]()
         frames.append(CGRect(x: offset, y: origin, width: min, height: min))
         frames.append(CGRect(x: min + offset * 2, y: origin, width: min, height: min))
@@ -82,8 +82,8 @@ private struct Block0Triple: SMLayoutBlock {
 
 private struct Header0: SMLayoutSupplementary {
 
-    func smLayoutSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: origin, width: aspect, height: 44)
+    func smLayoutSupplementaryFrame(aspect: SMLayoutAspect, origin: CGFloat) -> CGRect {
+        return CGRect(x: 0, y: origin, width: aspect.value, height: 44)
     }
     
     func smLayoutSupplementaryKind() -> String {
@@ -97,8 +97,8 @@ private struct Header0: SMLayoutSupplementary {
 
 private struct Footer0: SMLayoutSupplementary {
     
-    func smLayoutSupplementaryFrame(aspect: CGFloat, origin: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: origin, width: aspect, height: 20)
+    func smLayoutSupplementaryFrame(aspect: SMLayoutAspect, origin: CGFloat) -> CGRect {
+        return CGRect(x: 0, y: origin, width: aspect.value, height: 20)
     }
     
     func smLayoutSupplementaryKind() -> String {

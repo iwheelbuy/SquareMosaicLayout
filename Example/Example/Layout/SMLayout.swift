@@ -2,7 +2,7 @@ import UIKit
 
 open class SMLayout: UICollectionViewLayout {
 
-    private let aspectForced: CGFloat?
+    private let aspectForced: SMLayoutAspect?
     private let direction: SMLayoutDirection
     private var object: SMLayoutObject? = nil
     private var visible: SMLayoutVisible? = nil
@@ -18,7 +18,12 @@ open class SMLayout: UICollectionViewLayout {
     }
     
     public required init(aspect: CGFloat? = nil, direction: SMLayoutDirection = .vertical) {
-        self.aspectForced = aspect
+        self.aspectForced = {
+            guard let aspect = aspect else {
+                return nil
+            }
+            return SMLayoutAspect(aspect: aspect, direction: direction)
+        }()
         self.direction = direction
         super.init()
     }
@@ -86,18 +91,14 @@ open class SMLayout: UICollectionViewLayout {
 
 private extension SMLayout {
     
-    var aspect: CGFloat? {
+    var aspect: SMLayoutAspect? {
         guard let collectionView = collectionView else {
             return nil
         }
-        let bounds = collectionView.bounds
-        let contentInset = collectionView.contentInset
-        switch direction {
-        case .vertical:
-            return bounds.width - contentInset.left - contentInset.right
-        case .horizontal:
-            return bounds.height - contentInset.top - contentInset.bottom
-        }
+        let direction = self.direction
+        let frame = collectionView.bounds
+        let insets = collectionView.contentInset
+        return SMLayoutAspect(direction: direction, frame: frame, insets: insets)
     }
     
     var dimension: SMLayoutDimension? {

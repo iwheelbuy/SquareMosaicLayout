@@ -21,7 +21,7 @@ final class SMLayoutObjectSection {
         self.origin = origin
     }
     
-    convenience init(aspect: CGFloat, direction: SMLayoutDirection, rows: Int, section: Int, source: SMLayoutSource) {
+    convenience init(aspect: SMLayoutAspect, direction: SMLayoutDirection, rows: Int, section: Int, source: SMLayoutSource) {
         let index = section
         var origin: CGFloat = 0
         let pattern = source.smLayoutSourcePattern(section: section)
@@ -188,7 +188,7 @@ extension SMLayoutObjectSection {
 
 extension Array where Element == SMLayoutObjectItem {
     
-    init(aspect: CGFloat, direction: SMLayoutDirection, origin: inout CGFloat, pattern: SMLayoutPattern, rows: Int, section: Int) {
+    init(aspect: SMLayoutAspect, direction: SMLayoutDirection, origin: inout CGFloat, pattern: SMLayoutPattern, rows: Int, section: Int) {
         let blocks = Array<SMLayoutBlockWrapper>.init(pattern: pattern, rows: rows)
         var frames = ArraySlice<CGRect>()
         var previous: SMLayoutBlock?

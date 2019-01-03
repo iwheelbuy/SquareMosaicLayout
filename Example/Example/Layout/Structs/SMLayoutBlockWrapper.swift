@@ -4,7 +4,7 @@ import Foundation
 struct SMLayoutBlockWrapper: SMLayoutBlock {
     
     private let capacity: () -> Int
-    private let frames: (CGFloat, CGFloat) -> [CGRect]
+    private let frames: (SMLayoutAspect, CGFloat) -> [CGRect]
     private let repeated: () -> Bool
     
     init(_ block: SMLayoutBlock) {
@@ -17,7 +17,7 @@ struct SMLayoutBlockWrapper: SMLayoutBlock {
         return capacity()
     }
     
-    func smLayoutBlockFrames(aspect: CGFloat, origin: CGFloat) -> [CGRect] {
+    func smLayoutBlockFrames(aspect: SMLayoutAspect, origin: CGFloat) -> [CGRect] {
         return frames(aspect, origin)
     }
     
