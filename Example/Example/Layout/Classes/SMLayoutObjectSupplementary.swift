@@ -24,18 +24,18 @@ final class SMLayoutObjectSupplementary {
         self.zIndex = zIndex
     }
     /// Используется для инициализации бэкграунда
-    convenience init(aspect: CGFloat, direction: SMLayoutDirection, kind: String, length: CGFloat, zIndex: Int) {
+    convenience init(aspect: SMLayoutAspect, direction: SMLayoutDirection, kind: String, length: CGFloat, zIndex: Int) {
         let frame: CGRect
         switch direction {
         case .vertical:
-            frame = CGRect(origin: .zero, size: CGSize(width: aspect, height: length))
+            frame = CGRect(origin: .zero, size: CGSize(width: aspect.value, height: length))
         case .horizontal:
-            frame = CGRect(origin: .zero, size: CGSize(width: length, height: aspect))
+            frame = CGRect(origin: .zero, size: CGSize(width: length, height: aspect.value))
         }
         self.init(frameCurrent: frame, frameInitial: frame, kind: kind, stick: nil, zIndex: zIndex)
     }
     /// Используется для инициализации футера и хедера
-    convenience init?(aspect: CGFloat, direction: SMLayoutDirection, origin: inout CGFloat, stick: SMLayoutStick?, supplementary: SMLayoutSupplementary?, zIndex: Int) {
+    convenience init?(aspect: SMLayoutAspect, direction: SMLayoutDirection, origin: inout CGFloat, stick: SMLayoutStick?, supplementary: SMLayoutSupplementary?, zIndex: Int) {
         guard let supplementary = supplementary else {
             return nil
         }
